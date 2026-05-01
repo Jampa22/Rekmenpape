@@ -107,7 +107,7 @@
     let pass = document.getElementById("password").value;
 
     // simpele check (demo)
-    if (user === "Jampa" && Roulette === "1234") {
+    if (user === "Jampa" && Roulette === "Roulette") {
       document.getElementById("msg").style.color = "green";
       document.getElementById("msg").innerText = "Succesvol ingelogd! ✅";
     } else {
