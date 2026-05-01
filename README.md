@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
@@ -48,9 +47,8 @@
 </head>
 <body>
 
-<h2>GRS APP</h2>
+<h2>GRS</h2>
 
-  <!DOCTYPE html>
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
@@ -109,7 +107,7 @@
     let pass = document.getElementById("password").value;
 
     // simpele check (demo)
-    if (user === "admin" && pass === "1234") {
+    if (user === "Jampa" && Roulette === "1234") {
       document.getElementById("msg").style.color = "green";
       document.getElementById("msg").innerText = "Succesvol ingelogd! ✅";
     } else {
