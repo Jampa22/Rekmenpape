@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
@@ -50,7 +51,7 @@
 <h2></h2>
 <p></p>
 
-<button onclick="resetAll()"></>
+<button onclick="resetAll()">Reset</button>
 
 <div id="output">Klik op een nummer</div>
 
