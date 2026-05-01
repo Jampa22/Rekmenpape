@@ -47,10 +47,10 @@
 </head>
 <body>
 
-<h2>0 t/m 36 - Eigen uitkomst app</h2>
-<p>Klik = uitkomst zien | Dubbelklik = uitkomst instellen</p>
+<h2></h2>
+<p></p>
 
-<button onclick="resetAll()">Reset</button>
+<button onclick="resetAll()"></>
 
 <div id="output">Klik op een nummer</div>
 
