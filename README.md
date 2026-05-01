@@ -1,7 +1,7 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
-  <title>GRStitle>
+  <title>0-36 Uitkomst App</title>
   <style>
     body {
       font-family: Arial;
@@ -47,6 +47,8 @@
 </head>
 <body>
 
+<h2>0 t/m 36 - Eigen uitkomst app</h2>
+<p>Klik = uitkomst zien | Dubbelklik = uitkomst instellen</p>
 
 <button onclick="resetAll()">Reset</button>
 
