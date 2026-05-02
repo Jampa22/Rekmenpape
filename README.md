@@ -105,4 +105,67 @@
 </script>
 
 </body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Beautiful Background</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    font-family: Arial;
+    color: white;
+    background: #061b12;
+}
+
+/* moving glow effect */
+.glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0,255,150,0.25), transparent 60%);
+    animation: move 8s infinite alternate ease-in-out;
+    filter: blur(40px);
+}
+
+.glow2 {
+    background: radial-gradient(circle, rgba(255,0,80,0.2), transparent 60%);
+    animation-duration: 10s;
+    left: 40%;
+    top: 30%;
+}
+
+@keyframes move {
+    0% { transform: translate(0,0); }
+    100% { transform: translate(200px,150px); }
+}
+
+/* center content */
+.content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    top: 40%;
+}
+
+h1 {
+    font-size: 50px;
+    text-shadow: 0 0 20px #00ff99;
+}
+</style>
+</head>
+
+<body>
+
+<div class="glow"></div>
+<div class="glow glow2"></div>
+
+<div class="content">
+    <h1></h1>
+</div>
+
+</body>
 </html>
