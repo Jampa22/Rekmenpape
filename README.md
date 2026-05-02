@@ -50,7 +50,7 @@
 <h2></h2>
 <p></p>
 
-<button onclick="resetAll()"></button>
+<button onclick="resetAll()">Pattern 1 Pattern 2</button>
 
 <div id="output">Klik op een nummer</div>
 
