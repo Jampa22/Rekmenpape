@@ -89,7 +89,7 @@ button:hover {
 
 <body>
 
-<h2>🎰 TOOL 🎰</h2>
+<h2>🎰GRS TOOL🎰</h2>
 
 
 <div id="output">Klik op een nummer</div>
