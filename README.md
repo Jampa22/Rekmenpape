@@ -67,7 +67,7 @@
     localStorage.setItem("outcomes", JSON.stringify(data));
   }
 
-  for (let i = 0; i <= 9; i++) {
+  for (let i = 0; i <= 36; i++) {
     const cell = document.createElement("div");
     cell.className = "cell";
     cell.textContent = i;
