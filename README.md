@@ -1,7 +1,7 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
-  <title>0-36 Uitkomst App</title>
+  <title>0-9 Uitkomst App</title>
   <style>
     body {
       font-family: Arial;
@@ -67,7 +67,7 @@
     localStorage.setItem("outcomes", JSON.stringify(data));
   }
 
-  for (let i = 0; i <= 36; i++) {
+  for (let i = 0; i <= 9; i++) {
     const cell = document.createElement("div");
     cell.className = "cell";
     cell.textContent = i;
