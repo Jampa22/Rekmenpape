@@ -91,7 +91,6 @@ button:hover {
 
 <h2>🎰 GRS TOOL 🎰</h2>
 
-<button onclick="resetAll()"></button>
 
 <div id="output">Klik op een nummer</div>
 
