@@ -89,7 +89,7 @@ button:hover {
 
 <body>
 
-<h2>🎰Gilbert TOOL🎰</h2>
+<h2>🎰Gilbert Tool🎰</h2>
 
 
 <div id="output">Klik op een nummer</div>
