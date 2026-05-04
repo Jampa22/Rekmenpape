@@ -165,7 +165,6 @@ button:hover {
 
 <body>
 
-<h2>🎰GRS Tool🎰</h2>
 
 
 <div id="output">Klik op een nummer</div>
