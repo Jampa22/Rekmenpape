@@ -167,7 +167,7 @@ button:hover {
 
 
 
-<div id="output">Klik op een nummer</div>
+<div id="output">Choose the following number</div>
 
 <div class="grid" id="grid"></div>
 
