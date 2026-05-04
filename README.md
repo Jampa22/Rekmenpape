@@ -1,3 +1,79 @@
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>Glow Informatie</title>
+
+<style>
+body {
+    background-color: #0a0a0a;
+    color: white;
+    font-family: Arial, sans-serif;
+    padding: 40px;
+}
+
+/* Glowing titel */
+h1 {
+    text-align: center;
+    font-size: 50px;
+    color: #ffffff;
+    text-shadow:
+        0 0 5px #00ffff,
+        0 0 10px #00ffff,
+        0 0 20px #00ffff,
+        0 0 40px #00ffff;
+}
+
+/* Glowing tekst blok */
+.info {
+    max-width: 700px;
+    margin: auto;
+    font-size: 18px;
+    line-height: 1.6;
+    padding: 20px;
+    border: 1px solid #00ffff;
+    border-radius: 10px;
+    box-shadow:
+        0 0 10px #00ffff,
+        0 0 20px #00ffff;
+}
+
+/* Knop met glow */
+button {
+    display: block;
+    margin: 30px auto;
+    padding: 12px 25px;
+    font-size: 16px;
+    color: white;
+    background: black;
+    border: 1px solid #ff00ff;
+    cursor: pointer;
+    box-shadow:
+        0 0 10px #ff00ff,
+        0 0 20px #ff00ff;
+    transition: 0.3s;
+}
+
+button:hover {
+    box-shadow:
+        0 0 20px #ff00ff,
+        0 0 40px #ff00ff;
+}
+</style>
+
+</head>
+<body>
+
+<h1>GUIDE</h1>
+
+<div class="info">
+    If the table previously changed calculation type after a certain number of confirmed spins (causing a loss), stop when that same count is reached again.
+</div>
+
+
+</body>
+</html>
+
+
 
 <html lang="nl">
 <head>
@@ -140,81 +216,6 @@ function resetAll() {
   }
 }
 </script>
-
-</body>
-</html>
-
-<html lang="nl">
-<head>
-<meta charset="UTF-8">
-<title>Glow Informatie</title>
-
-<style>
-body {
-    background-color: #0a0a0a;
-    color: white;
-    font-family: Arial, sans-serif;
-    padding: 40px;
-}
-
-/* Glowing titel */
-h1 {
-    text-align: center;
-    font-size: 50px;
-    color: #ffffff;
-    text-shadow:
-        0 0 5px #00ffff,
-        0 0 10px #00ffff,
-        0 0 20px #00ffff,
-        0 0 40px #00ffff;
-}
-
-/* Glowing tekst blok */
-.info {
-    max-width: 700px;
-    margin: auto;
-    font-size: 18px;
-    line-height: 1.6;
-    padding: 20px;
-    border: 1px solid #00ffff;
-    border-radius: 10px;
-    box-shadow:
-        0 0 10px #00ffff,
-        0 0 20px #00ffff;
-}
-
-/* Knop met glow */
-button {
-    display: block;
-    margin: 30px auto;
-    padding: 12px 25px;
-    font-size: 16px;
-    color: white;
-    background: black;
-    border: 1px solid #ff00ff;
-    cursor: pointer;
-    box-shadow:
-        0 0 10px #ff00ff,
-        0 0 20px #ff00ff;
-    transition: 0.3s;
-}
-
-button:hover {
-    box-shadow:
-        0 0 20px #ff00ff,
-        0 0 40px #ff00ff;
-}
-</style>
-
-</head>
-<body>
-
-<h1>GUIDE</h1>
-
-<div class="info">
-    If the table previously changed calculation type after a certain number of confirmed spins (causing a loss), stop when that same count is reached again.
-</div>
-
 
 </body>
 </html>
