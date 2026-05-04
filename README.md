@@ -63,7 +63,7 @@ button:hover {
 </head>
 <body>
 
-<h1>Warning</h1>
+<h1>Warning⚠️</h1>
 
 <div class="info">
     If the table previously changed calculation type after a certain number of confirmed spins (causing a loss), stop when that same count is reached again.
@@ -73,7 +73,96 @@ button:hover {
 </body>
 </html>
 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Automatisch aftrekken met glow en reset</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      margin-top: 60px;
+      background: #0f0f0f;
+      color: white;
+    }
 
+    input {
+      padding: 10px;
+      margin: 8px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      outline: none;
+
+      box-shadow: 0 0 10px #00ffcc;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      margin-top: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: #00aa88;
+      color: white;
+
+      /* Glow */
+      box-shadow: 0 0 10px #00ffcc,
+                  0 0 20px #00ffcc,
+                  0 0 40px #00ffcc;
+
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00ffcc,
+                  0 0 40px #00ffcc,
+                  0 0 60px #00ffcc;
+    }
+
+    #result {
+      font-size: 28px;
+      margin-top: 15px;
+      font-weight: bold;
+
+      text-shadow: 0 0 10px #00ffcc,
+                   0 0 20px #00ffcc,
+                   0 0 40px #00ffcc;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Type last 2 numbers</h2>
+
+<input type="number" id="num1" placeholder="Eerste getal" oninput="bereken()">
+<input type="number" id="num2" placeholder="Tweede getal" oninput="bereken()">
+
+<br>
+
+<button class="btn" onclick="resetForm()">Reset</button>
+
+<p><span id="result">0</span></p>
+
+<script>
+function bereken() {
+  const a = parseFloat(document.getElementById("num1").value) || 0;
+  const b = parseFloat(document.getElementById("num2").value) || 0;
+
+  document.getElementById("result").innerText = a - b;
+}
+
+function resetForm() {
+  document.getElementById("num1").value = "";
+  document.getElementById("num2").value = "";
+  document.getElementById("result").innerText = "0";
+}
+</script>
+
+</body>
+</html>
 
 <html lang="nl">
 <head>
