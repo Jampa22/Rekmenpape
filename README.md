@@ -63,7 +63,7 @@ button:hover {
 </head>
 <body>
 
-<h1>GUIDE</h1>
+<h1>Warning</h1>
 
 <div class="info">
     If the table previously changed calculation type after a certain number of confirmed spins (causing a loss), stop when that same count is reached again.
