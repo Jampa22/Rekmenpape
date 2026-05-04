@@ -73,7 +73,6 @@ button:hover {
 </body>
 </html>
 
-<!DOCTYPE html>
 <html>
 <head>
   <title>Automatisch aftrekken met glow en reset</title>
