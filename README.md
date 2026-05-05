@@ -222,7 +222,7 @@ button:hover {
 
 
 
-<div id="output">Choose the following number</div>
+<div id="output">Choose following number</div>
 
 <div class="grid" id="grid"></div>
 
