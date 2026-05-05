@@ -2,7 +2,66 @@
 <head>
 <meta charset="UTF-8">
 <title>Glow Informatie</title>
+<style>
+/* Glow animatie */
+@keyframes glow {
+  0%   { box-shadow: 0 0 5px red, 0 0 8px white; }
+  50%  { box-shadow: 0 0 12px red, 0 0 18px white; }
+  100% { box-shadow: 0 0 5px red, 0 0 8px white; }
+}
 
+/* Javaanse (Indonesische) vlag - linksboven */
+.vlag-rechts {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 20px;
+  border-radius: 2px;
+  overflow: hidden;
+  z-index: 1000;
+  animation: glow 2s infinite;
+}
+
+/* Surinaamse vlag - rechtsboven */
+.vlag-links {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  width: 30px;
+  height: 20px;
+  border-radius: 2px;
+  overflow: hidden;
+  z-index: 1000;
+  animation: glow 2s infinite;
+}
+</style>
+
+<!-- Javaanse (Indonesische) vlag -->
+<div class="vlag-links">
+  <div style="background:red; height:50%;"></div>
+  <div style="background:white; height:50%;"></div>
+</div>
+
+<!-- Surinaamse vlag -->
+<div class="vlag-rechts">
+  <div style="background:green; height:20%;"></div>
+  <div style="background:white; height:15%;"></div>
+  <div style="background:red; height:30%; position:relative;">
+    <div style="
+      width:8px;
+      height:8px;
+      background:yellow;
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%);
+    "></div>
+  </div>
+  <div style="background:white; height:15%;"></div>
+  <div style="background:green; height:20%;"></div>
+</div>
 <style>
 body {
     background-color: #0a0a0a;
