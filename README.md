@@ -220,7 +220,7 @@ button:hover {
 
 <body>
 
-
+<button onclick="resetAll()">Jampa Boi</button>
 
 <div id="output">Choose following number</div>
 
