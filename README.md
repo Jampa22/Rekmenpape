@@ -220,8 +220,6 @@ button:hover {
 
 <body>
 
-<button onclick="resetAll()">Jampa</button>
-
 <div id="output">Choose following number</div>
 
 <div class="grid" id="grid"></div>
