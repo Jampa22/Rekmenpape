@@ -242,7 +242,7 @@ for (let i = 0; i <= 36; i++) {
   // klik = tonen
   cell.addEventListener("click", () => {
     if (!data[i]) {
-      output.textContent = "Nummer " + i + " heeft nog geen uitkomst ingesteld.";
+      output.textContent = "Number" + i + " heeft nog geen uitkomst ingesteld.";
     } else {
       output.textContent = "🎯 Nummer " + i + " → " + data[i];
     }
