@@ -10,7 +10,7 @@
   100% { box-shadow: 0 0 5px red, 0 0 8px white; }
 }
 
-/* Javaanse (Indonesische) vlag - linksboven */
+/* Javaanse (Indonesische) vlag - midden */
 .vlag-rechts {
   position: fixed;
   top: 10px;
@@ -38,7 +38,7 @@
 </style>
 
 <!-- Javaanse (Indonesische) vlag -->
-<div class="vlag-midden">
+<div class="vlag-links">
   <div style="background:red; height:50%;"></div>
   <div style="background:white; height:50%;"></div>
 </div>
