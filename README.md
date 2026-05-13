@@ -38,7 +38,7 @@
 </style>
 
 <!-- Javaanse (Indonesische) vlag -->
-<div class="vlag-links">
+<div class="vlag-midden">
   <div style="background:red; height:50%;"></div>
   <div style="background:white; height:50%;"></div>
 </div>
