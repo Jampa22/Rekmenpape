@@ -38,13 +38,13 @@
 </style>
 
 <!-- Javaanse (Indonesische) vlag -->
-<div class="vlag-links">
+<div class="vlag-midden">
   <div style="background:red; height:50%;"></div>
   <div style="background:white; height:50%;"></div>
 </div>
 
 <!-- Surinaamse vlag -->
-<div class="vlag-rechts">
+<div class="vlag-midden">
   <div style="background:green; height:20%;"></div>
   <div style="background:white; height:15%;"></div>
   <div style="background:red; height:30%; position:relative;">
