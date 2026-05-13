@@ -244,7 +244,7 @@ for (let i = 0; i <= 36; i++) {
     if (!data[i]) {
       output.textContent = "Number" + i + " heeft nog geen uitkomst ingesteld.";
     } else {
-      output.textContent = "🎯 Nummer " + i + " → " + data[i];
+      output.textContent = "🎯 Number " + i + " → " + data[i];
     }
   });
 
