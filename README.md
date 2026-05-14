@@ -272,3 +272,99 @@ function resetAll() {
 </body>
 
 </html>
+
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Beveiligde Website</title>
+
+<style>
+body{
+    margin:0;
+    background:#000;
+    color:#fff;
+    font-family:Arial,sans-serif;
+
+    /* Tekstselectie uitschakelen */
+    user-select:none;
+    -webkit-user-select:none;
+}
+
+/* Content */
+#content{
+    padding:40px;
+    transition:0.3s;
+}
+
+/* Blur effect */
+.blur{
+    filter:blur(20px);
+}
+
+/* Watermerk */
+.watermark{
+    position:fixed;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:60px;
+    color:rgba(255,255,255,0.08);
+    transform:rotate(-30deg);
+    pointer-events:none;
+    z-index:9999;
+}
+</style>
+</head>
+
+<body oncontextmenu="return false">
+
+<div class="watermark">
+BEVEILIGD
+</div>
+
+<div id="content">
+    <h1>Privé Inhoud</h1>
+    <p>Screenshots worden ontmoedigd.</p>
+</div>
+
+<script>
+const content = document.getElementById("content");
+
+/* Blur wanneer gebruiker tab verlaat */
+window.addEventListener("blur", () => {
+    content.classList.add("blur");
+});
+
+window.addEventListener("focus", () => {
+    content.classList.remove("blur");
+});
+
+/* Blokkeer toetsen */
+document.addEventListener("keydown", function(e){
+
+    // PrintScreen
+    if(e.key === "PrintScreen"){
+        navigator.clipboard.writeText("");
+        alert("Screenshot geblokkeerd");
+    }
+
+    // F12 Developer Tools
+    if(e.key === "F12"){
+        e.preventDefault();
+    }
+
+    // Ctrl shortcuts
+    if(
+        e.ctrlKey &&
+        ["u","s","c","p"].includes(e.key.toLowerCase())
+    ){
+        e.preventDefault();
+    }
+});
+</script>
+
+</body>
+</html>
