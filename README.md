@@ -272,9 +272,3 @@ function resetAll() {
 </body>
 
 </html>
-
-<div id="protected-block">
-  <p>This is the sensitive HTML content you want to protect.</p>
-</div>
-<div id="screenshot-overlay">Screenshots are prohibited.</div>
-
