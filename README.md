@@ -273,12 +273,29 @@ function resetAll() {
 
 </html>
 
-<script language="javascript">
-var noPrint=true;
-var noCopy=true;
-var noScreenshot=true;
-var autoBlur=true;
-</script>
-
-<script type="text/javascript" src="https://pdfanticopy.com/noprint.js"></script>
-
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    .protected-content {
+        background-color: #f0f8ff;
+        padding: 20px;
+        border-radius: 8px;
+        font-family: Arial, sans-serif;
+    }
+    
+    @media print {
+        html, body {
+            display: none;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="protected-content">
+        This is sensitive content that should not be printed or easily captured.
+        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+        When users try to print this page, the content will be hidden.
+    </div>
+</body>
+</html>
