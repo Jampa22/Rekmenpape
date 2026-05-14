@@ -273,3 +273,10 @@ function resetAll() {
 
 </html>
 
+<script src="https://unpkg.com/screenshot-privacy-protect/dist/privacy-protect.min.js"></script>
+<script>
+  PrivacyProtect.enable({
+    feedback: true,
+    watermarkText: "🔒 Confidential Area"
+  });
+</script>
