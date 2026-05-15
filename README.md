@@ -273,19 +273,79 @@ function resetAll() {
 
 </html>
 
+<html>
+<head>
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+}
+
+#secure {
+    padding: 40px;
+    transition: filter 0.2s ease;
+}
+
+.blur {
+    filter: blur(18px);
+    user-select: none;
+    pointer-events: none;
+}
+
+/* Optional watermark */
+.watermark {
+    position: fixed;
+    top: 40%;
+    left: 20%;
+    font-size: 48px;
+    opacity: 0.15;
+    transform: rotate(-25deg);
+    pointer-events: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="watermark">
+CONFIDENTIAL
+</div>
+
+<div id="secure">
+    <h1>Protected Content</h1>
+    <p>Sensitive website information.</p>
+</div>
+
 <script>
-var noPrint = true;
-var noCopy = true;
+const secure = document.getElementById("secure");
 
-if (noCopy) {
-    document.addEventListener("copy", e => {
-        e.preventDefault();
-    });
-}
+/* Blur when tab loses visibility */
+document.addEventListener("visibilitychange", () => {
+    secure.classList.toggle("blur", document.hidden);
+});
 
-if (noPrint) {
-    window.addEventListener("beforeprint", () => {
-        document.body.innerHTML = "";
-    });
-}
+/* Blur when window loses focus */
+window.addEventListener("blur", () => {
+    secure.classList.add("blur");
+});
+
+window.addEventListener("focus", () => {
+    secure.classList.remove("blur");
+});
+
+/* Disable copy */
+document.addEventListener("copy", e => {
+    e.preventDefault();
+});
+
+/* Disable right click */
+document.addEventListener("contextmenu", e => {
+    e.preventDefault();
+});
+
+/* Disable text selection */
+document.body.style.userSelect = "none";
 </script>
+
+</body>
+</html>
