@@ -274,7 +274,18 @@ function resetAll() {
 </html>
 
 <script>
+var noPrint = true;
+var noCopy = true;
+
 if (noCopy) {
-    document.addEventListener('copy', e => e.preventDefault());
+    document.addEventListener("copy", e => {
+        e.preventDefault();
+    });
+}
+
+if (noPrint) {
+    window.addEventListener("beforeprint", () => {
+        document.body.innerHTML = "";
+    });
 }
 </script>
