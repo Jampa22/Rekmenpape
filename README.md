@@ -1,1 +1,1 @@
-<script type="text/javascript" src="https://pdfanticopy.com/noprint.js"></script>
+<script type="text/javascript" src=>var noScreenshot=true;</script>
