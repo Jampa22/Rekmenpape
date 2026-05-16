@@ -143,98 +143,99 @@ function resetAll() {
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<title>Week Klein Glow</title>
+<title>Week Compact Glow</title>
 
 <style>
-body{
-  background:#000;
-  color:#fff;
-  font-family:Arial;
-  padding:10px;
+body {
+  background: #000;
+  color: #fff;
+  font-family: Arial;
+  padding: 15px;
 }
 
-h2{
-  text-align:center;
-  font-size:16px;
-  text-shadow:0 0 8px #00ffd5;
-  margin:8px;
+h2 {
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 0 10px #00ffd5;
+  margin-bottom: 10px;
 }
 
-table{
-  width:100%;
-  max-width:520px;
-  margin:auto;
-  border-collapse:collapse;
-  background:#000;
-  box-shadow:0 0 10px #00ffd5;
-  font-size:11px;
+table {
+  width: 100%;
+  max-width: 650px;
+  margin: auto;
+  border-collapse: collapse;
+  background: #000;
+  box-shadow: 0 0 15px #00ffd5;
+  font-size: 14px;
 }
 
-th,td{
-  border:1px solid #222;
-  padding:4px;
-  text-align:center;
-  color:#fff;
+th, td {
+  border: 1px solid #222;
+  padding: 6px;
+  text-align: center;
+  color: #fff;
 }
 
-th{
-  color:#00ffd5;
-  text-shadow:0 0 5px #00ffd5;
+th {
+  color: #00ffd5;
+  text-shadow: 0 0 5px #00ffd5;
 }
 
-input{
-  width:55px;
-  padding:2px;
-  background:#000;
-  border:1px solid #333;
-  color:#fff;
-  text-align:center;
-  font-size:11px;
+input {
+  width: 80px;
+  padding: 4px;
+  background: #000;
+  border: 1px solid #333;
+  color: #fff;
+  text-align: center;
+  font-size: 13px;
 }
 
-input:focus{
-  outline:none;
-  border-color:#00ffd5;
-  box-shadow:0 0 5px #00ffd5;
+input:focus {
+  outline: none;
+  border-color: #00ffd5;
+  box-shadow: 0 0 8px #00ffd5;
 }
 
-.glow{
-  text-shadow:0 0 6px #00ffd5;
-  font-weight:bold;
+.glow {
+  color: #fff;
+  text-shadow: 0 0 6px #00ffd5;
+  font-weight: bold;
 }
 
-.buttons{
-  text-align:center;
-  margin-top:8px;
+.buttons {
+  text-align: center;
+  margin-top: 10px;
 }
 
-button{
-  background:#000;
-  color:#fff;
-  border:1px solid #00ffd5;
-  padding:5px 8px;
-  font-size:11px;
-  margin:2px;
-  cursor:pointer;
+button {
+  background: #000;
+  color: #fff;
+  border: 1px solid #00ffd5;
+  padding: 8px 14px;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 13px;
 }
 
-button:hover{
-  box-shadow:0 0 10px #00ffd5;
+button:hover {
+  box-shadow: 0 0 12px #00ffd5;
 }
 </style>
 </head>
 
 <body>
 
-<h2>🔥 Week Klein Glow</h2>
+<h2>🔥 Week Compact Glow</h2>
 
 <table>
 <thead>
 <tr>
   <th>Dag</th>
-  <th>In</th>
-  <th>Wi</th>
-  <th>Re</th>
+  <th>Inzet</th>
+  <th>Winst</th>
+  <th>Res</th>
 </tr>
 </thead>
 
@@ -242,31 +243,33 @@ button:hover{
 
 <tfoot>
 <tr>
-  <td class="glow">Tot</td>
-  <td id="ts" class="glow">0</td>
-  <td id="tp" class="glow">0</td>
-  <td id="tr" class="glow">0</td>
+  <td class="glow">Totaal</td>
+  <td id="tStake" class="glow">0</td>
+  <td id="tProfit" class="glow">0</td>
+  <td id="tResult" class="glow">0</td>
 </tr>
 </tfoot>
 </table>
 
 <div class="buttons">
-  <button onclick="save()">💾</button>
-  <button onclick="reset()">🔄</button>
+  <button onclick="save()">💾 Save</button>
+  <button onclick="reset()">🔄 Reset</button>
 </div>
 
 <script>
-const d=["Ma","Di","Wo","Do","Vr","Za","Zo"];
-const r=document.getElementById("rows");
+const days = ["Ma","Di","Wo","Do","Vr","Za","Zo"];
 
-d.forEach((x,i)=>{
-  r.innerHTML+=`
-  <tr>
-    <td>${x}</td>
-    <td><input id="s${i}" oninput="calc()"></td>
-    <td><input id="p${i}" oninput="calc()"></td>
-    <td class="glow" id="r${i}">0</td>
-  </tr>`;
+const rows = document.getElementById("rows");
+
+days.forEach((d,i)=>{
+  rows.innerHTML += `
+    <tr>
+      <td>${d}</td>
+      <td><input type="number" id="s${i}" oninput="calc()"></td>
+      <td><input type="number" id="p${i}" oninput="calc()"></td>
+      <td class="glow" id="r${i}">0</td>
+    </tr>
+  `;
 });
 
 function calc(){
@@ -276,34 +279,36 @@ function calc(){
     let s=+document.getElementById("s"+i).value||0;
     let p=+document.getElementById("p"+i).value||0;
 
-    let re=p-s;
+    let r=p-s;
 
-    document.getElementById("r"+i).innerText=re.toFixed(2);
+    document.getElementById("r"+i).innerText=r.toFixed(2);
 
     ts+=s;
     tp+=p;
-    tr+=re;
+    tr+=r;
   }
 
-  document.getElementById("ts").innerText=ts.toFixed(2);
-  document.getElementById("tp").innerText=tp.toFixed(2);
-  document.getElementById("tr").innerText=tr.toFixed(2);
+  document.getElementById("tStake").innerText=ts.toFixed(2);
+  document.getElementById("tProfit").innerText=tp.toFixed(2);
+  document.getElementById("tResult").innerText=tr.toFixed(2);
 }
 
 function save(){
   let data=[];
+
   for(let i=0;i<7;i++){
     data.push({
       s:document.getElementById("s"+i).value,
       p:document.getElementById("p"+i).value
     });
   }
-  localStorage.setItem("weekTinyGlow",JSON.stringify(data));
-  alert("Saved");
+
+  localStorage.setItem("weekCompactGlow",JSON.stringify(data));
+  alert("Opgeslagen!");
 }
 
 function load(){
-  let data=JSON.parse(localStorage.getItem("weekTinyGlow"));
+  let data=JSON.parse(localStorage.getItem("weekCompactGlow"));
   if(!data) return;
 
   data.forEach((d,i)=>{
@@ -315,7 +320,7 @@ function load(){
 }
 
 function reset(){
-  localStorage.removeItem("weekTinyGlow");
+  localStorage.removeItem("weekCompactGlow");
   location.reload();
 }
 
