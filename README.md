@@ -10,6 +10,66 @@
   100% { box-shadow: 0 0 5px red, 0 0 8px white; }
 }
 
+/* Javaanse (Indonesische) vlag - midden */
+.vlag-rechts {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 20px;
+  border-radius: 2px;
+  overflow: hidden;
+  z-index: 1000;
+  animation: glow 2s infinite;
+}
+
+/* Surinaamse vlag - rechtsboven */
+.vlag-links {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  width: 30px;
+  height: 20px;
+  border-radius: 2px;
+  overflow: hidden;
+  z-index: 1000;
+  animation: glow 2s infinite;
+}
+</style>
+
+<!-- Javaanse (Indonesische) vlag -->
+<div class="vlag-midden">
+  <div style="background:red; height:50%;"></div>
+  <div style="background:white; height:50%;"></div>
+</div>
+
+<!-- Surinaamse vlag -->
+<div class="vlag-midden">
+  <div style="background:green; height:20%;"></div>
+  <div style="background:white; height:15%;"></div>
+  <div style="background:red; height:30%; position:relative;">
+    <div style="
+      width:8px;
+      height:8px;
+      background:yellow;
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%);
+    "></div>
+  </div>
+  <div style="background:white; height:15%;"></div>
+  <div style="background:green; height:20%;"></div>
+</div>
+<style>
+body {
+    background-color: #0a0a0a;
+    color: white;
+    font-family: Arial, sans-serif;
+    padding: 40px;
+}
+
 /* Glowing titel */
 h1 {
     text-align: center;
@@ -210,153 +270,6 @@ function resetAll() {
 </script>
 
 </body>
+
 </html>
 
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-<meta charset="UTF-8">
-<title>Week Tracker</title>
-<style>
-body{
-    background:#0f111a;
-    color:#e6e6e6;
-    font-family:Arial;
-    margin:0;
-    padding:20px;
-}
-
-h2{ text-align:center; color:#00ffd5; }
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:10px;
-}
-
-th, td{
-    border:1px solid #2a2f3a;
-    padding:8px;
-    text-align:center;
-}
-
-input{
-    width:80px;
-    padding:5px;
-    background:#1a1f2b;
-    border:1px solid #333;
-    color:#fff;
-    border-radius:5px;
-}
-
-button{
-    padding:10px 15px;
-    margin-top:10px;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-}
-
-#okBtn{
-    background:#00ffd5;
-    color:#000;
-    font-weight:bold;
-}
-
-#resetBtn{
-    background:#ff4d4d;
-    color:#fff;
-}
-
-.footer{
-    position:fixed;
-    bottom:0;
-    left:0;
-    width:100%;
-    background:#111522;
-    padding:10px;
-    display:flex;
-    justify-content:space-around;
-    border-top:1px solid #2a2f3a;
-    font-size:14px;
-}
-
-.small{
-    font-size:12px;
-    opacity:0.8;
-}
-</style>
-</head>
-<body>
-
-<h2>Week Overzicht</h2>
-
-<table id="weekTable">
-<tr>
-    <th>Dag</th>
-    <th>Actief</th>
-    <th>Inzet</th>
-    <th>Winst</th>
-</tr>
-
-<script>
-const days = ["Ma","Di","Wo","Do","Vr","Za","Zo"];
-document.write(
-days.map((d,i)=>`
-<tr>
-<td>${d}</td>
-<td><input type="checkbox" id="c${i}" checked></td>
-<td><input type="number" id="i${i}" value="0"></td>
-<td><input type="number" id="w${i}" value="0"></td>
-</tr>
-`).join("")
-);
-</script>
-
-</table>
-
-<div style="text-align:center;">
-    <button id="okBtn" onclick="bereken()">OK Berekenen</button>
-    <button id="resetBtn" onclick="resetAll()">Reset</button>
-</div>
-
-<div class="footer">
-    <div class="small">Totaal Inzet: <span id="tInzet">0</span></div>
-    <div class="small">Totaal Winst: <span id="tWinst">0</span></div>
-    <div class="small">Netto Week: <span id="tNetto">0</span></div>
-</div>
-
-<script>
-function bereken(){
-    let inzet = 0;
-    let winst = 0;
-
-    for(let i=0;i<7;i++){
-        if(document.getElementById("c"+i).checked){
-            inzet += Number(document.getElementById("i"+i).value || 0);
-            winst += Number(document.getElementById("w"+i).value || 0);
-        }
-    }
-
-    document.getElementById("tInzet").innerText = inzet;
-    document.getElementById("tWinst").innerText = winst;
-    document.getElementById("tNetto").innerText = (winst - inzet);
-}
-
-// auto berekenen bij invoer
-document.addEventListener("input", bereken);
-
-function resetAll(){
-    for(let i=0;i<7;i++){
-        document.getElementById("c"+i).checked = true;
-        document.getElementById("i"+i).value = 0;
-        document.getElementById("w"+i).value = 0;
-    }
-    bereken();
-}
-
-bereken();
-</script>
-
-</body>
-</html>
