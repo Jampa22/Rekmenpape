@@ -216,105 +216,153 @@ function resetAll() {
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-<meta charset="UTF-8">
-<title>Geld Management Week</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Week Geld Management</title>
 
 <style>
 body {
-    font-family: Arial, sans-serif;
-    background-color: #111;
-    color: #eee;
-    margin: 20px;
+  background:#0b0f1a;
+  font-family: Arial, sans-serif;
+  color:#fff;
+  display:flex;
+  justify-content:center;
+  padding:20px;
 }
 
-h1 {
-    color: #00ff99;
+.container {
+  width: 520px;
+}
+
+h2 {
+  text-align:center;
+  color:#00ffcc;
+  text-shadow:0 0 10px #00ffcc;
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+  width:100%;
+  border-collapse: collapse;
+  background:#111827;
+  box-shadow:0 0 20px #00ffcc33;
+  border-radius:10px;
+  overflow:hidden;
 }
 
 th, td {
-    border: 1px solid #333;
-    padding: 10px;
-    text-align: center;
+  padding:6px;
+  text-align:center;
+  font-size:12px;
 }
 
 th {
-    background-color: #222;
+  background:#0f172a;
+  color:#00ffcc;
 }
 
 input {
-    width: 100px;
-    padding: 5px;
-    background: #222;
-    color: #fff;
-    border: 1px solid #444;
+  width:70px;
+  padding:4px;
+  border:none;
+  border-radius:5px;
+  text-align:center;
+  background:#1f2937;
+  color:#fff;
+  outline:none;
 }
 
-.total {
-    color: #00ff99;
-    font-weight: bold;
+.glow {
+  color:#00ffcc;
+  text-shadow:0 0 8px #00ffcc;
+  transition:0.3s;
 }
+
+.row-anim {
+  transition: all 0.3s ease;
+}
+
+.total-box {
+  margin-top:10px;
+  padding:10px;
+  background:#111827;
+  border-radius:10px;
+  text-align:center;
+  box-shadow:0 0 15px #00ffcc33;
+}
+
 </style>
 </head>
 
 <body>
 
-<h1>Geld Management Week</h1>
+<div class="container">
+  <h2>💰 Geld Management Week</h2>
 
-<table>
-    <tr>
+  <table>
+    <thead>
+      <tr>
         <th>Dag</th>
         <th>Inzet</th>
         <th>Winst</th>
         <th>Totaal</th>
-    </tr>
+      </tr>
+    </thead>
+    <tbody id="body"></tbody>
+  </table>
 
-    <tbody id="rows"></tbody>
-
-    <tr>
-        <td colspan="3"><b>Week Totaal</b></td>
-        <td class="total" id="weekTotal">0</td>
-    </tr>
-</table>
+  <div class="total-box">
+    Week Totaal: <span id="weekTotal" class="glow">0</span>
+  </div>
+</div>
 
 <script>
 const days = ["Maandag","Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag","Zondag"];
 
-const tbody = document.getElementById("rows");
+const body = document.getElementById("body");
+const weekTotalEl = document.getElementById("weekTotal");
 
-days.forEach((day, i) => {
-    const row = document.createElement("tr");
+function createRow(day, i){
+  const row = document.createElement("tr");
+  row.className = "row-anim";
 
-    row.innerHTML = `
-        <td>${day}</td>
-        <td><input type="number" id="inzet${i}" oninput="calculate()"></td>
-        <td><input type="number" id="winst${i}" oninput="calculate()"></td>
-        <td id="totaal${i}">0</td>
-    `;
+  row.innerHTML = `
+    <td>${day}</td>
+    <td><input type="number" id="inzet-${i}" value="0"></td>
+    <td><input type="number" id="winst-${i}" value="0"></td>
+    <td class="glow" id="total-${i}">0</td>
+  `;
 
-    tbody.appendChild(row);
+  return row;
+}
+
+days.forEach((d,i)=>{
+  body.appendChild(createRow(d,i));
 });
 
-function calculate() {
-    let weekTotal = 0;
+function calc(){
+  let weekTotal = 0;
 
-    for (let i = 0; i < 7; i++) {
-        let inzet = parseFloat(document.getElementById("inzet" + i).value) || 0;
-        let winst = parseFloat(document.getElementById("winst" + i).value) || 0;
+  days.forEach((_,i)=>{
+    const inzet = parseFloat(document.getElementById("inzet-"+i).value) || 0;
+    const winst = parseFloat(document.getElementById("winst-"+i).value) || 0;
 
-        let totaal = winst - inzet;
-        document.getElementById("totaal" + i).innerText = totaal;
+    const total = winst - inzet;
 
-        weekTotal += totaal;
-    }
+    const totalEl = document.getElementById("total-"+i);
+    totalEl.innerText = total.toFixed(2);
 
-    document.getElementById("weekTotal").innerText = weekTotal;
+    totalEl.style.transform = "scale(1.2)";
+    setTimeout(()=> totalEl.style.transform = "scale(1)", 150);
+
+    weekTotal += total;
+  });
+
+  weekTotalEl.innerText = weekTotal.toFixed(2);
 }
+
+document.addEventListener("input", calc);
+
+calc();
 </script>
 
 </body>
