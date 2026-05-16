@@ -217,7 +217,7 @@ function resetAll() {
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<title>Geld System</title>
+<title>Geld Management</title>
 
 <style>
 body{
@@ -226,26 +226,26 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:radial-gradient(circle at center,#071024,#02030a);
+background:#050b18;
 font-family:Arial;
 font-size:11px;
-color:#00e5ff;
+color:#00d9ff;
 }
 
-.card{
+.box{
 width:95%;
-max-width:500px;
+max-width:520px;
+background:#0b1424;
+border:1px solid rgba(0,217,255,0.25);
+box-shadow:0 0 18px rgba(0,217,255,0.15);
 padding:10px;
-background:rgba(10,18,30,0.85);
-border:1px solid rgba(0,229,255,0.25);
-box-shadow:0 0 20px rgba(0,229,255,0.15);
 }
 
 h2{
 text-align:center;
-margin:5px 0 10px;
+margin:6px 0 10px;
 font-size:14px;
-text-shadow:0 0 8px #00e5ff;
+text-shadow:0 0 6px #00d9ff;
 }
 
 table{
@@ -254,7 +254,7 @@ border-collapse:collapse;
 }
 
 th,td{
-border:1px solid rgba(0,229,255,0.2);
+border:1px solid rgba(0,217,255,0.2);
 padding:4px;
 text-align:center;
 }
@@ -262,15 +262,15 @@ text-align:center;
 input{
 width:60px;
 background:transparent;
-border:1px solid #00e5ff;
-color:#00e5ff;
+border:1px solid #00d9ff;
+color:#00d9ff;
 text-align:center;
 font-size:11px;
 outline:none;
 }
 
 .total{
-color:#7df9ff;
+color:#7efcff;
 font-weight:bold;
 }
 
@@ -279,14 +279,14 @@ margin-top:8px;
 text-align:center;
 font-size:13px;
 color:#ffffff;
-text-shadow:0 0 6px rgba(0,229,255,0.4);
+text-shadow:0 0 5px rgba(0,217,255,0.4);
 }
 </style>
 </head>
 
 <body>
 
-<div class="card">
+<div class="box">
 <h2>GELD MANAGEMENT</h2>
 
 <table>
@@ -323,10 +323,10 @@ let rows=document.querySelectorAll("tr");
 let week=0;
 
 rows.forEach(r=>{
-let i=r.querySelectorAll("input");
-if(i.length){
-let inzet=+i[0].value||0;
-let winst=+i[1].value||0;
+let inp=r.querySelectorAll("input");
+if(inp.length){
+let inzet=+inp[0].value||0;
+let winst=+inp[1].value||0;
 let totaal=winst-inzet;
 
 r.querySelector(".total").innerText=totaal.toFixed(2);
