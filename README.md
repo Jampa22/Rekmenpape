@@ -216,115 +216,103 @@ function resetAll() {
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<title>MM Week</title>
+<title>Week Geld Management</title>
 
 <style>
-body{
-  background:#0f0f0f;
-  color:#fff;
-  font-family:Arial;
-  padding:10px;
+body {
+    background: #0b0f1a;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
 }
 
-h2{
-  text-align:center;
-  color:#00ffcc;
-  text-shadow:0 0 6px #00ffcc;
-  font-size:15px;
-  margin-bottom:10px;
+table {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0 0 15px #00ffcc33;
 }
 
-table{
-  width:100%;
-  max-width:520px;
-  margin:auto;
-  border-collapse:collapse;
+th, td {
+    border: 1px solid #1f2a44;
+    padding: 6px;
+    text-align: center;
 }
 
-th,td{
-  border:1px solid #222;
-  padding:4px;
-  text-align:center;
-  font-size:12px;
+th {
+    background: #111a2e;
+    color: #00ffcc;
 }
 
-th{color:#00ffcc;}
-
-input{
-  width:55px;
-  background:#111;
-  border:1px solid #333;
-  color:#00ffcc;
-  text-align:center;
-  font-size:12px;
+input {
+    width: 70px;
+    background: #0f172a;
+    border: 1px solid #1f2a44;
+    color: #fff;
+    text-align: center;
 }
 
-.glow{
-  color:#00ffcc;
-  text-shadow:0 0 5px #00ffcc;
+.glow {
+    color: #00ffcc;
+    text-shadow: 0 0 5px #00ffcc;
 }
 
-footer{
-  text-align:center;
-  margin-top:10px;
-  font-size:14px;
+.total-box {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
 }
 </style>
 </head>
 
 <body>
 
-<h2>Money Management Week</h2>
+<h3 style="text-align:center" class="glow">Week Geld Management</h3>
 
 <table>
-<thead>
 <tr>
-<th>Dag</th>
-<th>Inzet</th>
-<th>Winst</th>
-<th>Totaal</th>
+    <th>Dag</th>
+    <th>Inzet</th>
+    <th>Winst</th>
+    <th>Totaal</th>
 </tr>
-</thead>
-
-<tbody id="rows"></tbody>
-</table>
-
-<footer>
-Week totaal: <span id="week" class="glow">0</span>
-</footer>
 
 <script>
-const days=["Ma","Di","Wo","Do","Vr","Za","Zo"];
+const days = ["Maandag","Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag","Zondag"];
 
-const rows=document.getElementById("rows");
+document.write(days.map((day, i) => `
+<tr>
+<td>${day}</td>
+<td><input type="number" id="inzet${i}" oninput="calc()"></td>
+<td><input type="number" id="winst${i}" oninput="calc()"></td>
+<td id="totaal${i}">0</td>
+</tr>
+`).join(""));
+</script>
 
-days.forEach((d,i)=>{
-  rows.innerHTML+=`
-  <tr>
-    <td>${d}</td>
-    <td><input id="i${i}" oninput="calc()"></td>
-    <td><input id="w${i}" oninput="calc()"></td>
-    <td class="glow" id="t${i}">0</td>
-  </tr>`;
-});
+</table>
 
-function calc(){
-  let week=0;
+<div class="total-box glow">
+Week totaal: <span id="weekTotaal">0</span>
+</div>
 
-  for(let i=0;i<7;i++){
-    let iVal=+document.getElementById("i"+i).value||0;
-    let wVal=+document.getElementById("w"+i).value||0;
+<script>
+function calc() {
+    let week = 0;
 
-    let total=wVal-iVal;
-    document.getElementById("t"+i).innerText=total.toFixed(2);
+    for (let i = 0; i < 7; i++) {
+        let inzet = parseFloat(document.getElementById("inzet" + i).value) || 0;
+        let winst = parseFloat(document.getElementById("winst" + i).value) || 0;
 
-    week+=total;
-  }
+        let totaal = winst - inzet;
+        document.getElementById("totaal" + i).innerText = totaal;
 
-  document.getElementById("week").innerText=week.toFixed(2);
+        week += totaal;
+    }
+
+    document.getElementById("weekTotaal").innerText = week;
 }
-
-calc();
 </script>
 
 </body>
