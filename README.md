@@ -216,87 +216,90 @@ function resetAll() {
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Week Geld Management</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Money Week</title>
 
 <style>
-body {
-  background:#0b0f1a;
-  font-family: Arial, sans-serif;
-  color:#fff;
+body{
+  background:#05070f;
+  font-family: Arial;
   display:flex;
   justify-content:center;
-  padding:20px;
+  padding:10px;
+  color:white;
 }
 
-.container {
-  width: 520px;
+.box{
+  width:360px;
 }
 
-h2 {
+h3{
   text-align:center;
-  color:#00ffcc;
-  text-shadow:0 0 10px #00ffcc;
+  color:#00ffd5;
+  text-shadow:0 0 10px #00ffd5;
+  margin:8px 0;
+  font-size:16px;
 }
 
-table {
+table{
   width:100%;
-  border-collapse: collapse;
-  background:#111827;
-  box-shadow:0 0 20px #00ffcc33;
+  border-collapse:collapse;
+  background:#0d1424;
   border-radius:10px;
   overflow:hidden;
+  box-shadow:0 0 20px #00ffd533;
 }
 
-th, td {
-  padding:6px;
-  text-align:center;
-  font-size:12px;
-}
-
-th {
-  background:#0f172a;
-  color:#00ffcc;
-}
-
-input {
-  width:70px;
+th,td{
+  font-size:11px;
   padding:4px;
+  text-align:center;
+}
+
+th{
+  background:#111b33;
+  color:#00ffd5;
+}
+
+input{
+  width:55px;
+  font-size:11px;
+  padding:3px;
   border:none;
   border-radius:5px;
   text-align:center;
-  background:#1f2937;
-  color:#fff;
+  background:#1b2742;
+  color:white;
   outline:none;
 }
 
-.glow {
-  color:#00ffcc;
-  text-shadow:0 0 8px #00ffcc;
-  transition:0.3s;
+.glow{
+  color:#00ffd5;
+  text-shadow:0 0 8px #00ffd5;
+  transition:0.2s;
 }
 
-.row-anim {
-  transition: all 0.3s ease;
+.pop{
+  transform:scale(1.2);
 }
 
-.total-box {
-  margin-top:10px;
-  padding:10px;
-  background:#111827;
+.footer{
+  margin-top:8px;
+  background:#0d1424;
+  padding:8px;
   border-radius:10px;
   text-align:center;
-  box-shadow:0 0 15px #00ffcc33;
+  font-size:12px;
+  box-shadow:0 0 15px #00ffd533;
 }
-
 </style>
 </head>
 
 <body>
 
-<div class="container">
-  <h2>💰 Geld Management Week</h2>
+<div class="box">
+  <h3>💰 Money Manager</h3>
 
   <table>
     <thead>
@@ -307,61 +310,52 @@ input {
         <th>Totaal</th>
       </tr>
     </thead>
-    <tbody id="body"></tbody>
+    <tbody id="t"></tbody>
   </table>
 
-  <div class="total-box">
-    Week Totaal: <span id="weekTotal" class="glow">0</span>
+  <div class="footer">
+    Week Totaal: <span id="week" class="glow">0</span>
   </div>
 </div>
 
 <script>
-const days = ["Maandag","Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag","Zondag"];
-
-const body = document.getElementById("body");
-const weekTotalEl = document.getElementById("weekTotal");
-
-function createRow(day, i){
-  const row = document.createElement("tr");
-  row.className = "row-anim";
-
-  row.innerHTML = `
-    <td>${day}</td>
-    <td><input type="number" id="inzet-${i}" value="0"></td>
-    <td><input type="number" id="winst-${i}" value="0"></td>
-    <td class="glow" id="total-${i}">0</td>
-  `;
-
-  return row;
-}
+const days=["Ma","Di","Wo","Do","Vr","Za","Zo"];
+const t=document.getElementById("t");
+const week=document.getElementById("week");
 
 days.forEach((d,i)=>{
-  body.appendChild(createRow(d,i));
+  t.innerHTML+=`
+    <tr>
+      <td>${d}</td>
+      <td><input id="i${i}" type="number" value="0"></td>
+      <td><input id="w${i}" type="number" value="0"></td>
+      <td class="glow" id="r${i}">0</td>
+    </tr>
+  `;
 });
 
 function calc(){
-  let weekTotal = 0;
+  let sum=0;
 
   days.forEach((_,i)=>{
-    const inzet = parseFloat(document.getElementById("inzet-"+i).value) || 0;
-    const winst = parseFloat(document.getElementById("winst-"+i).value) || 0;
+    let iVal=+document.getElementById("i"+i).value||0;
+    let wVal=+document.getElementById("w"+i).value||0;
 
-    const total = winst - inzet;
+    let res=wVal-iVal;
+    let el=document.getElementById("r"+i);
 
-    const totalEl = document.getElementById("total-"+i);
-    totalEl.innerText = total.toFixed(2);
+    el.innerText=res.toFixed(2);
 
-    totalEl.style.transform = "scale(1.2)";
-    setTimeout(()=> totalEl.style.transform = "scale(1)", 150);
+    el.classList.add("pop");
+    setTimeout(()=>el.classList.remove("pop"),150);
 
-    weekTotal += total;
+    sum+=res;
   });
 
-  weekTotalEl.innerText = weekTotal.toFixed(2);
+  week.innerText=sum.toFixed(2);
 }
 
-document.addEventListener("input", calc);
-
+document.addEventListener("input",calc);
 calc();
 </script>
 
