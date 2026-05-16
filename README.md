@@ -213,7 +213,6 @@ function resetAll() {
 
 </html>
 
-<!DOCTYPE html>
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
@@ -222,76 +221,72 @@ function resetAll() {
 
 <style>
 body{
-  background:#05070f;
-  font-family: Arial;
+  background:#ffffff;
+  font-family: Arial, sans-serif;
   display:flex;
   justify-content:center;
-  padding:10px;
-  color:white;
+  padding:12px;
+  color:#000;
 }
 
 .box{
-  width:360px;
+  width:340px;
 }
 
 h3{
   text-align:center;
-  color:#00ffd5;
-  text-shadow:0 0 10px #00ffd5;
-  margin:8px 0;
-  font-size:16px;
+  font-size:15px;
+  margin:6px 0;
+  color:#000;
 }
 
 table{
   width:100%;
   border-collapse:collapse;
-  background:#0d1424;
-  border-radius:10px;
-  overflow:hidden;
-  box-shadow:0 0 20px #00ffd533;
+  font-size:11px;
+  border:1px solid #000;
 }
 
 th,td{
-  font-size:11px;
+  border:1px solid #000;
   padding:4px;
   text-align:center;
 }
 
 th{
-  background:#111b33;
-  color:#00ffd5;
+  background:#f2f2f2;
 }
 
 input{
   width:55px;
   font-size:11px;
-  padding:3px;
-  border:none;
-  border-radius:5px;
+  padding:2px;
   text-align:center;
-  background:#1b2742;
-  color:white;
+  border:1px solid #000;
   outline:none;
+  background:#fff;
+  color:#000;
+}
+
+.total{
+  font-weight:bold;
 }
 
 .glow{
-  color:#00ffd5;
-  text-shadow:0 0 8px #00ffd5;
-  transition:0.2s;
+  transition:0.15s;
 }
 
 .pop{
-  transform:scale(1.2);
+  transform:scale(1.15);
 }
 
 .footer{
   margin-top:8px;
-  background:#0d1424;
-  padding:8px;
-  border-radius:10px;
+  border:1px solid #000;
+  padding:6px;
   text-align:center;
   font-size:12px;
-  box-shadow:0 0 15px #00ffd533;
+  background:#fff;
 }
 </style>
 </head>
@@ -299,7 +294,7 @@ input{
 <body>
 
 <div class="box">
-  <h3>💰 Money Manager</h3>
+  <h3>💰 Geld Management</h3>
 
   <table>
     <thead>
@@ -310,49 +305,49 @@ input{
         <th>Totaal</th>
       </tr>
     </thead>
-    <tbody id="t"></tbody>
+    <tbody id="body"></tbody>
   </table>
 
   <div class="footer">
-    Week Totaal: <span id="week" class="glow">0</span>
+    Week Totaal: <span id="weekTotal">0</span>
   </div>
 </div>
 
 <script>
 const days=["Ma","Di","Wo","Do","Vr","Za","Zo"];
-const t=document.getElementById("t");
-const week=document.getElementById("week");
+const body=document.getElementById("body");
+const weekTotal=document.getElementById("weekTotal");
 
 days.forEach((d,i)=>{
-  t.innerHTML+=`
+  body.innerHTML+=`
     <tr>
       <td>${d}</td>
       <td><input id="i${i}" type="number" value="0"></td>
       <td><input id="w${i}" type="number" value="0"></td>
-      <td class="glow" id="r${i}">0</td>
+      <td class="total glow" id="t${i}">0</td>
     </tr>
   `;
 });
 
 function calc(){
-  let sum=0;
+  let week=0;
 
   days.forEach((_,i)=>{
-    let iVal=+document.getElementById("i"+i).value||0;
-    let wVal=+document.getElementById("w"+i).value||0;
+    let inw=+document.getElementById("i"+i).value||0;
+    let win=+document.getElementById("w"+i).value||0;
 
-    let res=wVal-iVal;
-    let el=document.getElementById("r"+i);
+    let total=win-inw;
+    let el=document.getElementById("t"+i);
 
-    el.innerText=res.toFixed(2);
+    el.innerText=total.toFixed(2);
 
     el.classList.add("pop");
-    setTimeout(()=>el.classList.remove("pop"),150);
+    setTimeout(()=>el.classList.remove("pop"),120);
 
-    sum+=res;
+    week+=total;
   });
 
-  week.innerText=sum.toFixed(2);
+  weekTotal.innerText=week.toFixed(2);
 }
 
 document.addEventListener("input",calc);
