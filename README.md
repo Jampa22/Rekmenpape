@@ -1,6 +1,117 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
+<title>Geld Management</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: #0b0b10;
+    color: #fff;
+    text-align: center;
+}
+
+h3 {
+    color: #7cf7ff;
+    text-shadow: 0 0 8px #7cf7ff;
+}
+
+table {
+    margin: auto;
+    border-collapse: collapse;
+    background: #151520;
+    box-shadow: 0 0 10px #7cf7ff33;
+    font-size: 12px;
+}
+
+th, td {
+    border: 1px solid #333;
+    padding: 5px;
+}
+
+th {
+    color: #7cf7ff;
+}
+
+input {
+    width: 60px;
+    background: #0f0f14;
+    border: 1px solid #333;
+    color: #fff;
+    text-align: center;
+    font-size: 12px;
+}
+
+.total {
+    color: #7cf7ff;
+}
+
+.week {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #7cf7ff;
+    text-shadow: 0 0 6px #7cf7ff;
+}
+</style>
+</head>
+
+<body>
+
+<h3>Geld Management</h3>
+
+<table>
+<tr>
+    <th>Dag</th>
+    <th>Inzet</th>
+    <th>Winst</th>
+    <th>Totaal</th>
+</tr>
+
+<script>
+const days = ["Ma","Di","Wo","Do","Vr","Za","Zo"];
+
+for (let i = 0; i < days.length; i++) {
+    document.write(`
+    <tr>
+        <td>${days[i]}</td>
+        <td><input id="i${i}" oninput="calc()"></td>
+        <td><input id="w${i}" oninput="calc()"></td>
+        <td class="total" id="t${i}">0</td>
+    </tr>
+    `);
+}
+</script>
+</table>
+
+<div class="week">
+Week Totaal Winst: € <span id="week">0</span>
+</div>
+
+<script>
+function calc() {
+    let total = 0;
+
+    for (let i = 0; i < 7; i++) {
+        let inzet = +document.getElementById("i"+i).value || 0;
+        let winst = +document.getElementById("w"+i).value || 0;
+
+        let dag = winst - inzet;
+        document.getElementById("t"+i).innerText = dag.toFixed(2);
+
+        total += dag;
+    }
+
+    document.getElementById("week").innerText = total.toFixed(2);
+}
+</script>
+
+</body>
+</html>
+
+
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
 <title>Glow Informatie</title>
 <style>
 /* Glow animatie */
@@ -206,116 +317,6 @@ function resetAll() {
     localStorage.removeItem("outcomes");
     location.reload();
   }
-}
-</script>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-<meta charset="UTF-8">
-<title>Geld Management</title>
-
-<style>
-body {
-    font-family: Arial;
-    background: #0b0b10;
-    color: #fff;
-    text-align: center;
-}
-
-h3 {
-    color: #7cf7ff;
-    text-shadow: 0 0 8px #7cf7ff;
-}
-
-table {
-    margin: auto;
-    border-collapse: collapse;
-    background: #151520;
-    box-shadow: 0 0 10px #7cf7ff33;
-    font-size: 12px;
-}
-
-th, td {
-    border: 1px solid #333;
-    padding: 5px;
-}
-
-th {
-    color: #7cf7ff;
-}
-
-input {
-    width: 60px;
-    background: #0f0f14;
-    border: 1px solid #333;
-    color: #fff;
-    text-align: center;
-    font-size: 12px;
-}
-
-.total {
-    color: #7cf7ff;
-}
-
-.week {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #7cf7ff;
-    text-shadow: 0 0 6px #7cf7ff;
-}
-</style>
-</head>
-
-<body>
-
-<h3>Geld Management (ma - zo)</h3>
-
-<table>
-<tr>
-    <th>Dag</th>
-    <th>Inzet</th>
-    <th>Winst</th>
-    <th>Totaal</th>
-</tr>
-
-<script>
-const days = ["Ma","Di","Wo","Do","Vr","Za","Zo"];
-
-for (let i = 0; i < days.length; i++) {
-    document.write(`
-    <tr>
-        <td>${days[i]}</td>
-        <td><input id="i${i}" oninput="calc()"></td>
-        <td><input id="w${i}" oninput="calc()"></td>
-        <td class="total" id="t${i}">0</td>
-    </tr>
-    `);
-}
-</script>
-</table>
-
-<div class="week">
-Week Totaal: € <span id="week">0</span>
-</div>
-
-<script>
-function calc() {
-    let total = 0;
-
-    for (let i = 0; i < 7; i++) {
-        let inzet = +document.getElementById("i"+i).value || 0;
-        let winst = +document.getElementById("w"+i).value || 0;
-
-        let dag = winst - inzet;
-        document.getElementById("t"+i).innerText = dag.toFixed(2);
-
-        total += dag;
-    }
-
-    document.getElementById("week").innerText = total.toFixed(2);
 }
 </script>
 
