@@ -143,91 +143,89 @@ function resetAll() {
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<title>Week Compact Glow</title>
+<title>Week Overzicht</title>
 
 <style>
 body {
   background: #000;
-  color: #fff;
+  color: white;
   font-family: Arial;
-  padding: 15px;
+  padding: 20px;
 }
 
 h2 {
   text-align: center;
-  color: #fff;
+  color: white;
   text-shadow: 0 0 10px #00ffd5;
-  margin-bottom: 10px;
 }
 
 table {
   width: 100%;
-  max-width: 650px;
+  max-width: 800px;
   margin: auto;
   border-collapse: collapse;
   background: #000;
-  box-shadow: 0 0 15px #00ffd5;
-  font-size: 14px;
+  box-shadow: 0 0 20px #00ffd5;
 }
 
 th, td {
   border: 1px solid #222;
-  padding: 6px;
+  padding: 10px;
   text-align: center;
-  color: #fff;
+  background: #000;
+  color: white;
 }
 
 th {
   color: #00ffd5;
-  text-shadow: 0 0 5px #00ffd5;
+  text-shadow: 0 0 6px #00ffd5;
 }
 
 input {
-  width: 80px;
-  padding: 4px;
+  width: 110px;
+  padding: 6px;
   background: #000;
   border: 1px solid #333;
-  color: #fff;
+  color: white;
   text-align: center;
-  font-size: 13px;
+  outline: none;
 }
 
 input:focus {
-  outline: none;
+  box-shadow: 0 0 10px #00ffd5;
   border-color: #00ffd5;
-  box-shadow: 0 0 8px #00ffd5;
 }
 
 .glow {
-  color: #fff;
-  text-shadow: 0 0 6px #00ffd5;
+  color: white;
+  text-shadow: 0 0 8px #00ffd5;
   font-weight: bold;
 }
 
 .buttons {
   text-align: center;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 button {
-  background: #000;
-  color: #fff;
-  border: 1px solid #00ffd5;
-  padding: 8px 14px;
+  padding: 10px 18px;
   margin: 5px;
+  background: #000;
+  color: white;
+  border: 1px solid #00ffd5;
   cursor: pointer;
-  font-size: 13px;
+  font-weight: bold;
 }
 
 button:hover {
-  box-shadow: 0 0 12px #00ffd5;
+  box-shadow: 0 0 15px #00ffd5;
 }
 </style>
 </head>
 
 <body>
 
-<h2>🔥 Week Compact Glow</h2>
+<h2>🔥 Week Overzicht 🔥</h2>
 
 <table>
 <thead>
@@ -235,7 +233,7 @@ button:hover {
   <th>Dag</th>
   <th>Inzet</th>
   <th>Winst</th>
-  <th>Res</th>
+  <th>Resultaat</th>
 </tr>
 </thead>
 
@@ -244,27 +242,27 @@ button:hover {
 <tfoot>
 <tr>
   <td class="glow">Totaal</td>
-  <td id="tStake" class="glow">0</td>
-  <td id="tProfit" class="glow">0</td>
-  <td id="tResult" class="glow">0</td>
+  <td id="totalStake" class="glow">0</td>
+  <td id="totalProfit" class="glow">0</td>
+  <td id="totalResult" class="glow">0</td>
 </tr>
 </tfoot>
 </table>
 
 <div class="buttons">
-  <button onclick="save()">💾 Save</button>
+  <button onclick="save()">💾 Opslaan</button>
   <button onclick="reset()">🔄 Reset</button>
 </div>
 
 <script>
-const days = ["Ma","Di","Wo","Do","Vr","Za","Zo"];
+const days = ["Maandag","Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag","Zondag"];
 
 const rows = document.getElementById("rows");
 
-days.forEach((d,i)=>{
+days.forEach((day, i) => {
   rows.innerHTML += `
     <tr>
-      <td>${d}</td>
+      <td>${day}</td>
       <td><input type="number" id="s${i}" oninput="calc()"></td>
       <td><input type="number" id="p${i}" oninput="calc()"></td>
       <td class="glow" id="r${i}">0</td>
@@ -272,55 +270,55 @@ days.forEach((d,i)=>{
   `;
 });
 
-function calc(){
-  let ts=0,tp=0,tr=0;
+function calc() {
+  let ts = 0, tp = 0, tr = 0;
 
-  for(let i=0;i<7;i++){
-    let s=+document.getElementById("s"+i).value||0;
-    let p=+document.getElementById("p"+i).value||0;
+  for (let i = 0; i < 7; i++) {
+    let s = +document.getElementById("s"+i).value || 0;
+    let p = +document.getElementById("p"+i).value || 0;
 
-    let r=p-s;
+    let r = p - s;
 
-    document.getElementById("r"+i).innerText=r.toFixed(2);
+    document.getElementById("r"+i).innerText = r.toFixed(2);
 
-    ts+=s;
-    tp+=p;
-    tr+=r;
+    ts += s;
+    tp += p;
+    tr += r;
   }
 
-  document.getElementById("tStake").innerText=ts.toFixed(2);
-  document.getElementById("tProfit").innerText=tp.toFixed(2);
-  document.getElementById("tResult").innerText=tr.toFixed(2);
+  document.getElementById("totalStake").innerText = ts.toFixed(2);
+  document.getElementById("totalProfit").innerText = tp.toFixed(2);
+  document.getElementById("totalResult").innerText = tr.toFixed(2);
 }
 
-function save(){
-  let data=[];
+function save() {
+  let data = [];
 
-  for(let i=0;i<7;i++){
+  for (let i = 0; i < 7; i++) {
     data.push({
-      s:document.getElementById("s"+i).value,
-      p:document.getElementById("p"+i).value
+      s: document.getElementById("s"+i).value,
+      p: document.getElementById("p"+i).value
     });
   }
 
-  localStorage.setItem("weekCompactGlow",JSON.stringify(data));
+  localStorage.setItem("weekBlackGlow", JSON.stringify(data));
   alert("Opgeslagen!");
 }
 
-function load(){
-  let data=JSON.parse(localStorage.getItem("weekCompactGlow"));
-  if(!data) return;
+function load() {
+  let data = JSON.parse(localStorage.getItem("weekBlackGlow"));
+  if (!data) return;
 
-  data.forEach((d,i)=>{
-    document.getElementById("s"+i).value=d.s;
-    document.getElementById("p"+i).value=d.p;
+  data.forEach((d, i) => {
+    document.getElementById("s"+i).value = d.s;
+    document.getElementById("p"+i).value = d.p;
   });
 
   calc();
 }
 
-function reset(){
-  localStorage.removeItem("weekCompactGlow");
+function reset() {
+  localStorage.removeItem("weekBlackGlow");
   location.reload();
 }
 
