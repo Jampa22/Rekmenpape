@@ -224,7 +224,7 @@ button:hover {
 
 <body>
 
-<h2>Week Overzicht</h2>
+<h2>Ringkesan Minggu</h2>
 
 <table>
 <thead>
