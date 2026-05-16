@@ -143,30 +143,30 @@ function resetAll() {
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<title>Week Overzicht</title>
+<title>Week Klein Glow</title>
 
 <style>
 body{
   background:#000;
   color:#fff;
   font-family:Arial;
-  padding:8px;
+  padding:10px;
 }
 
 h2{
   text-align:center;
-  font-size:14px;
-  margin:6px;
-  text-shadow:0 0 6px #00ffd5;
+  font-size:16px;
+  text-shadow:0 0 8px #00ffd5;
+  margin:8px;
 }
 
 table{
   width:100%;
-  max-width:450px;
+  max-width:520px;
   margin:auto;
   border-collapse:collapse;
   background:#000;
-  box-shadow:0 0 8px #00ffd5;
+  box-shadow:0 0 10px #00ffd5;
   font-size:11px;
 }
 
@@ -174,14 +174,16 @@ th,td{
   border:1px solid #222;
   padding:4px;
   text-align:center;
+  color:#fff;
 }
 
 th{
   color:#00ffd5;
+  text-shadow:0 0 5px #00ffd5;
 }
 
 input{
-  width:60px;
+  width:55px;
   padding:2px;
   background:#000;
   border:1px solid #333;
@@ -191,9 +193,9 @@ input{
 }
 
 input:focus{
+  outline:none;
   border-color:#00ffd5;
   box-shadow:0 0 5px #00ffd5;
-  outline:none;
 }
 
 .glow{
@@ -217,22 +219,22 @@ button{
 }
 
 button:hover{
-  box-shadow:0 0 8px #00ffd5;
+  box-shadow:0 0 10px #00ffd5;
 }
 </style>
 </head>
 
 <body>
 
-<h2>🔥 Week Overzicht</h2>
+<h2>🔥 Week Klein Glow</h2>
 
 <table>
 <thead>
 <tr>
   <th>Dag</th>
-  <th>Inzet</th>
-  <th>Winst</th>
-  <th>Res</th>
+  <th>In</th>
+  <th>Wi</th>
+  <th>Re</th>
 </tr>
 </thead>
 
@@ -240,7 +242,7 @@ button:hover{
 
 <tfoot>
 <tr>
-  <td class="glow">Totaal</td>
+  <td class="glow">Tot</td>
   <td id="ts" class="glow">0</td>
   <td id="tp" class="glow">0</td>
   <td id="tr" class="glow">0</td>
@@ -249,18 +251,18 @@ button:hover{
 </table>
 
 <div class="buttons">
-  <button onclick="save()">💾 Opslaan</button>
-  <button onclick="reset()">🔄 Reset</button>
+  <button onclick="save()">💾</button>
+  <button onclick="reset()">🔄</button>
 </div>
 
 <script>
-const days=["Ma","Di","Wo","Do","Vr","Za","Zo"];
-const rows=document.getElementById("rows");
+const d=["Ma","Di","Wo","Do","Vr","Za","Zo"];
+const r=document.getElementById("rows");
 
-days.forEach((d,i)=>{
-  rows.innerHTML+=`
+d.forEach((x,i)=>{
+  r.innerHTML+=`
   <tr>
-    <td>${d}</td>
+    <td>${x}</td>
     <td><input id="s${i}" oninput="calc()"></td>
     <td><input id="p${i}" oninput="calc()"></td>
     <td class="glow" id="r${i}">0</td>
@@ -274,13 +276,13 @@ function calc(){
     let s=+document.getElementById("s"+i).value||0;
     let p=+document.getElementById("p"+i).value||0;
 
-    let r=p-s;
+    let re=p-s;
 
-    document.getElementById("r"+i).innerText=r.toFixed(2);
+    document.getElementById("r"+i).innerText=re.toFixed(2);
 
     ts+=s;
     tp+=p;
-    tr+=r;
+    tr+=re;
   }
 
   document.getElementById("ts").innerText=ts.toFixed(2);
@@ -296,12 +298,12 @@ function save(){
       p:document.getElementById("p"+i).value
     });
   }
-  localStorage.setItem("weekDuidelijkFinal",JSON.stringify(data));
-  alert("Opgeslagen!");
+  localStorage.setItem("weekTinyGlow",JSON.stringify(data));
+  alert("Saved");
 }
 
 function load(){
-  let data=JSON.parse(localStorage.getItem("weekDuidelijkFinal"));
+  let data=JSON.parse(localStorage.getItem("weekTinyGlow"));
   if(!data) return;
 
   data.forEach((d,i)=>{
@@ -313,7 +315,7 @@ function load(){
 }
 
 function reset(){
-  localStorage.removeItem("weekDuidelijkFinal");
+  localStorage.removeItem("weekTinyGlow");
   location.reload();
 }
 
