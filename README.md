@@ -143,11 +143,11 @@ function resetAll() {
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<title>Week Overzicht Glow</title>
+<title>Week Overzicht</title>
 
 <style>
 body {
-  background: #0a0f1f;
+  background: #000;
   color: white;
   font-family: Arial;
   padding: 20px;
@@ -155,43 +155,49 @@ body {
 
 h2 {
   text-align: center;
-  color: #00ffd5;
-  text-shadow: 0 0 12px #00ffd5;
+  color: white;
+  text-shadow: 0 0 10px #00ffd5;
 }
 
 table {
   width: 100%;
-  max-width: 750px;
+  max-width: 800px;
   margin: auto;
   border-collapse: collapse;
-  background: #111827;
-  box-shadow: 0 0 25px #00ffd555;
-  border-radius: 10px;
-  overflow: hidden;
+  background: #000;
+  box-shadow: 0 0 20px #00ffd5;
 }
 
 th, td {
   border: 1px solid #222;
   padding: 10px;
   text-align: center;
+  background: #000;
+  color: white;
 }
 
 th {
   color: #00ffd5;
+  text-shadow: 0 0 6px #00ffd5;
 }
 
 input {
   width: 110px;
   padding: 6px;
-  background: #1f2937;
-  border: none;
+  background: #000;
+  border: 1px solid #333;
   color: white;
   text-align: center;
-  border-radius: 5px;
+  outline: none;
+}
+
+input:focus {
+  box-shadow: 0 0 10px #00ffd5;
+  border-color: #00ffd5;
 }
 
 .glow {
-  color: #00ffd5;
+  color: white;
   text-shadow: 0 0 8px #00ffd5;
   font-weight: bold;
 }
@@ -204,11 +210,11 @@ input {
 button {
   padding: 10px 18px;
   margin: 5px;
-  background: #00ffd5;
-  border: none;
-  font-weight: bold;
+  background: #000;
+  color: white;
+  border: 1px solid #00ffd5;
   cursor: pointer;
-  border-radius: 6px;
+  font-weight: bold;
 }
 
 button:hover {
@@ -219,7 +225,7 @@ button:hover {
 
 <body>
 
-<h2>🔥 Week Overzicht Glow 🔥</h2>
+<h2>🔥 Week Overzicht 🔥</h2>
 
 <table>
 <thead>
@@ -253,10 +259,10 @@ const days = ["Maandag","Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag","Z
 
 const rows = document.getElementById("rows");
 
-days.forEach((d, i) => {
+days.forEach((day, i) => {
   rows.innerHTML += `
     <tr>
-      <td>${d}</td>
+      <td>${day}</td>
       <td><input type="number" id="s${i}" oninput="calc()"></td>
       <td><input type="number" id="p${i}" oninput="calc()"></td>
       <td class="glow" id="r${i}">0</td>
@@ -295,12 +301,12 @@ function save() {
     });
   }
 
-  localStorage.setItem("weekGlowData", JSON.stringify(data));
+  localStorage.setItem("weekBlackGlow", JSON.stringify(data));
   alert("Opgeslagen!");
 }
 
 function load() {
-  let data = JSON.parse(localStorage.getItem("weekGlowData"));
+  let data = JSON.parse(localStorage.getItem("weekBlackGlow"));
   if (!data) return;
 
   data.forEach((d, i) => {
@@ -312,7 +318,7 @@ function load() {
 }
 
 function reset() {
-  localStorage.removeItem("weekGlowData");
+  localStorage.removeItem("weekBlackGlow");
   location.reload();
 }
 
