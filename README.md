@@ -213,6 +213,7 @@ function resetAll() {
 
 </html>
 
+
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
@@ -220,53 +221,64 @@ function resetAll() {
 
 <style>
 body{
-    background:#0b0f1a;
+    background:#0b0b0b;
     color:#fff;
     font-family:Arial;
-    font-size:11px;
+    font-size:12px;
+}
+
+.title{
+    text-align:center;
+    color:#00ffcc;
+    text-shadow:0 0 8px #00ffcc;
+    margin:8px 0;
+    font-weight:bold;
 }
 
 table{
     width:100%;
-    max-width:500px;
-    margin:10px auto;
+    max-width:520px;
+    margin:auto;
     border-collapse:collapse;
-    box-shadow:0 0 10px #00ffcc33;
 }
 
 th,td{
-    border:1px solid #1f2a44;
+    border:1px solid #222;
     padding:4px;
     text-align:center;
 }
 
 th{
+    background:#111;
     color:#00ffcc;
-    background:#111a2e;
-    text-shadow:0 0 5px #00ffcc;
+    text-shadow:0 0 6px #00ffcc;
 }
 
 input{
-    width:55px;
-    background:#0f172a;
+    width:60px;
+    background:#000;
+    border:1px solid #333;
     color:#fff;
-    border:1px solid #1f2a44;
     text-align:center;
-    font-size:11px;
+    font-size:12px;
 }
 
 .glow{
     color:#00ffcc;
     text-shadow:0 0 6px #00ffcc;
-    text-align:center;
 }
 
+.footer{
+    text-align:center;
+    margin-top:10px;
+    font-weight:bold;
+}
 </style>
 </head>
 
 <body>
 
-<div class="glow">Geld Management</div>
+<div class="title">Geld Management</div>
 
 <table>
 <tr>
@@ -277,38 +289,39 @@ input{
 </tr>
 
 <script>
-const d=["Ma","Di","Wo","Do","Vr","Za","Zo"];
+const days=["Ma","Di","Wo","Do","Vr","Za","Zo"];
 
-document.write(d.map((x,i)=>`
+document.write(days.map((d,i)=>`
 <tr>
-<td>${x}</td>
-<td><input id=i${i} oninput=calc()></td>
-<td><input id=w${i} oninput=calc()></td>
-<td id=t${i}>0</td>
+<td>${d}</td>
+<td><input id="i${i}" oninput="calc()"></td>
+<td><input id="w${i}" oninput="calc()"></td>
+<td id="t${i}">0</td>
 </tr>
 `).join(""));
 </script>
 
 </table>
 
-<div class="glow">
+<div class="footer glow">
 Week totaal: <span id="week">0</span>
 </div>
 
 <script>
 function calc(){
-let week=0;
+let week = 0;
 
 for(let i=0;i<7;i++){
-let inz=+document.getElementById("i"+i).value||0;
-let win=+document.getElementById("w"+i).value||0;
-let tot=win-inz;
+let inzet = +document.getElementById("i"+i).value || 0;
+let winst = +document.getElementById("w"+i).value || 0;
 
-document.getElementById("t"+i).innerText=tot;
-week+=tot;
+let totaal = winst - inzet;
+
+document.getElementById("t"+i).innerText = totaal;
+week += totaal;
 }
 
-document.getElementById("week").innerText=week;
+document.getElementById("week").innerText = week;
 }
 </script>
 
