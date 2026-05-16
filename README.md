@@ -139,92 +139,92 @@ function resetAll() {
 
 </body>
 
+<!DOCTYPE html>
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
 <title>Week Overzicht</title>
 
 <style>
-body {
-  background: #000;
-  color: white;
-  font-family: Arial;
-  padding: 20px;
+body{
+  background:#000;
+  color:#fff;
+  font-family:Arial;
+  padding:8px;
 }
 
-h2 {
-  text-align: center;
-  color: white;
-  text-shadow: 0 0 10px #00ffd5;
+h2{
+  text-align:center;
+  font-size:14px;
+  margin:6px;
+  text-shadow:0 0 6px #00ffd5;
 }
 
-table {
-  width: 100%;
-  max-width: 800px;
-  margin: auto;
-  border-collapse: collapse;
-  background: #000;
-  box-shadow: 0 0 20px #00ffd5;
+table{
+  width:100%;
+  max-width:450px;
+  margin:auto;
+  border-collapse:collapse;
+  background:#000;
+  box-shadow:0 0 8px #00ffd5;
+  font-size:11px;
 }
 
-th, td {
-  border: 1px solid #222;
-  padding: 10px;
-  text-align: center;
-  background: #000;
-  color: white;
+th,td{
+  border:1px solid #222;
+  padding:4px;
+  text-align:center;
 }
 
-th {
-  color: #00ffd5;
-  text-shadow: 0 0 6px #00ffd5;
+th{
+  color:#00ffd5;
 }
 
-input {
-  width: 110px;
-  padding: 6px;
-  background: #000;
-  border: 1px solid #333;
-  color: white;
-  text-align: center;
-  outline: none;
+input{
+  width:60px;
+  padding:2px;
+  background:#000;
+  border:1px solid #333;
+  color:#fff;
+  text-align:center;
+  font-size:11px;
 }
 
-input:focus {
-  box-shadow: 0 0 10px #00ffd5;
-  border-color: #00ffd5;
+input:focus{
+  border-color:#00ffd5;
+  box-shadow:0 0 5px #00ffd5;
+  outline:none;
 }
 
-.glow {
-  color: white;
-  text-shadow: 0 0 8px #00ffd5;
-  font-weight: bold;
+.glow{
+  text-shadow:0 0 6px #00ffd5;
+  font-weight:bold;
 }
 
-.buttons {
-  text-align: center;
-  margin-top: 15px;
+.buttons{
+  text-align:center;
+  margin-top:8px;
 }
 
-button {
-  padding: 10px 18px;
-  margin: 5px;
-  background: #000;
-  color: white;
-  border: 1px solid #00ffd5;
-  cursor: pointer;
-  font-weight: bold;
+button{
+  background:#000;
+  color:#fff;
+  border:1px solid #00ffd5;
+  padding:5px 8px;
+  font-size:11px;
+  margin:2px;
+  cursor:pointer;
 }
 
-button:hover {
-  box-shadow: 0 0 15px #00ffd5;
+button:hover{
+  box-shadow:0 0 8px #00ffd5;
 }
 </style>
 </head>
 
 <body>
 
-<h2>Week Overzicht</h2>
+<h2>🔥 Week Overzicht</h2>
 
 <table>
 <thead>
@@ -232,7 +232,7 @@ button:hover {
   <th>Dag</th>
   <th>Inzet</th>
   <th>Winst</th>
-  <th>Resultaat</th>
+  <th>Res</th>
 </tr>
 </thead>
 
@@ -241,9 +241,9 @@ button:hover {
 <tfoot>
 <tr>
   <td class="glow">Totaal</td>
-  <td id="totalStake" class="glow">0</td>
-  <td id="totalProfit" class="glow">0</td>
-  <td id="totalResult" class="glow">0</td>
+  <td id="ts" class="glow">0</td>
+  <td id="tp" class="glow">0</td>
+  <td id="tr" class="glow">0</td>
 </tr>
 </tfoot>
 </table>
@@ -254,70 +254,66 @@ button:hover {
 </div>
 
 <script>
-const days = ["Maandag","Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag","Zondag"];
+const days=["Ma","Di","Wo","Do","Vr","Za","Zo"];
+const rows=document.getElementById("rows");
 
-const rows = document.getElementById("rows");
-
-days.forEach((day, i) => {
-  rows.innerHTML += `
-    <tr>
-      <td>${day}</td>
-      <td><input type="number" id="s${i}" oninput="calc()"></td>
-      <td><input type="number" id="p${i}" oninput="calc()"></td>
-      <td class="glow" id="r${i}">0</td>
-    </tr>
-  `;
+days.forEach((d,i)=>{
+  rows.innerHTML+=`
+  <tr>
+    <td>${d}</td>
+    <td><input id="s${i}" oninput="calc()"></td>
+    <td><input id="p${i}" oninput="calc()"></td>
+    <td class="glow" id="r${i}">0</td>
+  </tr>`;
 });
 
-function calc() {
-  let ts = 0, tp = 0, tr = 0;
+function calc(){
+  let ts=0,tp=0,tr=0;
 
-  for (let i = 0; i < 7; i++) {
-    let s = +document.getElementById("s"+i).value || 0;
-    let p = +document.getElementById("p"+i).value || 0;
+  for(let i=0;i<7;i++){
+    let s=+document.getElementById("s"+i).value||0;
+    let p=+document.getElementById("p"+i).value||0;
 
-    let r = p - s;
+    let r=p-s;
 
-    document.getElementById("r"+i).innerText = r.toFixed(2);
+    document.getElementById("r"+i).innerText=r.toFixed(2);
 
-    ts += s;
-    tp += p;
-    tr += r;
+    ts+=s;
+    tp+=p;
+    tr+=r;
   }
 
-  document.getElementById("totalStake").innerText = ts.toFixed(2);
-  document.getElementById("totalProfit").innerText = tp.toFixed(2);
-  document.getElementById("totalResult").innerText = tr.toFixed(2);
+  document.getElementById("ts").innerText=ts.toFixed(2);
+  document.getElementById("tp").innerText=tp.toFixed(2);
+  document.getElementById("tr").innerText=tr.toFixed(2);
 }
 
-function save() {
-  let data = [];
-
-  for (let i = 0; i < 7; i++) {
+function save(){
+  let data=[];
+  for(let i=0;i<7;i++){
     data.push({
-      s: document.getElementById("s"+i).value,
-      p: document.getElementById("p"+i).value
+      s:document.getElementById("s"+i).value,
+      p:document.getElementById("p"+i).value
     });
   }
-
-  localStorage.setItem("weekBlackGlow", JSON.stringify(data));
+  localStorage.setItem("weekDuidelijkFinal",JSON.stringify(data));
   alert("Opgeslagen!");
 }
 
-function load() {
-  let data = JSON.parse(localStorage.getItem("weekBlackGlow"));
-  if (!data) return;
+function load(){
+  let data=JSON.parse(localStorage.getItem("weekDuidelijkFinal"));
+  if(!data) return;
 
-  data.forEach((d, i) => {
-    document.getElementById("s"+i).value = d.s;
-    document.getElementById("p"+i).value = d.p;
+  data.forEach((d,i)=>{
+    document.getElementById("s"+i).value=d.s;
+    document.getElementById("p"+i).value=d.p;
   });
 
   calc();
 }
 
-function reset() {
-  localStorage.removeItem("weekBlackGlow");
+function reset(){
+  localStorage.removeItem("weekDuidelijkFinal");
   location.reload();
 }
 
