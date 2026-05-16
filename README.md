@@ -139,3 +139,186 @@ function resetAll() {
 
 </body>
 
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>Week Overzicht Glow</title>
+
+<style>
+body {
+  background: #0a0f1f;
+  color: white;
+  font-family: Arial;
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+  color: #00ffd5;
+  text-shadow: 0 0 12px #00ffd5;
+}
+
+table {
+  width: 100%;
+  max-width: 750px;
+  margin: auto;
+  border-collapse: collapse;
+  background: #111827;
+  box-shadow: 0 0 25px #00ffd555;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th, td {
+  border: 1px solid #222;
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  color: #00ffd5;
+}
+
+input {
+  width: 110px;
+  padding: 6px;
+  background: #1f2937;
+  border: none;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.glow {
+  color: #00ffd5;
+  text-shadow: 0 0 8px #00ffd5;
+  font-weight: bold;
+}
+
+.buttons {
+  text-align: center;
+  margin-top: 15px;
+}
+
+button {
+  padding: 10px 18px;
+  margin: 5px;
+  background: #00ffd5;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+button:hover {
+  box-shadow: 0 0 15px #00ffd5;
+}
+</style>
+</head>
+
+<body>
+
+<h2>🔥 Week Overzicht Glow 🔥</h2>
+
+<table>
+<thead>
+<tr>
+  <th>Dag</th>
+  <th>Inzet</th>
+  <th>Winst</th>
+  <th>Resultaat</th>
+</tr>
+</thead>
+
+<tbody id="rows"></tbody>
+
+<tfoot>
+<tr>
+  <td class="glow">Totaal</td>
+  <td id="totalStake" class="glow">0</td>
+  <td id="totalProfit" class="glow">0</td>
+  <td id="totalResult" class="glow">0</td>
+</tr>
+</tfoot>
+</table>
+
+<div class="buttons">
+  <button onclick="save()">💾 Opslaan</button>
+  <button onclick="reset()">🔄 Reset</button>
+</div>
+
+<script>
+const days = ["Maandag","Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag","Zondag"];
+
+const rows = document.getElementById("rows");
+
+days.forEach((d, i) => {
+  rows.innerHTML += `
+    <tr>
+      <td>${d}</td>
+      <td><input type="number" id="s${i}" oninput="calc()"></td>
+      <td><input type="number" id="p${i}" oninput="calc()"></td>
+      <td class="glow" id="r${i}">0</td>
+    </tr>
+  `;
+});
+
+function calc() {
+  let ts = 0, tp = 0, tr = 0;
+
+  for (let i = 0; i < 7; i++) {
+    let s = +document.getElementById("s"+i).value || 0;
+    let p = +document.getElementById("p"+i).value || 0;
+
+    let r = p - s;
+
+    document.getElementById("r"+i).innerText = r.toFixed(2);
+
+    ts += s;
+    tp += p;
+    tr += r;
+  }
+
+  document.getElementById("totalStake").innerText = ts.toFixed(2);
+  document.getElementById("totalProfit").innerText = tp.toFixed(2);
+  document.getElementById("totalResult").innerText = tr.toFixed(2);
+}
+
+function save() {
+  let data = [];
+
+  for (let i = 0; i < 7; i++) {
+    data.push({
+      s: document.getElementById("s"+i).value,
+      p: document.getElementById("p"+i).value
+    });
+  }
+
+  localStorage.setItem("weekGlowData", JSON.stringify(data));
+  alert("Opgeslagen!");
+}
+
+function load() {
+  let data = JSON.parse(localStorage.getItem("weekGlowData"));
+  if (!data) return;
+
+  data.forEach((d, i) => {
+    document.getElementById("s"+i).value = d.s;
+    document.getElementById("p"+i).value = d.p;
+  });
+
+  calc();
+}
+
+function reset() {
+  localStorage.removeItem("weekGlowData");
+  location.reload();
+}
+
+load();
+calc();
+</script>
+
+</body>
+</html>
