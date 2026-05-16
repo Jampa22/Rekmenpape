@@ -139,7 +139,6 @@ function resetAll() {
 
 </body>
 
-<!DOCTYPE html>
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
@@ -225,7 +224,7 @@ button:hover {
 
 <body>
 
-<h2>🔥 Week Overzicht 🔥</h2>
+<h2>Week Overzicht</h2>
 
 <table>
 <thead>
