@@ -150,7 +150,7 @@ function resetAll() {
 body {
     background: #070b14;
     color: #00f7ff;
-    font-family: Arial, sans-serif;
+  
 }
 
 h2 {
