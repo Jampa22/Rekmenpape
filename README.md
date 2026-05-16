@@ -10,66 +10,6 @@
   100% { box-shadow: 0 0 5px red, 0 0 8px white; }
 }
 
-/* Javaanse (Indonesische) vlag - midden */
-.vlag-rechts {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  width: 30px;
-  height: 20px;
-  border-radius: 2px;
-  overflow: hidden;
-  z-index: 1000;
-  animation: glow 2s infinite;
-}
-
-/* Surinaamse vlag - rechtsboven */
-.vlag-links {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  width: 30px;
-  height: 20px;
-  border-radius: 2px;
-  overflow: hidden;
-  z-index: 1000;
-  animation: glow 2s infinite;
-}
-</style>
-
-<!-- Javaanse (Indonesische) vlag -->
-<div class="vlag-midden">
-  <div style="background:red; height:50%;"></div>
-  <div style="background:white; height:50%;"></div>
-</div>
-
-<!-- Surinaamse vlag -->
-<div class="vlag-midden">
-  <div style="background:green; height:20%;"></div>
-  <div style="background:white; height:15%;"></div>
-  <div style="background:red; height:30%; position:relative;">
-    <div style="
-      width:8px;
-      height:8px;
-      background:yellow;
-      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-      position:absolute;
-      top:50%;
-      left:50%;
-      transform:translate(-50%, -50%);
-    "></div>
-  </div>
-  <div style="background:white; height:15%;"></div>
-  <div style="background:green; height:20%;"></div>
-</div>
-<style>
-body {
-    background-color: #0a0a0a;
-    color: white;
-    font-family: Arial, sans-serif;
-    padding: 40px;
-}
-
 /* Glowing titel */
 h1 {
     text-align: center;
@@ -273,3 +213,120 @@ function resetAll() {
 
 </html>
 
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>MM Week</title>
+
+<style>
+body{
+  background:#0f0f0f;
+  color:#fff;
+  font-family:Arial;
+  padding:10px;
+}
+
+h2{
+  text-align:center;
+  color:#00ffcc;
+  text-shadow:0 0 6px #00ffcc;
+  font-size:15px;
+  margin-bottom:10px;
+}
+
+table{
+  width:100%;
+  max-width:520px;
+  margin:auto;
+  border-collapse:collapse;
+}
+
+th,td{
+  border:1px solid #222;
+  padding:4px;
+  text-align:center;
+  font-size:12px;
+}
+
+th{color:#00ffcc;}
+
+input{
+  width:55px;
+  background:#111;
+  border:1px solid #333;
+  color:#00ffcc;
+  text-align:center;
+  font-size:12px;
+}
+
+.glow{
+  color:#00ffcc;
+  text-shadow:0 0 5px #00ffcc;
+}
+
+footer{
+  text-align:center;
+  margin-top:10px;
+  font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<h2></h2>
+
+<table>
+<thead>
+<tr>
+<th>Dag</th>
+<th>Inzet</th>
+<th>Winst</th>
+<th>Totaal</th>
+</tr>
+</thead>
+
+<tbody id="rows"></tbody>
+</table>
+
+<footer>
+Week totaal: <span id="week" class="glow">0</span>
+</footer>
+
+<script>
+const days=["Ma","Di","Wo","Do","Vr","Za","Zo"];
+
+const rows=document.getElementById("rows");
+
+days.forEach((d,i)=>{
+  rows.innerHTML+=`
+  <tr>
+    <td>${d}</td>
+    <td><input id="i${i}" oninput="calc()"></td>
+    <td><input id="w${i}" oninput="calc()"></td>
+    <td class="glow" id="t${i}">0</td>
+  </tr>`;
+});
+
+function calc(){
+  let week=0;
+
+  for(let i=0;i<7;i++){
+    let iVal=+document.getElementById("i"+i).value||0;
+    let wVal=+document.getElementById("w"+i).value||0;
+
+    let total=wVal-iVal;
+    document.getElementById("t"+i).innerText=total.toFixed(2);
+
+    week+=total;
+  }
+
+  document.getElementById("week").innerText=week.toFixed(2);
+}
+
+calc();
+</script>
+
+</body>
+</html>
