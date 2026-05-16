@@ -211,3 +211,158 @@ function resetAll() {
 
 </body>
 </html>
+
+
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geld Management</title>
+
+<style>
+body{
+    margin:0;
+    padding:20px;
+    font-family:Arial,sans-serif;
+    background:#0b0f1a;
+    color:white;
+    display:flex;
+    justify-content:center;
+}
+
+.box{
+    width:100%;
+    max-width:420px;
+    background:#121826;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 0 20px #00e5ff55;
+}
+
+h2{
+    text-align:center;
+    color:#00e5ff;
+    text-shadow:0 0 10px #00e5ff;
+    margin-bottom:15px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    color:#00e5ff;
+    padding:8px;
+    font-size:14px;
+}
+
+td{
+    padding:6px;
+    text-align:center;
+    border-bottom:1px solid #222;
+    font-size:13px;
+}
+
+input{
+    width:70px;
+    padding:6px;
+    border:none;
+    outline:none;
+    border-radius:8px;
+    background:#1b2335;
+    color:white;
+    text-align:center;
+    box-shadow:0 0 8px #00e5ff22 inset;
+}
+
+.total{
+    color:#00ff99;
+    font-weight:bold;
+    text-shadow:0 0 6px #00ff99;
+}
+
+.weekTotal{
+    margin-top:15px;
+    text-align:center;
+    font-size:18px;
+    color:#00e5ff;
+    text-shadow:0 0 10px #00e5ff;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>Geld Management</h2>
+
+<table>
+<tr>
+    <th>Dag</th>
+    <th>Inzet</th>
+    <th>Winst</th>
+    <th>Totaal</th>
+</tr>
+
+<tbody id="rows"></tbody>
+
+</table>
+
+<div class="weekTotal">
+Week Totaal: € <span id="week">0.00</span>
+</div>
+
+</div>
+
+<script>
+const dagen = [
+    "Maandag",
+    "Dinsdag",
+    "Woensdag",
+    "Donderdag",
+    "Vrijdag",
+    "Zaterdag",
+    "Zondag"
+];
+
+const rows = document.getElementById("rows");
+
+dagen.forEach((dag, i) => {
+    rows.innerHTML += `
+    <tr>
+        <td>${dag}</td>
+        <td><input type="number" id="inzet${i}" oninput="reken()"></td>
+        <td><input type="number" id="winst${i}" oninput="reken()"></td>
+        <td class="total">€ <span id="totaal${i}">0.00</span></td>
+    </tr>
+    `;
+});
+
+function reken(){
+    let week = 0;
+
+    for(let i=0;i<7;i++){
+
+        let inzet =
+            parseFloat(document.getElementById("inzet"+i).value) || 0;
+
+        let winst =
+            parseFloat(document.getElementById("winst"+i).value) || 0;
+
+        let totaal = winst - inzet;
+
+        document.getElementById("totaal"+i).innerText =
+            totaal.toFixed(2);
+
+        week += totaal;
+    }
+
+    document.getElementById("week").innerText =
+        week.toFixed(2);
+}
+</script>
+
+</body>
+</html>
