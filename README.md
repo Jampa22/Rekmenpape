@@ -216,77 +216,63 @@ function resetAll() {
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Money Week</title>
-
+<title>Money System</title>
 <style>
 body{
-  background:#ffffff;
-  font-family: Arial, sans-serif;
-  display:flex;
-  justify-content:center;
-  padding:12px;
-  color:#000;
+margin:0;
+background:#050814;
+color:#00eaff;
+font-family:Arial;
+font-size:11px;
+display:flex;
+justify-content:center;
+padding:12px;
 }
 
-.box{
-  width:340px;
-}
+.box{width:100%;max-width:460px}
 
-h3{
-  text-align:center;
-  font-size:15px;
-  margin:6px 0;
-  color:#000;
+h2{
+text-align:center;
+margin:6px 0;
+color:#00eaff;
+text-shadow:0 0 8px #00eaff;
+font-size:14px;
 }
 
 table{
-  width:100%;
-  border-collapse:collapse;
-  font-size:11px;
-  border:1px solid #000;
+width:100%;
+border-collapse:collapse;
+background:#0b1222;
+box-shadow:0 0 12px rgba(0,234,255,0.15);
 }
 
 th,td{
-  border:1px solid #000;
-  padding:4px;
-  text-align:center;
-}
-
-th{
-  background:#f2f2f2;
+border:1px solid rgba(0,234,255,0.25);
+padding:4px;
+text-align:center;
 }
 
 input{
-  width:55px;
-  font-size:11px;
-  padding:2px;
-  text-align:center;
-  border:1px solid #000;
-  outline:none;
-  background:#fff;
-  color:#000;
+width:55px;
+background:transparent;
+color:#00eaff;
+border:1px solid #00eaff;
+font-size:11px;
+text-align:center;
+outline:none;
 }
 
 .total{
-  font-weight:bold;
+color:#7cf7ff;
+font-weight:bold;
 }
 
-.glow{
-  transition:0.15s;
-}
-
-.pop{
-  transform:scale(1.15);
-}
-
-.footer{
-  margin-top:8px;
-  border:1px solid #000;
-  padding:6px;
-  text-align:center;
-  font-size:12px;
-  background:#fff;
+.week{
+margin-top:8px;
+text-align:center;
+font-size:13px;
+color:#ffffff;
+text-shadow:0 0 6px rgba(0,234,255,0.4);
 }
 </style>
 </head>
@@ -294,64 +280,55 @@ input{
 <body>
 
 <div class="box">
-  <h3>💰 Geld Management</h3>
+<h2>GELD SYSTEM</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Dag</th>
-        <th>Inzet</th>
-        <th>Winst</th>
-        <th>Totaal</th>
-      </tr>
-    </thead>
-    <tbody id="body"></tbody>
-  </table>
+<table>
+<tr>
+<th>Dag</th>
+<th>Inzet</th>
+<th>Winst</th>
+<th>Totaal</th>
+</tr>
 
-  <div class="footer">
-    Week Totaal: <span id="weekTotal">0</span>
-  </div>
+<script>
+const dagen=["Ma","Di","Wo","Do","Vr","Za","Zo"];
+
+document.write(
+dagen.map(d=>
+`<tr>
+<td>${d}</td>
+<td><input oninput="calc()"></td>
+<td><input oninput="calc()"></td>
+<td class="total">0</td>
+</tr>`
+).join("")
+);
+</script>
+
+</table>
+
+<div class="week">Week totaal: <span id="wk">0</span></div>
 </div>
 
 <script>
-const days=["Ma","Di","Wo","Do","Vr","Za","Zo"];
-const body=document.getElementById("body");
-const weekTotal=document.getElementById("weekTotal");
+function calc(){
+let rows=document.querySelectorAll("tr");
+let week=0;
 
-days.forEach((d,i)=>{
-  body.innerHTML+=`
-    <tr>
-      <td>${d}</td>
-      <td><input id="i${i}" type="number" value="0"></td>
-      <td><input id="w${i}" type="number" value="0"></td>
-      <td class="total glow" id="t${i}">0</td>
-    </tr>
-  `;
+rows.forEach(r=>{
+let i=r.querySelectorAll("input");
+if(i.length){
+let inzet=+i[0].value||0;
+let winst=+i[1].value||0;
+let totaal=winst-inzet;
+
+r.querySelector(".total").innerText=totaal.toFixed(2);
+week+=totaal;
+}
 });
 
-function calc(){
-  let week=0;
-
-  days.forEach((_,i)=>{
-    let inw=+document.getElementById("i"+i).value||0;
-    let win=+document.getElementById("w"+i).value||0;
-
-    let total=win-inw;
-    let el=document.getElementById("t"+i);
-
-    el.innerText=total.toFixed(2);
-
-    el.classList.add("pop");
-    setTimeout(()=>el.classList.remove("pop"),120);
-
-    week+=total;
-  });
-
-  weekTotal.innerText=week.toFixed(2);
+document.getElementById("wk").innerText=week.toFixed(2);
 }
-
-document.addEventListener("input",calc);
-calc();
 </script>
 
 </body>
