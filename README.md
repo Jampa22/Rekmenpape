@@ -213,57 +213,64 @@ function resetAll() {
 
 </html>
 
+<!DOCTYPE html>
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<title>Money System</title>
+<title>Geld System</title>
+
 <style>
 body{
 margin:0;
-background:#050814;
-color:#00eaff;
-font-family:Arial;
-font-size:11px;
+height:100vh;
 display:flex;
 justify-content:center;
-padding:12px;
+align-items:center;
+background:radial-gradient(circle at center,#071024,#02030a);
+font-family:Arial;
+font-size:11px;
+color:#00e5ff;
 }
 
-.box{width:100%;max-width:460px}
+.card{
+width:95%;
+max-width:500px;
+padding:10px;
+background:rgba(10,18,30,0.85);
+border:1px solid rgba(0,229,255,0.25);
+box-shadow:0 0 20px rgba(0,229,255,0.15);
+}
 
 h2{
 text-align:center;
-margin:6px 0;
-color:#00eaff;
-text-shadow:0 0 8px #00eaff;
+margin:5px 0 10px;
 font-size:14px;
+text-shadow:0 0 8px #00e5ff;
 }
 
 table{
 width:100%;
 border-collapse:collapse;
-background:#0b1222;
-box-shadow:0 0 12px rgba(0,234,255,0.15);
 }
 
 th,td{
-border:1px solid rgba(0,234,255,0.25);
+border:1px solid rgba(0,229,255,0.2);
 padding:4px;
 text-align:center;
 }
 
 input{
-width:55px;
+width:60px;
 background:transparent;
-color:#00eaff;
-border:1px solid #00eaff;
-font-size:11px;
+border:1px solid #00e5ff;
+color:#00e5ff;
 text-align:center;
+font-size:11px;
 outline:none;
 }
 
 .total{
-color:#7cf7ff;
+color:#7df9ff;
 font-weight:bold;
 }
 
@@ -272,15 +279,15 @@ margin-top:8px;
 text-align:center;
 font-size:13px;
 color:#ffffff;
-text-shadow:0 0 6px rgba(0,234,255,0.4);
+text-shadow:0 0 6px rgba(0,229,255,0.4);
 }
 </style>
 </head>
 
 <body>
 
-<div class="box">
-<h2>GELD SYSTEM</h2>
+<div class="card">
+<h2>GELD MANAGEMENT</h2>
 
 <table>
 <tr>
