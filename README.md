@@ -1,6 +1,79 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
+<title>Glow Informatie</title>
+
+<style>
+body {
+    background-color: #0a0a0a;
+    color: white;
+    font-family: Arial, sans-serif;
+    padding: 40px;
+}
+
+/* Glowing titel */
+h1 {
+    text-align: center;
+    font-size: 50px;
+    color: #ffffff;
+    text-shadow:
+        0 0 5px #00ffff,
+        0 0 10px #00ffff,
+        0 0 20px #00ffff,
+        0 0 40px #00ffff;
+}
+
+/* Glowing tekst blok */
+.info {
+    max-width: 700px;
+    margin: auto;
+    font-size: 18px;
+    line-height: 1.6;
+    padding: 20px;
+    border: 1px solid #00ffff;
+    border-radius: 10px;
+    box-shadow:
+        0 0 10px #00ffff,
+        0 0 20px #00ffff;
+}
+
+/* Knop met glow */
+button {
+    display: block;
+    margin: 30px auto;
+    padding: 12px 25px;
+    font-size: 16px;
+    color: white;
+    background: black;
+    border: 1px solid #ff00ff;
+    cursor: pointer;
+    box-shadow:
+        0 0 10px #ff00ff,
+        0 0 20px #ff00ff;
+    transition: 0.3s;
+}
+
+button:hover {
+    box-shadow:
+        0 0 20px #ff00ff,
+        0 0 40px #ff00ff;
+}
+</style>
+
+</head>
+<body>
+
+<div class="info">
+    If the table previously changed calculation type after a certain number of confirmed spins (causing a loss), stop when that same count is reached again.
+</div>
+
+
+</body>
+</html>
+
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
 <title>GRS TOOL</title>
 
 <style>
@@ -88,7 +161,9 @@ button:hover {
 
 <body>
 
-<div id="output">Choose following number</div>
+
+
+<div id="output">Choose the following number</div>
 
 <div class="grid" id="grid"></div>
 
@@ -110,9 +185,9 @@ for (let i = 0; i <= 36; i++) {
   // klik = tonen
   cell.addEventListener("click", () => {
     if (!data[i]) {
-      output.textContent = "Number" + i + " heeft nog geen uitkomst ingesteld.";
+      output.textContent = "Nummer " + i + " heeft nog geen uitkomst ingesteld.";
     } else {
-      output.textContent = "🎯 Number " + i + " → " + data[i];
+      output.textContent = "🎯 Nummer " + i + " → " + data[i];
     }
   });
 
@@ -135,194 +210,6 @@ function resetAll() {
     location.reload();
   }
 }
-</script>
-
-</body>
-
-<html lang="nl">
-<head>
-<meta charset="UTF-8">
-<title>Week Overzicht</title>
-
-<style>
-body {
-  background: #000;
-  color: white;
-  font-family: Arial;
-  padding: 20px;
-}
-
-h2 {
-  text-align: center;
-  color: white;
-  text-shadow: 0 0 10px #00ffd5;
-}
-
-table {
-  width: 100%;
-  max-width: 800px;
-  margin: auto;
-  border-collapse: collapse;
-  background: #000;
-  box-shadow: 0 0 20px #00ffd5;
-}
-
-th, td {
-  border: 1px solid #222;
-  padding: 10px;
-  text-align: center;
-  background: #000;
-  color: white;
-}
-
-th {
-  color: #00ffd5;
-  text-shadow: 0 0 6px #00ffd5;
-}
-
-input {
-  width: 110px;
-  padding: 6px;
-  background: #000;
-  border: 1px solid #333;
-  color: white;
-  text-align: center;
-  outline: none;
-}
-
-input:focus {
-  box-shadow: 0 0 10px #00ffd5;
-  border-color: #00ffd5;
-}
-
-.glow {
-  color: white;
-  text-shadow: 0 0 8px #00ffd5;
-  font-weight: bold;
-}
-
-.buttons {
-  text-align: center;
-  margin-top: 15px;
-}
-
-button {
-  padding: 10px 18px;
-  margin: 5px;
-  background: #000;
-  color: white;
-  border: 1px solid #00ffd5;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-button:hover {
-  box-shadow: 0 0 15px #00ffd5;
-}
-</style>
-</head>
-
-<body>
-
-<h2>Ringkesan Minggu</h2>
-
-<table>
-<thead>
-<tr>
-  <th>Dag</th>
-  <th>Inzet</th>
-  <th>Winst</th>
-  <th>Resultaat</th>
-</tr>
-</thead>
-
-<tbody id="rows"></tbody>
-
-<tfoot>
-<tr>
-  <td class="glow">Totaal</td>
-  <td id="totalStake" class="glow">0</td>
-  <td id="totalProfit" class="glow">0</td>
-  <td id="totalResult" class="glow">0</td>
-</tr>
-</tfoot>
-</table>
-
-<div class="buttons">
-  <button onclick="save()">💾 Opslaan</button>
-  <button onclick="reset()">🔄 Reset</button>
-</div>
-
-<script>
-const days = ["Maandag","Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag","Zondag"];
-
-const rows = document.getElementById("rows");
-
-days.forEach((day, i) => {
-  rows.innerHTML += `
-    <tr>
-      <td>${day}</td>
-      <td><input type="number" id="s${i}" oninput="calc()"></td>
-      <td><input type="number" id="p${i}" oninput="calc()"></td>
-      <td class="glow" id="r${i}">0</td>
-    </tr>
-  `;
-});
-
-function calc() {
-  let ts = 0, tp = 0, tr = 0;
-
-  for (let i = 0; i < 7; i++) {
-    let s = +document.getElementById("s"+i).value || 0;
-    let p = +document.getElementById("p"+i).value || 0;
-
-    let r = p - s;
-
-    document.getElementById("r"+i).innerText = r.toFixed(2);
-
-    ts += s;
-    tp += p;
-    tr += r;
-  }
-
-  document.getElementById("totalStake").innerText = ts.toFixed(2);
-  document.getElementById("totalProfit").innerText = tp.toFixed(2);
-  document.getElementById("totalResult").innerText = tr.toFixed(2);
-}
-
-function save() {
-  let data = [];
-
-  for (let i = 0; i < 7; i++) {
-    data.push({
-      s: document.getElementById("s"+i).value,
-      p: document.getElementById("p"+i).value
-    });
-  }
-
-  localStorage.setItem("weekBlackGlow", JSON.stringify(data));
-  alert("Opgeslagen!");
-}
-
-function load() {
-  let data = JSON.parse(localStorage.getItem("weekBlackGlow"));
-  if (!data) return;
-
-  data.forEach((d, i) => {
-    document.getElementById("s"+i).value = d.s;
-    document.getElementById("p"+i).value = d.p;
-  });
-
-  calc();
-}
-
-function reset() {
-  localStorage.removeItem("weekBlackGlow");
-  location.reload();
-}
-
-load();
-calc();
 </script>
 
 </body>
