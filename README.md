@@ -64,7 +64,7 @@ button:hover {
 <body>
 
 <div class="info">
-    If the table previously changed calculation type after a certain number of confirmed spins (causing a loss), stop when that same count is reached again.
+Als de tafel eerder van berekeningstype veranderde na een bepaald aantal bevestigde spins (wat tot verlies leidde), stop dan wanneer datzelfde aantal spins opnieuw wordt bereikt.
 </div>
 
 
