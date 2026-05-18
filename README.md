@@ -169,7 +169,7 @@ input::placeholder{
 <div class="container">
 
     <div class="title">
-        Week Schema
+        Ringkesan minggu
     </div>
 
     <div class="gridHeader">
