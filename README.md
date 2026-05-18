@@ -184,7 +184,7 @@ input::placeholder{
     <div class="nettoBox">
 
         <div class="nettoTitle">
-            Totaal Netto Winst
+            Totaal Netto Week Winst
         </div>
 
         <div
