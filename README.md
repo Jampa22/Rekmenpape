@@ -150,7 +150,7 @@ button:hover{
 <div class="container">
 
     <div class="title">
-        Week Schema
+        Week Overzicht
     </div>
 
     <div class="gridHeader">
