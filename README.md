@@ -150,7 +150,7 @@ button:hover{
 <div class="container">
 
     <div class="title">
-        Week Overzicht
+        Week Omzet
     </div>
 
     <div class="gridHeader">
