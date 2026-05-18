@@ -175,7 +175,7 @@ input::placeholder{
     <div class="gridHeader">
         <div>Dag</div>
         <div>Inzet</div>
-        <div>Winst</div>
+        <div>Totaal</div>
         <div>Netto</div>
     </div>
 
