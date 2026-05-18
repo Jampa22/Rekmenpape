@@ -3,7 +3,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Week Overzicht</title>
+<title>Week Schema</title>
 
 <style>
 
@@ -29,35 +29,38 @@ body{
     padding:12px;
     box-shadow:
         0 0 12px #00ffae55,
-        0 0 24px #00ffae22;
+        0 0 24px #00ffae33;
 }
 
 .title{
     text-align:center;
-    color:#00ffae;
+    color:white;
     font-size:20px;
     margin-bottom:10px;
-    text-shadow:0 0 10px #00ffae;
+    text-shadow:
+        0 0 5px #fff,
+        0 0 10px #00ffae;
 }
 
 .gridHeader,
 .gridRow{
     display:grid;
     grid-template-columns:
-        70px
-        minmax(0,1fr)
-        minmax(0,1fr)
-        minmax(0,1fr);
+        42px
+        1fr
+        1fr
+        1fr;
     gap:5px;
     align-items:center;
 }
 
 .gridHeader{
     margin-bottom:6px;
-    color:#00ffae;
+    color:white;
     font-size:11px;
     font-weight:bold;
     text-align:center;
+    text-shadow:0 0 6px #00ffae;
 }
 
 .gridRow{
@@ -75,7 +78,10 @@ body{
     color:white;
     font-size:11px;
     outline:none;
-    box-shadow:0 0 6px #00ffae33;
+    box-shadow:
+        0 0 6px #00ffae44,
+        0 0 12px #00ffae22;
+    text-shadow:0 0 5px #00ffae;
 }
 
 .day{
@@ -84,7 +90,6 @@ body{
 
 .result{
     background:#101010;
-    color:#00ffae;
     font-weight:bold;
 }
 
@@ -94,19 +99,25 @@ body{
     border-radius:12px;
     padding:10px;
     text-align:center;
-    box-shadow:0 0 10px #00ffae44;
+    box-shadow:
+        0 0 10px #00ffae55,
+        0 0 20px #00ffae22;
 }
 
 .nettoTitle{
-    color:#00ffae;
+    color:white;
     font-size:12px;
     margin-bottom:4px;
+    text-shadow:0 0 6px #00ffae;
 }
 
 .nettoValue{
     font-size:22px;
     font-weight:bold;
-    text-shadow:0 0 10px #00ffae;
+    color:white;
+    text-shadow:
+        0 0 5px #fff,
+        0 0 10px #00ffae;
 }
 
 .buttons{
@@ -124,22 +135,30 @@ button{
     font-weight:bold;
     cursor:pointer;
     transition:0.2s;
+    color:white;
+    text-shadow:0 0 5px #fff;
 }
 
 .saveBtn{
-    background:#00ffae;
-    color:black;
-    box-shadow:0 0 10px #00ffae88;
+    background:#00c98d;
+    box-shadow:
+        0 0 10px #00ffae88,
+        0 0 20px #00ffae33;
 }
 
 .resetBtn{
     background:#ff3b3b;
-    color:white;
-    box-shadow:0 0 10px #ff3b3b88;
+    box-shadow:
+        0 0 10px #ff3b3b88,
+        0 0 20px #ff3b3b33;
 }
 
 button:hover{
     transform:scale(1.02);
+}
+
+input::placeholder{
+    color:#aaa;
 }
 
 </style>
@@ -150,7 +169,7 @@ button:hover{
 <div class="container">
 
     <div class="title">
-        Week Omzet
+        Week Schema
     </div>
 
     <div class="gridHeader">
@@ -172,7 +191,7 @@ button:hover{
             class="nettoValue"
             id="grandTotal"
         >
-            0.00
+            €0.00
         </div>
 
     </div>
@@ -226,7 +245,7 @@ dagen.forEach((dag,index)=>{
             type="number"
             class="box"
             id="inzet${index}"
-            placeholder="0"
+            placeholder="€"
             oninput="bereken(${index})"
         >
 
@@ -234,7 +253,7 @@ dagen.forEach((dag,index)=>{
             type="number"
             class="box"
             id="winst${index}"
-            placeholder="0"
+            placeholder="€"
             oninput="bereken(${index})"
         >
 
@@ -242,7 +261,7 @@ dagen.forEach((dag,index)=>{
             class="box result"
             id="result${index}"
         >
-            0
+            €0.00
         </div>
 
     </div>
@@ -270,7 +289,8 @@ function bereken(index){
 
     document.getElementById(
         `result${index}`
-    ).innerText = netto.toFixed(2);
+    ).innerText =
+        "€" + netto.toFixed(2);
 
     updateNetto();
 }
@@ -301,7 +321,8 @@ function updateNetto(){
 
     document.getElementById(
         "grandTotal"
-    ).innerText = totaal.toFixed(2);
+    ).innerText =
+        "€" + totaal.toFixed(2);
 }
 
 function saveData(){
@@ -374,6 +395,9 @@ function resetData(){
 loadData();
 
 </script>
+
+</body>
+</html>
 
 </body>
 </html>
