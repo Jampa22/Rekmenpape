@@ -198,7 +198,7 @@ input::placeholder{
     <div id="schema"></div>
 
     <div class="nettoBox">
-        <div class="nettoTitle">Totaal Netto Week Winst</div>
+        <div class="nettoTitle">Totaal Netto Winst</div>
         <div class="nettoValue" id="grandTotal">€0.00</div>
     </div>
 
