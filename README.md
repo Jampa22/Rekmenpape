@@ -105,7 +105,7 @@
         <div class="guideItem">
             <div class="guideTitle">📉Exit signals</div>
             <div class="guideText">
-                Stop one round when repeated loss behavior returns.
+                Stop when repeated loss behavior returns.
             </div>
         </div>
 
