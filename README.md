@@ -1,22 +1,21 @@
 <style>
-.grote-animatie {
-  font-size: 60px;
+.groot-animatie {
+  font-size: 70px;
   font-weight: bold;
-  animation: regenboog 5s infinite linear;
   text-align: center;
+  animation: kleuren 5s infinite;
 }
 
-@keyframes regenboog {
+@keyframes kleuren {
   0%   { color: red; }
-  20%  { color: orange; }
-  40%  { color: yellow; }
-  60%  { color: green; }
-  80%  { color: blue; }
+  25%  { color: orange; }
+  50%  { color: green; }
+  75%  { color: blue; }
   100% { color: purple; }
 }
 </style>
 
-<h1 class="grote-animatie">PREVIEUW</h1>
+<h1 class="groot-animatie">PREVIEUW</h1>
 
 <p style="color: green;">The Most Powerfull Prediction Tool</p>
 
