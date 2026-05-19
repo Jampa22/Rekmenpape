@@ -157,7 +157,7 @@ button{
     text-shadow:0 0 6px #000;
 }
 
-/* RESET (ORANGE + WIT TEKST) */
+/* RESET (MINT + WIT TEKST) */
 .resetBtn{
     background:#bfffe9;
     color:white;
