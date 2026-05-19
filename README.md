@@ -140,6 +140,7 @@ toggleBtn.onclick = () => {
 </script>
 
 <p style="color: green;">The Most Powerfull Prediction Tool</p>
+
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
@@ -357,7 +358,7 @@ input::placeholder{
 <div class="container">
 
     <div class="title">
-        Week Schema
+        Ringkesan Minggu
     </div>
 
     <div class="header">
