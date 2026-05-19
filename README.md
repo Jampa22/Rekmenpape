@@ -22,34 +22,38 @@ body{
     color:white;
 }
 
+/* WRAPPER */
 .container{
     width:100%;
     max-width:420px;
     margin:auto;
-    background:#111;
+    background:#0e0e0e;
     border-radius:16px;
     padding:12px;
+
     box-shadow:
-        0 0 12px #00ffae55,
-        0 0 25px #00ffae22;
+        0 0 15px #00ffae55,
+        0 0 30px #00ffae22;
 }
 
+/* TITLE */
 .title{
     text-align:center;
     font-size:20px;
     margin-bottom:10px;
     color:white;
+
     text-shadow:
         0 0 5px #fff,
         0 0 10px #00ffae,
         0 0 20px #00ffae;
 }
 
+/* GRID */
 .header,
 .row{
     display:grid;
-    grid-template-columns:
-        45px 1fr 1fr 1fr;
+    grid-template-columns: 45px 1fr 1fr 1fr;
     gap:5px;
     align-items:center;
 }
@@ -67,6 +71,7 @@ body{
     margin-bottom:6px;
 }
 
+/* INPUT BOXES */
 .box{
     width:100%;
     border:none;
@@ -75,29 +80,34 @@ body{
     text-align:center;
     font-size:11px;
     color:white;
-    background:#1c1c1c;
+    background:#1b1b1b;
     outline:none;
-    text-shadow:0 0 5px #00ffae;
+
     box-shadow:
-        0 0 6px #00ffae44,
-        0 0 12px #00ffae22;
+        0 0 6px #00ffae33,
+        0 0 12px #00ffae11;
+
+    text-shadow:0 0 5px #00ffae;
 }
 
 .day{
     font-weight:bold;
 }
 
+/* NETTO CEL */
 .result{
-    background:#0f0f0f;
+    background:#0c0c0c;
     font-weight:bold;
 }
 
+/* NETTO BOX */
 .nettoBox{
     margin-top:10px;
-    background:#0f0f0f;
+    background:#0c0c0c;
     border-radius:12px;
     padding:10px;
     text-align:center;
+
     box-shadow:
         0 0 10px #00ffae55,
         0 0 20px #00ffae22;
@@ -117,6 +127,7 @@ body{
         0 0 15px #00ffae;
 }
 
+/* BUTTONS */
 .buttons{
     display:flex;
     gap:6px;
@@ -132,28 +143,38 @@ button{
     font-weight:bold;
     cursor:pointer;
     transition:0.2s;
-    color:white;
-    text-shadow:0 0 6px #000;
 }
 
+/* OPSLAAN (WIT + GROEN GLOW) */
 .saveBtn{
     background:#00ffae;
+    color:white;
+
     box-shadow:
         0 0 10px #00ffae88,
         0 0 20px #00ffae33;
+
+    text-shadow:0 0 6px #000;
 }
 
+/* RESET (MINT + WIT TEKST) */
 .resetBtn{
-    background:#ff8a00;
+    background:#bfffe9;
+    color:white;
+
     box-shadow:
-        0 0 10px #ff8a0088,
-        0 0 20px #ff8a0033;
+        0 0 10px #bfffe988,
+        0 0 20px #bfffe933;
+
+    text-shadow:0 0 6px #000;
 }
 
+/* HOVER */
 button:hover{
     transform:scale(1.02);
 }
 
+/* PLACEHOLDER */
 input::placeholder{
     color:#888;
 }
@@ -177,18 +198,13 @@ input::placeholder{
     <div id="schema"></div>
 
     <div class="nettoBox">
-
         <div class="nettoTitle">Totaal Netto Week Winst</div>
-
         <div class="nettoValue" id="grandTotal">€0.00</div>
-
     </div>
 
     <div class="buttons">
-
         <button class="saveBtn" onclick="saveData()">Opslaan</button>
         <button class="resetBtn" onclick="resetData()">Reset</button>
-
     </div>
 
 </div>
@@ -278,7 +294,6 @@ function saveData(){
     localStorage.setItem("weekSchema", JSON.stringify(data));
 
     alert("Opgeslagen");
-
 }
 
 function resetData(){
@@ -307,9 +322,6 @@ function loadData(){
 }
 
 </script>
-
-</body>
-</html>
 
 <html lang="nl">
 <head>
