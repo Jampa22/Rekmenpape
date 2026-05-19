@@ -367,7 +367,7 @@ input::placeholder{
         <div>Dag</div>
         <div>Inzet</div>
         <div>Totaal</div>
-        <div>Netto Winst</div>
+        <div>Winst</div>
     </div>
 
     <div id="schema"></div>
@@ -375,7 +375,7 @@ input::placeholder{
     <div class="nettoBox">
 
         <div class="nettoTitle">
-            Totaal Netto Winst/Verlies
+            Winst/Verlies
         </div>
 
         <div
