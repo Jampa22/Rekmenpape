@@ -140,8 +140,6 @@ toggleBtn.onclick = () => {
 </script>
 
 <p style="color: green;">The Most Powerfull Prediction Tool</p>
-
-<!DOCTYPE html>
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
@@ -354,7 +352,6 @@ input::placeholder{
 
 </style>
 </head>
-
 <body>
 
 <div class="container">
@@ -366,8 +363,8 @@ input::placeholder{
     <div class="header">
         <div>Dag</div>
         <div>Inzet</div>
-        <div>Winst</div>
-        <div>Netto</div>
+        <div>Totaal</div>
+        <div>Netto Winst</div>
     </div>
 
     <div id="schema"></div>
@@ -375,7 +372,7 @@ input::placeholder{
     <div class="nettoBox">
 
         <div class="nettoTitle">
-            Totaal Netto
+            Totaal Netto Winst
         </div>
 
         <div
