@@ -1,6 +1,3 @@
-</body>
-</html>
-
 <p style="color: green;">The Most Powerfull Prediction Tool</p>
 
 <html lang="nl">
