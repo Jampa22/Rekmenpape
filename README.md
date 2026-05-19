@@ -2,7 +2,7 @@
 .grote-animatie {
   font-size: 60px;
   font-weight: bold;
-  animation: regenboog 3s infinite linear;
+  animation: regenboog 5s infinite linear;
   text-align: center;
 }
 
