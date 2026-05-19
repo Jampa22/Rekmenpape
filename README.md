@@ -165,7 +165,7 @@ input::placeholder{
 
 <div class="container">
 
-    <div class="title">Week Schema</div>
+    <div class="title">Ringkesan Minggu</div>
 
     <div class="header">
         <div>Dag</div>
