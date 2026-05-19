@@ -1,3 +1,5 @@
+<p style="color: green;">The Most Powerfull Prediction Tool</p>
+
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
@@ -29,35 +31,38 @@ body{
     padding:12px;
     box-shadow:
         0 0 12px #00ffae55,
-        0 0 24px #00ffae22;
+        0 0 24px #00ffae33;
 }
 
 .title{
     text-align:center;
-    color:#00ffae;
+    color:white;
     font-size:20px;
     margin-bottom:10px;
-    text-shadow:0 0 10px #00ffae;
+    text-shadow:
+        0 0 5px #fff,
+        0 0 10px #00ffae;
 }
 
 .gridHeader,
 .gridRow{
     display:grid;
     grid-template-columns:
-        70px
-        minmax(0,1fr)
-        minmax(0,1fr)
-        minmax(0,1fr);
+        42px
+        1fr
+        1fr
+        1fr;
     gap:5px;
     align-items:center;
 }
 
 .gridHeader{
     margin-bottom:6px;
-    color:#00ffae;
+    color:white;
     font-size:11px;
     font-weight:bold;
     text-align:center;
+    text-shadow:0 0 6px #00ffae;
 }
 
 .gridRow{
@@ -75,7 +80,10 @@ body{
     color:white;
     font-size:11px;
     outline:none;
-    box-shadow:0 0 6px #00ffae33;
+    box-shadow:
+        0 0 6px #00ffae44,
+        0 0 12px #00ffae22;
+    text-shadow:0 0 5px #00ffae;
 }
 
 .day{
@@ -84,7 +92,6 @@ body{
 
 .result{
     background:#101010;
-    color:#00ffae;
     font-weight:bold;
 }
 
@@ -94,19 +101,25 @@ body{
     border-radius:12px;
     padding:10px;
     text-align:center;
-    box-shadow:0 0 10px #00ffae44;
+    box-shadow:
+        0 0 10px #00ffae55,
+        0 0 20px #00ffae22;
 }
 
 .nettoTitle{
-    color:#00ffae;
+    color:white;
     font-size:12px;
     margin-bottom:4px;
+    text-shadow:0 0 6px #00ffae;
 }
 
 .nettoValue{
     font-size:22px;
     font-weight:bold;
-    text-shadow:0 0 10px #00ffae;
+    color:white;
+    text-shadow:
+        0 0 5px #fff,
+        0 0 10px #00ffae;
 }
 
 .buttons{
@@ -124,22 +137,30 @@ button{
     font-weight:bold;
     cursor:pointer;
     transition:0.2s;
+    color:white;
+    text-shadow:0 0 5px #fff;
 }
 
 .saveBtn{
-    background:#00ffae;
-    color:black;
-    box-shadow:0 0 10px #00ffae88;
+    background:#00c98d;
+    box-shadow:
+        0 0 10px #00ffae88,
+        0 0 20px #00ffae33;
 }
 
 .resetBtn{
     background:#ff3b3b;
-    color:white;
-    box-shadow:0 0 10px #ff3b3b88;
+    box-shadow:
+        0 0 10px #ff3b3b88,
+        0 0 20px #ff3b3b33;
 }
 
 button:hover{
     transform:scale(1.02);
+}
+
+input::placeholder{
+    color:#aaa;
 }
 
 </style>
@@ -150,14 +171,14 @@ button:hover{
 <div class="container">
 
     <div class="title">
-        Week Schema
+        Ringkesan Minggu
     </div>
 
     <div class="gridHeader">
         <div>Dag</div>
         <div>Inzet</div>
-        <div>Winst</div>
-        <div>Netto</div>
+        <div>Totaal</div>
+        <div>Netto Winst</div>
     </div>
 
     <div id="schema"></div>
@@ -165,14 +186,14 @@ button:hover{
     <div class="nettoBox">
 
         <div class="nettoTitle">
-            Totaal Netto
+            Totaal Netto Week Winst
         </div>
 
         <div
             class="nettoValue"
             id="grandTotal"
         >
-            0.00
+            €0.00
         </div>
 
     </div>
@@ -200,13 +221,13 @@ button:hover{
 <script>
 
 const dagen = [
-    "Maandag",
-    "Dinsdag",
-    "Woensdag",
-    "Donderdag",
-    "Vrijdag",
-    "Zaterdag",
-    "Zondag"
+    "Ma",
+    "Di",
+    "Wo",
+    "Do",
+    "Vr",
+    "Za",
+    "Zo"
 ];
 
 const schema =
@@ -226,7 +247,7 @@ dagen.forEach((dag,index)=>{
             type="number"
             class="box"
             id="inzet${index}"
-            placeholder="0"
+            placeholder="€"
             oninput="bereken(${index})"
         >
 
@@ -234,7 +255,7 @@ dagen.forEach((dag,index)=>{
             type="number"
             class="box"
             id="winst${index}"
-            placeholder="0"
+            placeholder="€"
             oninput="bereken(${index})"
         >
 
@@ -242,7 +263,7 @@ dagen.forEach((dag,index)=>{
             class="box result"
             id="result${index}"
         >
-            0
+            €0.00
         </div>
 
     </div>
@@ -270,7 +291,8 @@ function bereken(index){
 
     document.getElementById(
         `result${index}`
-    ).innerText = netto.toFixed(2);
+    ).innerText =
+        "€" + netto.toFixed(2);
 
     updateNetto();
 }
@@ -301,7 +323,8 @@ function updateNetto(){
 
     document.getElementById(
         "grandTotal"
-    ).innerText = totaal.toFixed(2);
+    ).innerText =
+        "€" + totaal.toFixed(2);
 }
 
 function saveData(){
@@ -377,3 +400,224 @@ loadData();
 
 </body>
 </html>
+
+
+
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>Glow Informatie</title>
+
+<style>
+body {
+    background-color: #0a0a0a;
+    color: white;
+    font-family: Arial, sans-serif;
+    padding: 40px;
+}
+
+/* Glowing titel */
+h1 {
+    text-align: center;
+    font-size: 50px;
+    color: #ffffff;
+    text-shadow:
+        0 0 5px #00ffff,
+        0 0 10px #00ffff,
+        0 0 20px #00ffff,
+        0 0 40px #00ffff;
+}
+
+/* Glowing tekst blok */
+.info {
+    max-width: 700px;
+    margin: auto;
+    font-size: 18px;
+    line-height: 1.6;
+    padding: 20px;
+    border: 1px solid #00ffff;
+    border-radius: 10px;
+    box-shadow:
+        0 0 10px #00ffff,
+        0 0 20px #00ffff;
+}
+
+/* Knop met glow */
+button {
+    display: block;
+    margin: 30px auto;
+    padding: 12px 25px;
+    font-size: 16px;
+    color: white;
+    background: black;
+    border: 1px solid #ff00ff;
+    cursor: pointer;
+    box-shadow:
+        0 0 10px #ff00ff,
+        0 0 20px #ff00ff;
+    transition: 0.3s;
+}
+
+button:hover {
+    box-shadow:
+        0 0 20px #ff00ff,
+        0 0 40px #ff00ff;
+}
+</style>
+
+</head>
+<body>
+
+<div class="info">
+If the table previously changed calculation type after a certain number of confirmed spins (causing a loss), stop when that same count is reached again.
+</div>
+
+
+</body>
+</html>
+
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>GRS TOOL</title>
+
+<style>
+body {
+  font-family: Arial;
+  text-align: center;
+  background: #050505;
+  color: white;
+}
+
+/* STATIC glow casino background */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 25%, rgba(0,255,200,0.15), transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(255,215,0,0.12), transparent 40%),
+    radial-gradient(circle at 40% 70%, rgba(0,150,255,0.10), transparent 45%),
+    radial-gradient(circle at 70% 60%, rgba(255,0,150,0.08), transparent 45%);
+  pointer-events: none;
+}
+
+/* title */
+h2 {
+  margin-top: 20px;
+  text-shadow: 0 0 10px #00f2ff;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 60px);
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.cell {
+  width: 60px;
+  height: 60px;
+  background: #111;
+  border: 1px solid #00f2ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
+  user-select: none;
+  box-shadow: 0 0 8px #00f2ff;
+  color: white;
+}
+
+.cell:hover {
+  box-shadow: 0 0 15px #00ffcc;
+}
+
+#output {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  background: #111;
+  border-radius: 10px;
+  box-shadow: 0 0 12px #00f2ff;
+}
+
+button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  background: #00f2ff;
+  border-radius: 6px;
+}
+
+button:hover {
+  box-shadow: 0 0 15px #8a2be2;
+}
+</style>
+</head>
+
+<body>
+
+
+
+<div id="output">Choose the following number</div>
+
+<div class="grid" id="grid"></div>
+
+<script>
+const grid = document.getElementById("grid");
+const output = document.getElementById("output");
+
+let data = JSON.parse(localStorage.getItem("outcomes")) || {};
+
+function save() {
+  localStorage.setItem("outcomes", JSON.stringify(data));
+}
+
+for (let i = 0; i <= 36; i++) {
+  const cell = document.createElement("div");
+  cell.className = "cell";
+  cell.textContent = i;
+
+  // klik = tonen
+  cell.addEventListener("click", () => {
+    if (!data[i]) {
+      output.textContent = "Nummer " + i + " heeft nog geen uitkomst ingesteld.";
+    } else {
+      output.textContent = "🎯 Nummer " + i + " → " + data[i];
+    }
+  });
+
+  // dubbelklik = instellen
+  cell.addEventListener("dblclick", () => {
+    let nieuw = prompt("Geef jouw uitkomst voor nummer " + i + ":", data[i] || "");
+    if (nieuw && nieuw.trim() !== "") {
+      data[i] = nieuw;
+      save();
+      output.textContent = "✔ Uitkomst opgeslagen voor nummer " + i;
+    }
+  });
+
+  grid.appendChild(cell);
+}
+
+function resetAll() {
+  if (confirm("Alles resetten?")) {
+    localStorage.removeItem("outcomes");
+    location.reload();
+  }
+}
+</script>
+
+</body>
+</html>
+
+
