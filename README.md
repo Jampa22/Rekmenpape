@@ -398,7 +398,7 @@ input::placeholder{
             class="resetBtn"
             onclick="resetData()"
         >
-            Reset
+            Opnieuw
         </button>
 
     </div>
