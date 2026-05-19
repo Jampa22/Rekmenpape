@@ -1,4 +1,5 @@
-The Most Powerfull Prediction Tool
+<p style="color: green;">The Most Powerfull Prediction Tool</p>
+
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
