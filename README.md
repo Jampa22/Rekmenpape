@@ -16,7 +16,7 @@
 }
 
 body{
-    background:#0b0b0b;
+    background:#050505;
     font-family:Arial,sans-serif;
     padding:8px;
     color:white;
@@ -26,64 +26,61 @@ body{
     width:100%;
     max-width:420px;
     margin:auto;
-    background:#151515;
+    background:#111;
     border-radius:16px;
     padding:12px;
     box-shadow:
         0 0 12px #00ffae55,
-        0 0 24px #00ffae33;
+        0 0 25px #00ffae22;
 }
 
 .title{
     text-align:center;
-    color:white;
     font-size:20px;
     margin-bottom:10px;
+    color:white;
     text-shadow:
         0 0 5px #fff,
-        0 0 10px #00ffae;
+        0 0 10px #00ffae,
+        0 0 20px #00ffae;
 }
 
-.gridHeader,
-.gridRow{
+.header,
+.row{
     display:grid;
     grid-template-columns:
-        42px
-        1fr
-        1fr
-        1fr;
+        45px 1fr 1fr 1fr;
     gap:5px;
     align-items:center;
 }
 
-.gridHeader{
-    margin-bottom:6px;
-    color:white;
+.header{
     font-size:11px;
     font-weight:bold;
     text-align:center;
-    text-shadow:0 0 6px #00ffae;
+    margin-bottom:6px;
+    color:white;
+    text-shadow:0 0 8px #00ffae;
 }
 
-.gridRow{
+.row{
     margin-bottom:6px;
 }
 
 .box{
     width:100%;
-    min-width:0;
-    background:#1f1f1f;
     border:none;
     border-radius:8px;
     padding:8px 4px;
     text-align:center;
-    color:white;
     font-size:11px;
+    color:white;
+    background:#1c1c1c;
     outline:none;
+    text-shadow:0 0 5px #00ffae;
     box-shadow:
         0 0 6px #00ffae44,
         0 0 12px #00ffae22;
-    text-shadow:0 0 5px #00ffae;
 }
 
 .day{
@@ -91,13 +88,13 @@ body{
 }
 
 .result{
-    background:#101010;
+    background:#0f0f0f;
     font-weight:bold;
 }
 
 .nettoBox{
     margin-top:10px;
-    background:#101010;
+    background:#0f0f0f;
     border-radius:12px;
     padding:10px;
     text-align:center;
@@ -107,7 +104,6 @@ body{
 }
 
 .nettoTitle{
-    color:white;
     font-size:12px;
     margin-bottom:4px;
     text-shadow:0 0 6px #00ffae;
@@ -116,10 +112,9 @@ body{
 .nettoValue{
     font-size:22px;
     font-weight:bold;
-    color:white;
     text-shadow:
         0 0 5px #fff,
-        0 0 10px #00ffae;
+        0 0 15px #00ffae;
 }
 
 .buttons{
@@ -138,21 +133,21 @@ button{
     cursor:pointer;
     transition:0.2s;
     color:white;
-    text-shadow:0 0 5px #fff;
+    text-shadow:0 0 6px #000;
 }
 
 .saveBtn{
-    background:#00c98d;
+    background:#00ffae;
     box-shadow:
         0 0 10px #00ffae88,
         0 0 20px #00ffae33;
 }
 
 .resetBtn{
-    background:#ff3b3b;
+    background:#ff8a00;
     box-shadow:
-        0 0 10px #ff3b3b88,
-        0 0 20px #ff3b3b33;
+        0 0 10px #ff8a0088,
+        0 0 20px #ff8a0033;
 }
 
 button:hover{
@@ -160,7 +155,7 @@ button:hover{
 }
 
 input::placeholder{
-    color:#aaa;
+    color:#888;
 }
 
 </style>
@@ -170,49 +165,29 @@ input::placeholder{
 
 <div class="container">
 
-    <div class="title">
-        Ringkesan Minggu
-    </div>
+    <div class="title">Week Schema</div>
 
-    <div class="gridHeader">
+    <div class="header">
         <div>Dag</div>
         <div>Inzet</div>
-        <div>Totaal</div>
-        <div>Netto Winst</div>
+        <div>Winst</div>
+        <div>Netto</div>
     </div>
 
     <div id="schema"></div>
 
     <div class="nettoBox">
 
-        <div class="nettoTitle">
-            Totaal Netto Week Winst
-        </div>
+        <div class="nettoTitle">Totaal Netto</div>
 
-        <div
-            class="nettoValue"
-            id="grandTotal"
-        >
-            €0.00
-        </div>
+        <div class="nettoValue" id="grandTotal">€0.00</div>
 
     </div>
 
     <div class="buttons">
 
-        <button
-            class="saveBtn"
-            onclick="saveData()"
-        >
-            Opslaan
-        </button>
-
-        <button
-            class="resetBtn"
-            onclick="resetData()"
-        >
-            Reset
-        </button>
+        <button class="saveBtn" onclick="saveData()">Opslaan</button>
+        <button class="resetBtn" onclick="resetData()">Reset</button>
 
     </div>
 
@@ -220,78 +195,48 @@ input::placeholder{
 
 <script>
 
-const dagen = [
-    "Ma",
-    "Di",
-    "Wo",
-    "Do",
-    "Vr",
-    "Za",
-    "Zo"
-];
+const dagen = ["Ma","Di","Wo","Do","Vr","Za","Zo"];
 
-const schema =
-    document.getElementById("schema");
+const schema = document.getElementById("schema");
 
 dagen.forEach((dag,index)=>{
 
     schema.innerHTML += `
+    <div class="row">
 
-    <div class="gridRow">
+        <div class="box day">${dag}</div>
 
-        <div class="box day">
-            ${dag}
+        <input type="number"
+               class="box"
+               id="inzet${index}"
+               placeholder="€"
+               oninput="bereken(${index})">
+
+        <input type="number"
+               class="box"
+               id="winst${index}"
+               placeholder="€"
+               oninput="bereken(${index})">
+
+        <div class="box result"
+             id="result${index}">
+             €0.00
         </div>
 
-        <input
-            type="number"
-            class="box"
-            id="inzet${index}"
-            placeholder="€"
-            oninput="bereken(${index})"
-        >
-
-        <input
-            type="number"
-            class="box"
-            id="winst${index}"
-            placeholder="€"
-            oninput="bereken(${index})"
-        >
-
-        <div
-            class="box result"
-            id="result${index}"
-        >
-            €0.00
-        </div>
-
-    </div>
-
-    `;
+    </div>`;
 });
 
 function bereken(index){
 
     let inzet =
-        parseFloat(
-            document.getElementById(
-                `inzet${index}`
-            ).value
-        ) || 0;
+        parseFloat(document.getElementById(`inzet${index}`).value) || 0;
 
     let winst =
-        parseFloat(
-            document.getElementById(
-                `winst${index}`
-            ).value
-        ) || 0;
+        parseFloat(document.getElementById(`winst${index}`).value) || 0;
 
     let netto = winst - inzet;
 
-    document.getElementById(
-        `result${index}`
-    ).innerText =
+    document.getElementById(`result${index}`).innerText =
         "€" + netto.toFixed(2);
 
     updateNetto();
@@ -301,29 +246,19 @@ function updateNetto(){
 
     let totaal = 0;
 
-    dagen.forEach((dag,index)=>{
+    dagen.forEach((_,index)=>{
 
         let inzet =
-            parseFloat(
-                document.getElementById(
-                    `inzet${index}`
-                ).value
-            ) || 0;
+            parseFloat(document.getElementById(`inzet${index}`).value) || 0;
 
         let winst =
-            parseFloat(
-                document.getElementById(
-                    `winst${index}`
-                ).value
-            ) || 0;
+            parseFloat(document.getElementById(`winst${index}`).value) || 0;
 
         totaal += (winst - inzet);
 
     });
 
-    document.getElementById(
-        "grandTotal"
-    ).innerText =
+    document.getElementById("grandTotal").innerText =
         "€" + totaal.toFixed(2);
 }
 
@@ -331,143 +266,47 @@ function saveData(){
 
     let data = [];
 
-    dagen.forEach((dag,index)=>{
+    dagen.forEach((_,index)=>{
 
         data.push({
-
-            inzet:
-                document.getElementById(
-                    `inzet${index}`
-                ).value,
-
-            winst:
-                document.getElementById(
-                    `winst${index}`
-                ).value
-
+            inzet: document.getElementById(`inzet${index}`).value,
+            winst: document.getElementById(`winst${index}`).value
         });
 
     });
 
-    localStorage.setItem(
-        "weekSchema",
-        JSON.stringify(data)
-    );
+    localStorage.setItem("weekSchema", JSON.stringify(data));
 
     alert("Opgeslagen");
 
 }
 
-function loadData(){
-
-    let data = JSON.parse(
-        localStorage.getItem(
-            "weekSchema"
-        )
-    );
-
-    if(!data) return;
-
-    data.forEach((item,index)=>{
-
-        document.getElementById(
-            `inzet${index}`
-        ).value = item.inzet;
-
-        document.getElementById(
-            `winst${index}`
-        ).value = item.winst;
-
-        bereken(index);
-
-    });
-
-    updateNetto();
-}
-
 function resetData(){
 
-    localStorage.removeItem(
-        "weekSchema"
-    );
-
+    localStorage.removeItem("weekSchema");
     location.reload();
 }
 
 loadData();
 
+function loadData(){
+
+    let data = JSON.parse(localStorage.getItem("weekSchema"));
+
+    if(!data) return;
+
+    data.forEach((item,index)=>{
+
+        document.getElementById(`inzet${index}`).value = item.inzet;
+        document.getElementById(`winst${index}`).value = item.winst;
+
+        bereken(index);
+    });
+
+    updateNetto();
+}
+
 </script>
-
-</body>
-</html>
-
-
-
-<html lang="nl">
-<head>
-<meta charset="UTF-8">
-<title>Glow Informatie</title>
-
-<style>
-body {
-    background-color: #0a0a0a;
-    color: white;
-    font-family: Arial, sans-serif;
-    padding: 40px;
-}
-
-/* Glowing titel */
-h1 {
-    text-align: center;
-    font-size: 50px;
-    color: #ffffff;
-    text-shadow:
-        0 0 5px #00ffff,
-        0 0 10px #00ffff,
-        0 0 20px #00ffff,
-        0 0 40px #00ffff;
-}
-
-/* Glowing tekst blok */
-.info {
-    max-width: 700px;
-    margin: auto;
-    font-size: 18px;
-    line-height: 1.6;
-    padding: 20px;
-    border: 1px solid #00ffff;
-    border-radius: 10px;
-    box-shadow:
-        0 0 10px #00ffff,
-        0 0 20px #00ffff;
-}
-
-/* Knop met glow */
-button {
-    display: block;
-    margin: 30px auto;
-    padding: 12px 25px;
-    font-size: 16px;
-    color: white;
-    background: black;
-    border: 1px solid #ff00ff;
-    cursor: pointer;
-    box-shadow:
-        0 0 10px #ff00ff,
-        0 0 20px #ff00ff;
-    transition: 0.3s;
-}
-
-button:hover {
-    box-shadow:
-        0 0 20px #ff00ff,
-        0 0 40px #ff00ff;
-}
-</style>
-
-</head>
-<body>
-
 
 </body>
 </html>
