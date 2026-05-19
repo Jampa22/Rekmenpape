@@ -1,3 +1,5 @@
+The Most Powerfull Prediction Tool
+Made For European Roulette
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
@@ -398,8 +400,6 @@ loadData();
 
 </body>
 </html>
-
-The Most Powerfull Prediction Tool
 
 
 <html lang="nl">
