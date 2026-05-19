@@ -327,19 +327,19 @@ input::placeholder{
 
 <div class="container">
 
-    <div class="title">Week Schema</div>
+    <div class="title">Ringkesan Minggu</div>
 
     <div class="header">
         <div>Dag</div>
         <div>Inzet</div>
-        <div>Winst</div>
-        <div>Netto</div>
+        <div>Totaal</div>
+        <div>Netto Winst</div>
     </div>
 
     <div id="schema"></div>
 
     <div class="nettoBox">
-        <div class="nettoTitle">Totaal Netto</div>
+        <div class="nettoTitle">Totaal Netto Winst</div>
         <div class="nettoValue" id="grandTotal">€0.00</div>
     </div>
 
