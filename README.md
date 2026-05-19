@@ -3,7 +3,7 @@
   font-size: 70px;
   font-weight: bold;
   text-align: center;
-  animation: kleuren 5s infinite;
+  animation: kleuren 3s infinite;
 }
 
 @keyframes kleuren {
