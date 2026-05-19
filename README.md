@@ -1,21 +1,57 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>Animated Text</title>
 <style>
-.groot-animatie {
-  font-size: 70px;
-  font-weight: bold;
-  text-align: center;
-  animation: kleuren 3s infinite;
+body {
+  background: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
 }
 
-@keyframes kleuren {
-  0%   { color: red; }
-  25%  { color: orange; }
-  50%  { color: green; }
-  75%  { color: blue; }
-  100% { color: purple; }
+.animated-text {
+  font-size: 80px;
+  font-weight: 900;
+  font-family: Arial, sans-serif;
+  
+  /* gradient text */
+  background: linear-gradient(
+    90deg,
+    red,
+    orange,
+    yellow,
+    lime,
+    cyan,
+    blue,
+    magenta
+  );
+  background-size: 400%;
+  
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: colorMove 6s linear infinite;
+}
+
+/* animatie */
+@keyframes colorMove {
+  0% { background-position: 0% }
+  100% { background-position: 100% }
 }
 </style>
+</head>
+<body>
 
-<h1 class="groot-animatie">PREVIEUW</h1>
+<div class="animated-text">
+  PREVIEUW
+</div>
+
+</body>
+</html>
 
 <p style="color: green;">The Most Powerfull Prediction Tool</p>
 
