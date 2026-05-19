@@ -345,7 +345,7 @@ input::placeholder{
 
     <div class="buttons">
         <button class="saveBtn" onclick="saveData()">Opslaan</button>
-        <button class="resetBtn" onclick="resetData()">Reset</button>
+        <button class="resetBtn" onclick="resetData()">Opnieuw</button>
     </div>
 
 </div>
