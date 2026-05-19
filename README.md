@@ -159,191 +159,207 @@ toggleBtn.onclick = () => {
 body{
     background:#050505;
     font-family:Arial,sans-serif;
-    padding:6px;
+    padding:8px;
     color:white;
 }
 
 /* CONTAINER */
+
 .container{
     width:100%;
     max-width:420px;
     margin:auto;
-    background:#0e0e0e;
-    border-radius:14px;
-    padding:10px;
+    background:#101010;
+    border-radius:16px;
+    padding:12px;
 
     box-shadow:
-        0 0 14px #00ffae55,
-        0 0 26px #00ffae22;
+        0 0 15px #00ffae55,
+        0 0 30px #00ffae22;
 }
 
 /* TITLE */
+
 .title{
     text-align:center;
-    font-size:18px;
-    margin-bottom:8px;
-
+    font-size:20px;
+    margin-bottom:10px;
     color:white;
+
     text-shadow:
-        0 0 4px #fff,
+        0 0 5px #fff,
         0 0 10px #00ffae,
-        0 0 18px #00ffae;
+        0 0 20px #00ffae;
 }
 
 /* GRID */
+
 .header,
 .row{
     display:grid;
-    grid-template-columns: 40px 1fr 1fr 1fr;
-    gap:4px;
+    grid-template-columns:
+        45px
+        1fr
+        1fr
+        1fr;
+
+    gap:5px;
     align-items:center;
 }
 
 .header{
-    font-size:10px;
+    margin-bottom:6px;
+    font-size:11px;
     font-weight:bold;
     text-align:center;
-    margin-bottom:5px;
+
     color:white;
-    text-shadow:0 0 6px #00ffae;
+
+    text-shadow:
+        0 0 6px #00ffae;
 }
 
 .row{
-    margin-bottom:4px;
+    margin-bottom:6px;
 }
 
-/* INPUT BOX */
+/* BOX */
+
 .box{
     width:100%;
     border:none;
-    border-radius:7px;
-    padding:7px 3px;
+    border-radius:8px;
+    padding:8px 4px;
 
-    font-size:10px;
-    text-align:center;
-
-    background:#151515;
+    background:#1a1a1a;
     color:white;
+
+    text-align:center;
+    font-size:11px;
 
     outline:none;
 
-    transition:0.2s;
+    text-shadow:
+        0 0 5px #00ffae;
 
     box-shadow:
-        0 0 5px #00ffae22,
-        0 0 10px #00ffae11;
-
-    text-shadow:0 0 4px #00ffae;
+        0 0 6px #00ffae33,
+        0 0 12px #00ffae11;
 }
 
-/* GLOW ON FOCUS / CLICK */
-.box:focus{
-    box-shadow:
-        0 0 8px #00ffae,
-        0 0 18px #00ffae88;
-    transform:scale(1.03);
-}
-
-/* DAY */
 .day{
     font-weight:bold;
 }
 
-/* RESULT */
 .result{
-    background:#0c0c0c;
+    background:#0d0d0d;
     font-weight:bold;
 }
 
 /* NETTO */
-.nettoBox{
-    margin-top:8px;
-    padding:8px;
 
-    border-radius:10px;
-    background:#0c0c0c;
+.nettoBox{
+    margin-top:10px;
+    padding:10px;
+
+    border-radius:12px;
+    background:#0d0d0d;
 
     text-align:center;
 
     box-shadow:
-        0 0 10px #00ffae44,
-        0 0 18px #00ffae22;
+        0 0 10px #00ffae55,
+        0 0 20px #00ffae22;
 }
 
 .nettoTitle{
-    font-size:11px;
-    margin-bottom:3px;
-    text-shadow:0 0 6px #00ffae;
+    font-size:12px;
+    margin-bottom:4px;
+
+    text-shadow:
+        0 0 6px #00ffae;
 }
 
 .nettoValue{
-    font-size:18px;
+    font-size:22px;
     font-weight:bold;
 
     text-shadow:
-        0 0 4px #fff,
-        0 0 12px #00ffae;
+        0 0 5px #fff,
+        0 0 15px #00ffae;
 }
 
 /* BUTTONS */
+
 .buttons{
     display:flex;
-    gap:5px;
-    margin-top:8px;
+    gap:6px;
+    margin-top:10px;
 }
 
 button{
     flex:1;
+
     border:none;
-    border-radius:8px;
-    padding:9px;
-    font-size:11px;
+    border-radius:10px;
+
+    padding:10px;
+
+    font-size:12px;
     font-weight:bold;
+
     cursor:pointer;
+
     transition:0.2s;
 }
 
 /* SAVE */
+
 .saveBtn{
     background:#00ffae;
     color:white;
 
+    text-shadow:
+        0 0 6px #000;
+
     box-shadow:
         0 0 10px #00ffae88,
         0 0 20px #00ffae33;
-
-    text-shadow:0 0 6px #000;
 }
 
 /* RESET */
+
 .resetBtn{
     background:#bfffe9;
     color:white;
 
+    text-shadow:
+        0 0 6px #000;
+
     box-shadow:
         0 0 10px #bfffe988,
         0 0 20px #bfffe933;
-
-    text-shadow:0 0 6px #000;
 }
 
-/* HOVER */
 button:hover{
     transform:scale(1.02);
 }
 
+/* PLACEHOLDER */
+
 input::placeholder{
-    color:#777;
+    color:#888;
 }
 
 </style>
 </head>
-
 <body>
 
 <div class="container">
 
-    <div class="title">Ringkesan Minggu</div>
+    <div class="title">
+        Ringkesan Minggu
+    </div>
 
     <div class="header">
         <div>Dag</div>
@@ -355,132 +371,234 @@ input::placeholder{
     <div id="schema"></div>
 
     <div class="nettoBox">
-        <div class="nettoTitle">Totaal Netto Winst</div>
-        <div class="nettoValue" id="grandTotal">€0.00</div>
+
+        <div class="nettoTitle">
+            Totaal Netto Winst
+        </div>
+
+        <div
+            class="nettoValue"
+            id="grandTotal"
+        >
+            €0.00
+        </div>
+
     </div>
 
     <div class="buttons">
-        <button class="saveBtn" onclick="saveData()">Opslaan</button>
-        <button class="resetBtn" onclick="resetData()">Opnieuw</button>
+
+        <button
+            class="saveBtn"
+            onclick="saveData()"
+        >
+            Opslaan
+        </button>
+
+        <button
+            class="resetBtn"
+            onclick="resetData()"
+        >
+            Opnieuw
+        </button>
+
     </div>
 
 </div>
 
 <script>
 
-const dagen = ["Ma","Di","Wo","Do","Vr","Za","Zo"];
+const dagen = [
+    "Ma",
+    "Di",
+    "Wo",
+    "Do",
+    "Vr",
+    "Za",
+    "Zo"
+];
 
-const schema = document.getElementById("schema");
+const schema =
+    document.getElementById("schema");
+
+/* RIJEN */
 
 dagen.forEach((dag,index)=>{
 
     schema.innerHTML += `
+
     <div class="row">
 
-        <div class="box day">${dag}</div>
-
-        <input type="number"
-               class="box"
-               id="inzet${index}"
-               placeholder="€"
-               onfocus="this.classList.add('active')"
-               onblur="this.classList.remove('active')"
-               oninput="bereken(${index})">
-
-        <input type="number"
-               class="box"
-               id="winst${index}"
-               placeholder="€"
-               onfocus="this.classList.add('active')"
-               onblur="this.classList.remove('active')"
-               oninput="bereken(${index})">
-
-        <div class="box result"
-             id="result${index}">
-             €0.00
+        <div class="box day">
+            ${dag}
         </div>
 
-    </div>`;
+        <input
+            type="number"
+            class="box"
+            id="inzet${index}"
+            placeholder="€"
+            oninput="bereken(${index})"
+        >
+
+        <input
+            type="number"
+            class="box"
+            id="winst${index}"
+            placeholder="€"
+            oninput="bereken(${index})"
+        >
+
+        <div
+            class="box result"
+            id="result${index}"
+        >
+            €0.00
+        </div>
+
+    </div>
+
+    `;
+
 });
+
+/* BEREKEN */
 
 function bereken(index){
 
     let inzet =
-        parseFloat(document.getElementById(`inzet${index}`).value) || 0;
+        parseFloat(
+            document.getElementById(
+                `inzet${index}`
+            ).value
+        ) || 0;
 
     let winst =
-        parseFloat(document.getElementById(`winst${index}`).value) || 0;
+        parseFloat(
+            document.getElementById(
+                `winst${index}`
+            ).value
+        ) || 0;
 
-    let netto = winst - inzet;
+    let netto =
+        winst - inzet;
 
-    document.getElementById(`result${index}`).innerText =
+    document.getElementById(
+        `result${index}`
+    ).innerText =
         "€" + netto.toFixed(2);
 
     updateNetto();
 }
 
+/* TOTAAL */
+
 function updateNetto(){
 
     let totaal = 0;
 
-    dagen.forEach((_,index)=>{
+    dagen.forEach((dag,index)=>{
 
         let inzet =
-            parseFloat(document.getElementById(`inzet${index}`).value) || 0;
+            parseFloat(
+                document.getElementById(
+                    `inzet${index}`
+                ).value
+            ) || 0;
 
         let winst =
-            parseFloat(document.getElementById(`winst${index}`).value) || 0;
+            parseFloat(
+                document.getElementById(
+                    `winst${index}`
+                ).value
+            ) || 0;
 
-        totaal += (winst - inzet);
+        totaal +=
+            (winst - inzet);
 
     });
 
-    document.getElementById("grandTotal").innerText =
+    document.getElementById(
+        "grandTotal"
+    ).innerText =
         "€" + totaal.toFixed(2);
 }
+
+/* OPSLAAN */
 
 function saveData(){
 
     let data = [];
 
-    dagen.forEach((_,index)=>{
+    dagen.forEach((dag,index)=>{
 
         data.push({
-            inzet: document.getElementById(`inzet${index}`).value,
-            winst: document.getElementById(`winst${index}`).value
+
+            inzet:
+                document.getElementById(
+                    `inzet${index}`
+                ).value,
+
+            winst:
+                document.getElementById(
+                    `winst${index}`
+                ).value
+
         });
 
     });
 
-    localStorage.setItem("weekSchema", JSON.stringify(data));
+    localStorage.setItem(
+        "weekSchema",
+        JSON.stringify(data)
+    );
 
     alert("Opgeslagen");
 }
 
-function resetData(){
-
-    localStorage.removeItem("weekSchema");
-    location.reload();
-}
-
-loadData();
+/* LADEN */
 
 function loadData(){
 
-    let data = JSON.parse(localStorage.getItem("weekSchema"));
+    let data =
+        JSON.parse(
+            localStorage.getItem(
+                "weekSchema"
+            )
+        );
 
     if(!data) return;
 
     data.forEach((item,index)=>{
 
-        document.getElementById(`inzet${index}`).value = item.inzet;
-        document.getElementById(`winst${index}`).value = item.winst;
+        document.getElementById(
+            `inzet${index}`
+        ).value =
+            item.inzet;
+
+        document.getElementById(
+            `winst${index}`
+        ).value =
+            item.winst;
 
         bereken(index);
+
     });
 
     updateNetto();
 }
+
+/* RESET */
+
+function resetData(){
+
+    localStorage.removeItem(
+        "weekSchema"
+    );
+
+    location.reload();
+}
+
+loadData();
 
 </script>
 
@@ -698,5 +816,3 @@ function resetAll() {
 
 </body>
 </html>
-
-
