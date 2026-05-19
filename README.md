@@ -323,8 +323,6 @@ input::placeholder{
 </style>
 </head>
 
-<body>
-
 <div class="container">
 
     <div class="title">Ringkesan Minggu</div>
