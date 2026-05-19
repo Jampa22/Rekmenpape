@@ -139,7 +139,9 @@ toggleBtn.onclick = () => {
 };
 </script>
 
-<p style="color: green;">The Most Powerfull Prediction Tool</p>
+<span style="color: lightgreen;">
+The Most Powerfull Prediction Tool
+</span>
 
 <html lang="nl">
 <head>
