@@ -1,3 +1,20 @@
+<style>
+.animated-text {
+  animation: kleurwissel 3s infinite;
+}
+
+@keyframes kleurwissel {
+  0%   { color: red; }
+  25%  { color: orange; }
+  50%  { color: green; }
+  75%  { color: blue; }
+  100% { color: purple; }
+}
+</style>
+
+<p class="animated-text">PREVIEUW</p>
+
+
 <p style="color: green;">The Most Powerfull Prediction Tool</p>
 
 <html lang="nl">
