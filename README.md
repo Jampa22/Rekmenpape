@@ -462,9 +462,6 @@ function loadData(){
 
 </script>
 
-</body>
-</html>
-
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
