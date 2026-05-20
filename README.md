@@ -639,7 +639,7 @@ rightMiniGuideBtn.onclick = () => {
 };
 </script>
 
-<span style="color: green;">
+<span style="color: yellow green;">
 The Most Powerfull Prediction Tool
 </span>
 
@@ -1086,12 +1086,6 @@ function reset(){
 }
 
 </script>
-
-</body>
-</html>
-
-</body>
-</html>
 
 <html lang="nl">
 <head>
