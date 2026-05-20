@@ -1,23 +1,27 @@
-<!-- FIXED MINI GUIDE -->
 <style>
-#miniGuide{
-    position:fixed; /* blijft vast staan */
+/* FIXED GUIDE */
+#miniGuideShort{
+    position:fixed;
     top:6px;
     left:6px;
-    z-index:999999;
+    z-index:999999999;
     font-family:Arial,sans-serif;
 }
 
-/* Kleine knop */
-#guideToggle{
-    width:28px;
-    height:28px;
+/* BUTTON */
+#miniGuideShortBtn{
+    width:24px;
+    height:24px;
+
     border:none;
-    border-radius:8px;
-    background:#050505;
+    border-radius:7px;
+
+    background:
+        linear-gradient(145deg,#050505,#111);
+
     color:#baffea;
+    font-size:11px;
     cursor:pointer;
-    font-size:14px;
 
     display:flex;
     align-items:center;
@@ -27,100 +31,111 @@
         0 0 8px #9fffe3,
         0 0 18px rgba(159,255,227,.35),
         inset 0 0 5px rgba(255,255,255,.05);
+
+    transition:.15s ease;
 }
 
-/* Popup */
-#guideContent{
+#miniGuideShortBtn:hover{
+    transform:scale(1.05);
+
+    box-shadow:
+        0 0 12px #baffea,
+        0 0 24px rgba(159,255,227,.55);
+}
+
+/* POPUP */
+#miniGuideShortBox{
     position:absolute;
-    top:36px;
+    top:32px;
     left:0;
 
-    width:220px;
-    padding:10px;
+    width:205px;
+    padding:9px;
 
     border-radius:12px;
-    background:rgba(8,8,8,.97);
-    border:1px solid rgba(186,255,234,.15);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(10,10,10,.98),
+            rgba(5,5,5,.99)
+        );
+
+    border:1px solid rgba(186,255,234,.14);
 
     display:none;
 
-    color:white;
+    color:#fff;
 
     box-shadow:
-        0 0 20px rgba(159,255,227,.15);
+        0 0 20px rgba(159,255,227,.18),
+        inset 0 0 10px rgba(255,255,255,.03);
 }
 
-.guideItem{
-    padding:7px 0;
-    border-bottom:1px solid rgba(255,255,255,.06);
-}
+/* ITEM */
+.shortItem{
+    margin-bottom:7px;
+    padding:6px 7px;
 
-.guideItem:last-child{
-    border-bottom:none;
-}
+    border-radius:8px;
 
-.guideTitle{
-    color:#baffea;
-    font-size:11px;
-    font-weight:bold;
-    margin-bottom:3px;
-}
+    background:rgba(255,255,255,.02);
 
-.guideText{
     color:#d8d8d8;
     font-size:10px;
-    line-height:1.4;
+    line-height:1.35;
+}
+
+.shortItem:last-child{
+    margin-bottom:0;
+}
+
+/* TITLE */
+.shortTitle{
+    color:#baffea;
+    font-weight:bold;
+    margin-bottom:2px;
+    font-size:10px;
 }
 </style>
 
-<div id="miniGuide">
+<!-- GUIDE -->
+<div id="miniGuideShort">
 
     <!-- BUTTON -->
-    <button id="guideToggle">☰</button>
+    <button id="miniGuideShortBtn">☰</button>
 
-    <!-- CONTENT -->
-    <div id="guideContent">
+    <!-- POPUP -->
+    <div id="miniGuideShortBox">
 
-        <div class="guideItem">
-            <div class="guideTitle">🎯Predictions</div>
-            <div class="guideText">
-                Live trend prediction system.
-            </div>
+        <div class="shortItem">
+            <div class="shortTitle">🎯 Predictions</div>
+            Predicts next trends.
         </div>
 
-        <div class="guideItem">
-            <div class="guideTitle">📈Patterns</div>
-            <div class="guideText">
-                Detects repeating streaks and switches.
-            </div>
+        <div class="shortItem">
+            <div class="shortTitle">📈 Patterns</div>
+            Detects repeating behavior.
         </div>
 
-        <div class="guideItem">
-            <div class="guideTitle">📊Data</div>
-            <div class="guideText">
-                Uses live table confirmations and statistics.
-            </div>
+        <div class="shortItem">
+            <div class="shortTitle">📊 Data</div>
+            Uses live table statistics.
         </div>
 
-        <div class="guideItem">
-            <div class="guideTitle">📉Exit signals</div>
-            <div class="guideText">
-                Stop when repeated loss behavior returns.
-            </div>
+        <div class="shortItem">
+            <div class="shortTitle">📉 Exit signals</div>
+            Stop on repeated loss pattern.
         </div>
 
-        <div class="guideItem">
-            <div class="guideTitle">⭐️Optimize</div>
-            <div class="guideText">
-                Dynamic optimization for stable calculations.
-            </div>
+        <div class="shortItem">
+            <div class="shortTitle">⭐️ Optimize</div>
+            Improves calculation stability.
         </div>
 
-        <div class="guideItem">
-            <div class="guideTitle">🔥Hot tables</div>
-            <div class="guideText">
-                Highlights strong and stable tables.
-            </div>
+        <div class="shortItem">
+            <div class="shortTitle">🔥 Hot tables</div>
+            Shows strong active tables.
         </div>
 
     </div>
@@ -128,14 +143,151 @@
 </div>
 
 <script>
-const toggleBtn = document.getElementById("guideToggle");
-const guideContent = document.getElementById("guideContent");
+const miniGuideShortBtn =
+document.getElementById("miniGuideShortBtn");
 
-toggleBtn.onclick = () => {
-    guideContent.style.display =
-        guideContent.style.display === "block"
+const miniGuideShortBox =
+document.getElementById("miniGuideShortBox");
+
+miniGuideShortBtn.onclick = () => {
+
+    miniGuideShortBox.style.display =
+        miniGuideShortBox.style.display === "block"
         ? "none"
         : "block";
+
+};
+</script>
+
+<style>
+/* FIXED RIGHT GUIDE */
+#rightMiniGuide{
+    position:fixed;
+    top:6px;
+    right:6px;
+    z-index:999999999;
+    font-family:Arial,sans-serif;
+}
+
+/* MINI BUTTON */
+#rightMiniGuideBtn{
+    width:24px;
+    height:24px;
+
+    border:none;
+    border-radius:7px;
+
+    background:
+        linear-gradient(145deg,#050505,#111);
+
+    color:#baffea;
+    font-size:11px;
+    cursor:pointer;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    box-shadow:
+        0 0 8px #9fffe3,
+        0 0 18px rgba(159,255,227,.35),
+        inset 0 0 5px rgba(255,255,255,.05);
+
+    transition:.15s ease;
+}
+
+#rightMiniGuideBtn:hover{
+    transform:scale(1.05);
+
+    box-shadow:
+        0 0 12px #baffea,
+        0 0 24px rgba(159,255,227,.55);
+}
+
+/* POPUP */
+#rightMiniGuideBox{
+    position:absolute;
+    top:32px;
+    right:0;
+
+    width:240px;
+    padding:10px;
+
+    border-radius:12px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(10,10,10,.98),
+            rgba(5,5,5,.99)
+        );
+
+    border:1px solid rgba(186,255,234,.14);
+
+    display:none;
+
+    color:#fff;
+
+    box-shadow:
+        0 0 20px rgba(159,255,227,.18),
+        inset 0 0 10px rgba(255,255,255,.03);
+}
+
+/* TITLE */
+.rightGuideTitle{
+    color:#baffea;
+    font-size:10px;
+    font-weight:bold;
+    margin-bottom:7px;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+}
+
+/* TEXT */
+.rightGuideText{
+    color:#d8d8d8;
+    font-size:10px;
+    line-height:1.45;
+}
+</style>
+
+<!-- RIGHT GUIDE -->
+<div id="rightMiniGuide">
+
+    <!-- BUTTON -->
+    <button id="rightMiniGuideBtn">☰</button>
+
+    <!-- POPUP -->
+    <div id="rightMiniGuideBox">
+
+        <div class="rightGuideTitle">
+            Exit Signal Info
+        </div>
+
+        <div class="rightGuideText">
+            If the table previously changed calculation type after a certain
+            number of confirmed spins (causing a loss), stop when that same
+            count is reached again.
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+const rightMiniGuideBtn =
+document.getElementById("rightMiniGuideBtn");
+
+const rightMiniGuideBox =
+document.getElementById("rightMiniGuideBox");
+
+rightMiniGuideBtn.onclick = () => {
+
+    rightMiniGuideBox.style.display =
+        rightMiniGuideBox.style.display === "block"
+        ? "none"
+        : "block";
+
 };
 </script>
 
