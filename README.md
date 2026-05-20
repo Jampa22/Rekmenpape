@@ -559,8 +559,7 @@ rightMiniGuideBtn.onclick = () => {
 <span style="color:yellow;">
 🇮🇩🇺🇸RT🇸🇷🇳🇱
 </span>
-
-<span style="color:Mint;">
+<span style="color:Yellow;">
 Jampa Boy
 </span>
 
