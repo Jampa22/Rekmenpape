@@ -509,51 +509,231 @@ input::placeholder{
 </head>
 <body>
 
-<div class="container">
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mint Glow Ultra Compact</title>
 
-    <div class="title">
-        Ringkesan Minggu
-    </div>
+<style>
+body{
+    margin:0;
+    background:#000;
+    font-family:Arial,sans-serif;
+}
 
-    <div class="header">
-        <div>Dag</div>
-        <div>Inzet</div>
-        <div>Totaal</div>
-        <div>Winst</div>
-    </div>
+/* ===== FIXED GUIDE BUTTON ===== */
+#guideUI{
+    position:fixed;
+    top:6px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:999999;
+}
 
-    <div id="schema"></div>
+#guideBtn{
+    width:26px;
+    height:26px;
+    border:none;
+    border-radius:7px;
 
-    <div class="nettoBox">
+    background:#050505;
+    color:#baffea;
+    cursor:pointer;
 
-        <div class="nettoTitle">
-            Winst/Verlies
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    box-shadow:0 0 10px #7fffd4;
+    font-size:12px;
+}
+
+/* PANEL */
+#panel{
+    position:absolute;
+    top:34px;
+    left:50%;
+    transform:translateX(-50%);
+
+    width:230px;
+    padding:8px;
+
+    background:#050505;
+    border:1px solid rgba(127,255,212,.25);
+    border-radius:10px;
+
+    display:none;
+
+    box-shadow:0 0 18px rgba(127,255,212,.25);
+    color:#fff;
+}
+
+/* WEEK CHECKLIST */
+.week{
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+    margin-bottom:8px;
+}
+
+.day{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:3px;
+    border-radius:6px;
+
+    background:rgba(255,255,255,0.03);
+    box-shadow:0 0 6px rgba(127,255,212,.12);
+}
+
+.day span{
+    width:24px;
+    font-size:8px;
+    color:#baffea;
+}
+
+/* CHECKBOX */
+.day input[type="checkbox"]{
+    transform:scale(0.8);
+    accent-color:#7fffd4;
+}
+
+/* INPUTS */
+.row{
+    display:flex;
+    gap:6px;
+}
+
+.box{
+    flex:1;
+}
+
+.label{
+    font-size:9px;
+    color:#baffea;
+    margin-bottom:3px;
+}
+
+.box input{
+    width:100%;
+    padding:6px;
+
+    border:none;
+    border-radius:6px;
+
+    background:#0b0b0b;
+    color:#fff;
+    font-size:10px;
+    text-align:center;
+
+    box-shadow:0 0 8px rgba(127,255,212,.2);
+}
+
+/* NETTO */
+#netto{
+    margin-top:8px;
+    padding:6px;
+
+    text-align:center;
+    border-radius:6px;
+
+    background:rgba(255,255,255,0.03);
+    color:#baffea;
+
+    font-size:10px;
+    font-weight:bold;
+
+    box-shadow:0 0 10px rgba(127,255,212,.2);
+}
+
+/* BUTTONS */
+.buttons{
+    display:flex;
+    gap:6px;
+    margin-top:8px;
+}
+
+/* GREEN SAVE */
+.saveBtn{
+    flex:1;
+    padding:6px;
+    border:none;
+    border-radius:6px;
+
+    background:#0f3;
+    color:#fff;
+
+    font-size:9px;
+    cursor:pointer;
+}
+
+/* MINT RESET */
+.resetBtn{
+    flex:1;
+    padding:6px;
+    border:none;
+    border-radius:6px;
+
+    background:#111;
+    color:#baffea;
+
+    font-size:9px;
+    cursor:pointer;
+
+    box-shadow:0 0 10px rgba(127,255,212,.15);
+}
+
+.resetBtn:hover{
+    box-shadow:0 0 14px rgba(127,255,212,.3);
+}
+</style>
+</head>
+
+<body>
+
+<!-- GUIDE -->
+<div id="guideUI">
+
+    <button id="guideBtn">☰</button>
+
+    <div id="panel">
+
+        <!-- WEEK -->
+        <div class="week">
+            <div class="day"><span>Ma</span><input type="checkbox"></div>
+            <div class="day"><span>Di</span><input type="checkbox"></div>
+            <div class="day"><span>Wo</span><input type="checkbox"></div>
+            <div class="day"><span>Do</span><input type="checkbox"></div>
+            <div class="day"><span>Vr</span><input type="checkbox"></div>
+            <div class="day"><span>Za</span><input type="checkbox"></div>
+            <div class="day"><span>Zo</span><input type="checkbox"></div>
         </div>
 
-        <div
-            class="nettoValue"
-            id="grandTotal"
-        >
-            €0.00
+        <!-- INPUTS -->
+        <div class="row">
+            <div class="box">
+                <div class="label">Inzet</div>
+                <input id="bet" type="number" oninput="calc()">
+            </div>
+
+            <div class="box">
+                <div class="label">Winst</div>
+                <input id="win" type="number" oninput="calc()">
+            </div>
         </div>
 
-    </div>
+        <!-- NETTO -->
+        <div id="netto">Netto: €0</div>
 
-    <div class="buttons">
-
-        <button
-            class="saveBtn"
-            onclick="saveData()"
-        >
-            Opslaan
-        </button>
-
-        <button
-            class="resetBtn"
-            onclick="resetData()"
-        >
-            Opnieuw
-        </button>
+        <!-- BUTTONS -->
+        <div class="buttons">
+            <button class="saveBtn" onclick="save()">Opslaan</button>
+            <button class="resetBtn" onclick="reset()">Opnieuw</button>
+        </div>
 
     </div>
 
@@ -561,200 +741,54 @@ input::placeholder{
 
 <script>
 
-const dagen = [
-    "Ma",
-    "Di",
-    "Wo",
-    "Do",
-    "Vr",
-    "Za",
-    "Zo"
-];
+/* TOGGLE */
+const btn = document.getElementById("guideBtn");
+const panel = document.getElementById("panel");
 
-const schema =
-    document.getElementById("schema");
+btn.onclick = () => {
+    panel.style.display =
+        panel.style.display === "block"
+        ? "none"
+        : "block";
+};
 
-/* RIJEN */
+/* CALC */
+function calc(){
+    let w = parseFloat(document.getElementById("win").value)||0;
+    let b = parseFloat(document.getElementById("bet").value)||0;
 
-dagen.forEach((dag,index)=>{
-
-    schema.innerHTML += `
-
-    <div class="row">
-
-        <div class="box day">
-            ${dag}
-        </div>
-
-        <input
-            type="number"
-            class="box"
-            id="inzet${index}"
-            placeholder="€"
-            oninput="bereken(${index})"
-        >
-
-        <input
-            type="number"
-            class="box"
-            id="winst${index}"
-            placeholder="€"
-            oninput="bereken(${index})"
-        >
-
-        <div
-            class="box result"
-            id="result${index}"
-        >
-            €0.00
-        </div>
-
-    </div>
-
-    `;
-
-});
-
-/* BEREKEN */
-
-function bereken(index){
-
-    let inzet =
-        parseFloat(
-            document.getElementById(
-                `inzet${index}`
-            ).value
-        ) || 0;
-
-    let winst =
-        parseFloat(
-            document.getElementById(
-                `winst${index}`
-            ).value
-        ) || 0;
-
-    let netto =
-        winst - inzet;
-
-    document.getElementById(
-        `result${index}`
-    ).innerText =
-        "€" + netto.toFixed(2);
-
-    updateNetto();
+    document.getElementById("netto").innerText =
+        "Netto: €" + (w - b).toFixed(2);
 }
 
-/* TOTAAL */
-
-function updateNetto(){
-
-    let totaal = 0;
-
-    dagen.forEach((dag,index)=>{
-
-        let inzet =
-            parseFloat(
-                document.getElementById(
-                    `inzet${index}`
-                ).value
-            ) || 0;
-
-        let winst =
-            parseFloat(
-                document.getElementById(
-                    `winst${index}`
-                ).value
-            ) || 0;
-
-        totaal +=
-            (winst - inzet);
-
-    });
-
-    document.getElementById(
-        "grandTotal"
-    ).innerText =
-        "€" + totaal.toFixed(2);
+/* SAVE */
+function save(){
+    localStorage.setItem("mintUltraV8", JSON.stringify({
+        bet: document.getElementById("bet").value,
+        win: document.getElementById("win").value
+    }));
 }
 
-/* OPSLAAN */
+/* LOAD */
+window.onload = () => {
+    let d = JSON.parse(localStorage.getItem("mintUltraV8"));
+    if(!d) return;
 
-function saveData(){
-
-    let data = [];
-
-    dagen.forEach((dag,index)=>{
-
-        data.push({
-
-            inzet:
-                document.getElementById(
-                    `inzet${index}`
-                ).value,
-
-            winst:
-                document.getElementById(
-                    `winst${index}`
-                ).value
-
-        });
-
-    });
-
-    localStorage.setItem(
-        "weekSchema",
-        JSON.stringify(data)
-    );
-
-    alert("Opgeslagen");
-}
-
-/* LADEN */
-
-function loadData(){
-
-    let data =
-        JSON.parse(
-            localStorage.getItem(
-                "weekSchema"
-            )
-        );
-
-    if(!data) return;
-
-    data.forEach((item,index)=>{
-
-        document.getElementById(
-            `inzet${index}`
-        ).value =
-            item.inzet;
-
-        document.getElementById(
-            `winst${index}`
-        ).value =
-            item.winst;
-
-        bereken(index);
-
-    });
-
-    updateNetto();
-}
+    document.getElementById("bet").value = d.bet;
+    document.getElementById("win").value = d.win;
+    calc();
+};
 
 /* RESET */
-
-function resetData(){
-
-    localStorage.removeItem(
-        "weekSchema"
-    );
-
+function reset(){
+    localStorage.removeItem("mintUltraV8");
     location.reload();
 }
 
-loadData();
-
 </script>
+
+</body>
+</html>
 
 </body>
 </html>
