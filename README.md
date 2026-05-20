@@ -855,7 +855,6 @@ input::placeholder{
 
 </style>
 </head>
-<body>
 
 <html lang="nl">
 <head>
