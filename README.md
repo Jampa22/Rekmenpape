@@ -639,7 +639,7 @@ rightMiniGuideBtn.onclick = () => {
 };
 </script>
 
-<span style="color:yellow;">
+<span style="color:yellow mint;">
 The Most Powerfull Tool
 </span>
 
