@@ -1,9 +1,10 @@
+<!DOCTYPE html>
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>Mint Glow Compact</title>
+<title>Mini Guide</title>
 
 <style>
 
@@ -13,23 +14,28 @@ body{
     font-family:Arial,sans-serif;
 }
 
-/* MINI GUIDE */
-#guideUI{
+/* GUIDE */
+#guide{
     position:fixed;
-    top:6px;
+    top:4px;
     left:50%;
     transform:translateX(-50%);
-    z-index:999999;
+    z-index:99999;
 }
 
-#guideBtn{
-    width:22px;
-    height:22px;
+/* ☰ BUTTON */
+#menu{
+    width:16px;
+    height:16px;
+
     border:none;
-    border-radius:6px;
+    border-radius:4px;
+
     background:#050505;
-    color:#baffea;
-    font-size:10px;
+    color:#7fffd4;
+
+    font-size:7px;
+
     cursor:pointer;
 
     display:flex;
@@ -37,69 +43,78 @@ body{
     justify-content:center;
 
     box-shadow:
-    0 0 8px #7fffd4,
-    inset 0 0 4px rgba(255,255,255,.05);
+    0 0 6px #7fffd4;
 }
 
 /* PANEL */
 #panel{
     position:absolute;
-    top:28px;
+
+    top:20px;
     left:50%;
+
     transform:translateX(-50%);
 
-    width:220px;
-    padding:6px;
+    width:175px;
+
+    padding:4px;
+
+    border-radius:6px;
 
     background:#050505;
-    border-radius:10px;
 
-    border:1px solid rgba(127,255,212,.18);
+    border:
+    1px solid rgba(127,255,212,.15);
 
     display:none;
 
     box-shadow:
-    0 0 18px rgba(127,255,212,.15);
+    0 0 10px rgba(127,255,212,.18);
 }
 
 /* HEADER */
-.header{
+.head{
     display:grid;
+
     grid-template-columns:
-    18px 1fr 1fr 1fr;
+    14px 1fr 1fr 34px;
 
-    gap:3px;
+    gap:2px;
 
-    margin-bottom:4px;
+    margin-bottom:2px;
 
-    font-size:7px;
+    font-size:5px;
+
     color:#7fffd4;
 }
 
 /* ROW */
 .row{
     display:grid;
+
     grid-template-columns:
-    18px 1fr 1fr 1fr;
+    14px 1fr 1fr 34px;
 
-    gap:3px;
+    gap:2px;
 
-    margin-bottom:3px;
+    margin-bottom:2px;
+
     padding:2px;
 
-    border-radius:5px;
+    border-radius:4px;
 
     background:
     rgba(255,255,255,.03);
 
     box-shadow:
-    0 0 5px rgba(127,255,212,.08);
+    0 0 4px rgba(127,255,212,.08);
 }
 
 /* DAY */
 .day{
-    font-size:7px;
-    color:#baffea;
+    font-size:5px;
+
+    color:#fff;
 
     display:flex;
     align-items:center;
@@ -114,21 +129,24 @@ input{
 
     padding:2px;
 
-    border-radius:4px;
-
-    font-size:7px;
-    text-align:center;
+    border-radius:3px;
 
     background:#0a0a0a;
+
     color:#fff;
 
+    text-align:center;
+
+    font-size:5px;
+
     box-shadow:
-    0 0 5px rgba(127,255,212,.10);
+    0 0 5px rgba(127,255,212,.15);
 }
 
 /* RESULT */
-.res{
-    font-size:7px;
+.result{
+    font-size:5px;
+
     color:#7fffd4;
 
     display:flex;
@@ -138,76 +156,51 @@ input{
 
 /* TOTAL */
 #week{
-    margin-top:5px;
+    margin-top:3px;
 
-    padding:5px;
+    padding:4px;
+
+    border-radius:4px;
+
+    background:
+    rgba(0,255,180,.05);
 
     text-align:center;
 
-    font-size:9px;
-
-    border-radius:6px;
-
     color:#7fffd4;
 
-    background:
-    rgba(0,255,200,.05);
+    font-size:7px;
 }
 
 /* BUTTONS */
-.btns{
+.buttons{
     display:flex;
-    gap:5px;
 
-    margin-top:7px;
+    gap:3px;
+
+    margin-top:4px;
 }
 
-/* SAVE */
-.save{
-
+/* BTN */
+.btn{
     flex:1;
 
     border:none;
 
-    padding:5px;
+    padding:4px;
 
-    border-radius:5px;
+    border-radius:4px;
 
     background:#111;
 
-    color:#fff;
+    color:#7fffd4;
 
-    font-size:8px;
+    font-size:6px;
 
     cursor:pointer;
 
     box-shadow:
-    0 0 10px rgba(127,255,212,.35);
-
-}
-
-/* RESET */
-.reset{
-
-    flex:1;
-
-    border:none;
-
-    padding:5px;
-
-    border-radius:5px;
-
-    background:#111;
-
-    color:#baffea;
-
-    font-size:8px;
-
-    cursor:pointer;
-
-    box-shadow:
-    0 0 10px rgba(127,255,212,.25);
-
+    0 0 6px rgba(127,255,212,.25);
 }
 
 </style>
@@ -215,39 +208,39 @@ input{
 
 <body>
 
-<div id="guideUI">
+<div id="guide">
 
-<button id="guideBtn">
+<button id="menu">
 ☰
 </button>
 
 <div id="panel">
 
-<div class="header">
+<div class="head">
 
-<div>Dag</div>
-<div>Inzet</div>
-<div>Winst</div>
-<div>Netto</div>
+<div>D</div>
+<div>I</div>
+<div>W</div>
+<div>N</div>
 
 </div>
 
-<div id="rows"></div>
+<div id="schema"></div>
 
 <div id="week">
-Week totaal: €0
+Week €0
 </div>
 
-<div class="btns">
+<div class="buttons">
 
 <button
-class="save"
+class="btn"
 onclick="saveData()">
 Opslaan
 </button>
 
 <button
-class="reset"
+class="btn"
 onclick="resetData()">
 Opnieuw
 </button>
@@ -264,15 +257,15 @@ const dagen=[
 "Do","Vr","Za","Zo"
 ];
 
-const rows=
+const schema=
 document.getElementById(
-"rows"
+"schema"
 );
 
 /* BUILD */
 dagen.forEach((d,i)=>{
 
-rows.innerHTML+=`
+schema.innerHTML+=`
 
 <div class="row">
 
@@ -283,15 +276,17 @@ ${d}
 <input
 id="i${i}"
 type="number"
+placeholder="0"
 oninput="calc()">
 
 <input
 id="w${i}"
 type="number"
+placeholder="0"
 oninput="calc()">
 
 <div
-class="res"
+class="result"
 id="r${i}">
 €0
 </div>
@@ -304,16 +299,16 @@ id="r${i}">
 
 /* TOGGLE */
 document.getElementById(
-"guideBtn"
+"menu"
 ).onclick=()=>{
 
-const p=
+const panel=
 document.getElementById(
 "panel"
 );
 
-p.style.display=
-p.style.display==="block"
+panel.style.display=
+panel.style.display==="block"
 ?"none"
 :"block";
 
@@ -346,7 +341,7 @@ winst-inzet;
 document.getElementById(
 "r"+i
 ).innerText=
-"€"+netto.toFixed(2);
+"€"+netto.toFixed(0);
 
 totaal+=netto;
 
@@ -355,8 +350,7 @@ totaal+=netto;
 document.getElementById(
 "week"
 ).innerText=
-"Week totaal: €"+
-totaal.toFixed(2);
+"Week €"+totaal.toFixed(0);
 
 }
 
@@ -384,7 +378,7 @@ document.getElementById(
 }
 
 localStorage.setItem(
-"mintGlowCompact",
+"weekMini",
 JSON.stringify(data)
 );
 
@@ -393,15 +387,15 @@ JSON.stringify(data)
 /* LOAD */
 window.onload=()=>{
 
-let d=
+let data=
 JSON.parse(
 localStorage.getItem(
-"mintGlowCompact"
+"weekMini"
 ));
 
-if(!d) return;
+if(!data) return;
 
-d.forEach((v,i)=>{
+data.forEach((v,i)=>{
 
 document.getElementById(
 "i"+i
@@ -421,7 +415,7 @@ calc();
 function resetData(){
 
 localStorage.removeItem(
-"mintGlowCompact"
+"weekMini"
 );
 
 location.reload();
@@ -430,107 +424,8 @@ location.reload();
 
 </script>
 
-<script>
-const weeklyBtn =
-document.getElementById("weeklyBtn");
-
-const weeklyBox =
-document.getElementById("weeklyBox");
-
-weeklyBtn.onclick = () => {
-
-    weeklyBox.style.display =
-        weeklyBox.style.display === "block"
-        ? "none"
-        : "block";
-
-};
-
-/* CALCULATE NETTO */
-const betInputs = document.querySelectorAll(".bet");
-const winInputs = document.querySelectorAll(".win");
-
-function calculateNetto(){
-
-    let total = 0;
-
-    for(let i = 0; i < betInputs.length; i++){
-
-        const bet =
-        parseFloat(betInputs[i].value) || 0;
-
-        const win =
-        parseFloat(winInputs[i].value) || 0;
-
-        total += (win - bet);
-    }
-
-    document.getElementById("nettoBox")
-    .innerText = "Netto: €" + total;
-}
-
-betInputs.forEach(input => {
-    input.addEventListener("input", calculateNetto);
-});
-
-winInputs.forEach(input => {
-    input.addEventListener("input", calculateNetto);
-});
-
-/* SAVE */
-document.getElementById("saveBtn")
-.onclick = () => {
-
-    const data = [];
-
-    for(let i = 0; i < betInputs.length; i++){
-
-        data.push({
-            bet: betInputs[i].value,
-            win: winInputs[i].value
-        });
-    }
-
-    localStorage.setItem(
-        "weeklyTrackerData",
-        JSON.stringify(data)
-    );
-};
-
-/* LOAD */
-window.onload = () => {
-
-    const saved =
-    JSON.parse(localStorage.getItem(
-        "weeklyTrackerData"
-    ));
-
-    if(saved){
-
-        saved.forEach((item,i) => {
-
-            betInputs[i].value = item.bet;
-            winInputs[i].value = item.win;
-        });
-
-        calculateNetto();
-    }
-};
-
-/* RESET */
-document.getElementById("resetBtn")
-.onclick = () => {
-
-    betInputs.forEach(i => i.value = "");
-    winInputs.forEach(i => i.value = "");
-
-    localStorage.removeItem(
-        "weeklyTrackerData"
-    );
-
-    calculateNetto();
-};
-</script>
+</body>
+</html>
 
 <style>
 /* FIXED GUIDE */
