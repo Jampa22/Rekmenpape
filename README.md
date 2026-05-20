@@ -639,8 +639,8 @@ rightMiniGuideBtn.onclick = () => {
 };
 </script>
 
-<span style="color:yellow mint;">
-The Most Powerfull Tool
+<span style="color:yellow;">
+The Most Powerfull Tool🇮🇩🇳🇱🇺🇸🇸🇷
 </span>
 
 <html lang="nl">
