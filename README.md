@@ -624,7 +624,7 @@ miniGuideShortBtn.onclick = () => {
     <div id="rightMiniGuideBox">
 
         <div class="rightGuideTitle">
-            Stop 1 Round Signal
+            Exit Signal
         </div>
 
         <div class="rightGuideText">
