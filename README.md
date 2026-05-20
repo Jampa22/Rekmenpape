@@ -1,9 +1,10 @@
+<!DOCTYPE html>
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>Mini Guide</title>
+<title>Ultra Mini Glow</title>
 
 <style>
 
@@ -13,19 +14,19 @@ body{
     font-family:Arial,sans-serif;
 }
 
-/* GUIDE */
+/* GUIDE WRAPPER */
 #guide{
     position:fixed;
-    top:4px;
+    top:3px;
     left:50%;
     transform:translateX(-50%);
     z-index:99999;
 }
 
 /* ☰ BUTTON */
-#menu{
-    width:16px;
-    height:16px;
+#btn{
+    width:15px;
+    height:15px;
 
     border:none;
     border-radius:4px;
@@ -42,19 +43,18 @@ body{
     justify-content:center;
 
     box-shadow:
-    0 0 6px #7fffd4;
+    0 0 5px #7fffd4;
 }
 
 /* PANEL */
 #panel{
     position:absolute;
 
-    top:20px;
+    top:18px;
     left:50%;
-
     transform:translateX(-50%);
 
-    width:175px;
+    width:165px;
 
     padding:4px;
 
@@ -62,59 +62,38 @@ body{
 
     background:#050505;
 
-    border:
-    1px solid rgba(127,255,212,.15);
+    border:1px solid rgba(127,255,212,.15);
 
     display:none;
 
-    box-shadow:
-    0 0 10px rgba(127,255,212,.18);
+    box-shadow:0 0 10px rgba(127,255,212,.15);
 }
 
 /* HEADER */
 .head{
     display:grid;
-
-    grid-template-columns:
-    14px 1fr 1fr 34px;
-
+    grid-template-columns:14px 1fr 1fr 1fr;
     gap:2px;
-
     margin-bottom:2px;
-
     font-size:5px;
-
     color:#7fffd4;
 }
 
 /* ROW */
 .row{
     display:grid;
-
-    grid-template-columns:
-    14px 1fr 1fr 34px;
-
+    grid-template-columns:14px 1fr 1fr 1fr;
     gap:2px;
-
     margin-bottom:2px;
-
     padding:2px;
-
     border-radius:4px;
-
-    background:
-    rgba(255,255,255,.03);
-
-    box-shadow:
-    0 0 4px rgba(127,255,212,.08);
+    background:rgba(255,255,255,.03);
 }
 
 /* DAY */
 .day{
     font-size:5px;
-
     color:#fff;
-
     display:flex;
     align-items:center;
 }
@@ -122,32 +101,21 @@ body{
 /* INPUT */
 input{
     width:100%;
-
     border:none;
     outline:none;
-
     padding:2px;
-
     border-radius:3px;
-
     background:#0a0a0a;
-
     color:#fff;
-
-    text-align:center;
-
     font-size:5px;
-
-    box-shadow:
-    0 0 5px rgba(127,255,212,.15);
+    text-align:center;
+    box-shadow:0 0 4px rgba(127,255,212,.12);
 }
 
 /* RESULT */
 .result{
     font-size:5px;
-
     color:#7fffd4;
-
     display:flex;
     align-items:center;
     justify-content:center;
@@ -156,50 +124,32 @@ input{
 /* TOTAL */
 #week{
     margin-top:3px;
-
-    padding:4px;
-
+    padding:3px;
     border-radius:4px;
-
-    background:
-    rgba(0,255,180,.05);
-
+    background:rgba(0,255,180,.05);
     text-align:center;
-
-    color:#7fffd4;
-
     font-size:7px;
+    color:#7fffd4;
 }
 
 /* BUTTONS */
 .buttons{
     display:flex;
-
     gap:3px;
-
     margin-top:4px;
 }
 
 /* BTN */
 .btn{
     flex:1;
-
     border:none;
-
-    padding:4px;
-
+    padding:3px;
     border-radius:4px;
-
     background:#111;
-
     color:#7fffd4;
-
     font-size:6px;
-
     cursor:pointer;
-
-    box-shadow:
-    0 0 6px rgba(127,255,212,.25);
+    box-shadow:0 0 6px rgba(127,255,212,.25);
 }
 
 </style>
@@ -209,40 +159,25 @@ input{
 
 <div id="guide">
 
-<button id="menu">
-☰
-</button>
+<button id="btn">☰</button>
 
 <div id="panel">
 
 <div class="head">
-
 <div>D</div>
 <div>I</div>
 <div>W</div>
 <div>N</div>
-
 </div>
 
 <div id="schema"></div>
 
-<div id="week">
-Week €0
-</div>
+<div id="week">Week €0</div>
 
 <div class="buttons">
 
-<button
-class="btn"
-onclick="saveData()">
-Opslaan
-</button>
-
-<button
-class="btn"
-onclick="resetData()">
-Opnieuw
-</button>
+<button class="btn" onclick="saveData()">Opslaan</button>
+<button class="btn" onclick="resetData()">Opnieuw</button>
 
 </div>
 
@@ -251,174 +186,77 @@ Opnieuw
 
 <script>
 
-const dagen=[
-"Ma","Di","Wo",
-"Do","Vr","Za","Zo"
-];
+const dagen=["Ma","Di","Wo","Do","Vr","Za","Zo"];
 
-const schema=
-document.getElementById(
-"schema"
-);
+const schema=document.getElementById("schema");
 
 /* BUILD */
 dagen.forEach((d,i)=>{
 
 schema.innerHTML+=`
-
 <div class="row">
-
-<div class="day">
-${d}
+<div class="day">${d}</div>
+<input id="i${i}" type="number" oninput="calc()">
+<input id="w${i}" type="number" oninput="calc()">
+<div class="result" id="r${i}">€0</div>
 </div>
-
-<input
-id="i${i}"
-type="number"
-placeholder="0"
-oninput="calc()">
-
-<input
-id="w${i}"
-type="number"
-placeholder="0"
-oninput="calc()">
-
-<div
-class="result"
-id="r${i}">
-€0
-</div>
-
-</div>
-
 `;
 
 });
 
 /* TOGGLE */
-document.getElementById(
-"menu"
-).onclick=()=>{
-
-const panel=
-document.getElementById(
-"panel"
-);
-
-panel.style.display=
-panel.style.display==="block"
-?"none"
-:"block";
-
+document.getElementById("btn").onclick=()=>{
+const p=document.getElementById("panel");
+p.style.display=p.style.display==="block"?"none":"block";
 };
 
 /* CALC */
 function calc(){
-
-let totaal=0;
+let total=0;
 
 for(let i=0;i<7;i++){
+let iVal=parseFloat(document.getElementById("i"+i).value)||0;
+let wVal=parseFloat(document.getElementById("w"+i).value)||0;
 
-let inzet=
-parseFloat(
-document.getElementById(
-"i"+i
-).value
-)||0;
+let netto=wVal-iVal;
 
-let winst=
-parseFloat(
-document.getElementById(
-"w"+i
-).value
-)||0;
+document.getElementById("r"+i).innerText="€"+netto.toFixed(0);
 
-let netto=
-winst-inzet;
-
-document.getElementById(
-"r"+i
-).innerText=
-"€"+netto.toFixed(0);
-
-totaal+=netto;
-
+total+=netto;
 }
 
-document.getElementById(
-"week"
-).innerText=
-"Week €"+totaal.toFixed(0);
-
+document.getElementById("week").innerText="Week €"+total.toFixed(0);
 }
 
 /* SAVE */
 function saveData(){
-
 let data=[];
-
 for(let i=0;i<7;i++){
-
 data.push({
-
-i:
-document.getElementById(
-"i"+i
-).value,
-
-w:
-document.getElementById(
-"w"+i
-).value
-
+i:document.getElementById("i"+i).value,
+w:document.getElementById("w"+i).value
 });
-
 }
-
-localStorage.setItem(
-"weekMini",
-JSON.stringify(data)
-);
-
+localStorage.setItem("miniGlowUltra",JSON.stringify(data));
 }
 
 /* LOAD */
 window.onload=()=>{
-
-let data=
-JSON.parse(
-localStorage.getItem(
-"weekMini"
-));
-
-if(!data) return;
+let data=JSON.parse(localStorage.getItem("miniGlowUltra"));
+if(!data)return;
 
 data.forEach((v,i)=>{
-
-document.getElementById(
-"i"+i
-).value=v.i;
-
-document.getElementById(
-"w"+i
-).value=v.w;
-
+document.getElementById("i"+i).value=v.i;
+document.getElementById("w"+i).value=v.w;
 });
 
 calc();
-
 };
 
 /* RESET */
 function resetData(){
-
-localStorage.removeItem(
-"weekMini"
-);
-
+localStorage.removeItem("miniGlowUltra");
 location.reload();
-
 }
 
 </script>
