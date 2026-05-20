@@ -1,4 +1,352 @@
 <style>
+/* TOP CENTER PANEL */
+#weeklyTracker{
+    position:fixed;
+    top:6px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:999999999;
+    font-family:Arial,sans-serif;
+}
+
+/* MINI BUTTON */
+#weeklyBtn{
+    width:24px;
+    height:24px;
+
+    border:none;
+    border-radius:7px;
+
+    background:linear-gradient(145deg,#050505,#111);
+
+    color:#baffea;
+    font-size:11px;
+    cursor:pointer;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    box-shadow:
+        0 0 8px #9fffe3,
+        0 0 18px rgba(159,255,227,.35),
+        inset 0 0 5px rgba(255,255,255,.05);
+
+    transition:.15s ease;
+}
+
+#weeklyBtn:hover{
+    transform:scale(1.05);
+}
+
+/* POPUP */
+#weeklyBox{
+    position:absolute;
+    top:32px;
+    left:50%;
+    transform:translateX(-50%);
+
+    width:345px;
+    padding:10px;
+
+    border-radius:12px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(10,10,10,.98),
+            rgba(5,5,5,.99)
+        );
+
+    border:1px solid rgba(186,255,234,.14);
+
+    display:none;
+
+    color:#fff;
+
+    box-shadow:
+        0 0 20px rgba(159,255,227,.18),
+        inset 0 0 10px rgba(255,255,255,.03);
+}
+
+/* TABLE */
+.weekTable{
+    width:100%;
+    border-collapse:collapse;
+}
+
+/* HEADER */
+.weekTable th{
+    color:#baffea;
+    font-size:10px;
+    padding:6px;
+    text-align:center;
+    border-bottom:1px solid rgba(186,255,234,.12);
+}
+
+/* CELLS */
+.weekTable td{
+    padding:4px;
+    text-align:center;
+}
+
+/* INPUTS */
+.weekTable input{
+    width:58px;
+    padding:5px;
+
+    border:none;
+    outline:none;
+
+    border-radius:7px;
+
+    background:#101010;
+    color:#fff;
+
+    font-size:10px;
+    text-align:center;
+
+    box-shadow:
+        inset 0 0 6px rgba(255,255,255,.04),
+        0 0 6px rgba(159,255,227,.08);
+}
+
+/* DAY */
+.dayLabel{
+    color:#d8d8d8;
+    font-size:10px;
+}
+
+/* NETTO */
+#nettoBox{
+    margin-top:10px;
+
+    padding:8px;
+
+    border-radius:8px;
+
+    background:rgba(255,255,255,.03);
+
+    color:#baffea;
+
+    text-align:center;
+
+    font-size:11px;
+    font-weight:bold;
+
+    box-shadow:
+        0 0 10px rgba(159,255,227,.12);
+}
+
+/* BUTTONS */
+.actionButtons{
+    display:flex;
+    gap:8px;
+    margin-top:10px;
+}
+
+.actionButtons button{
+    flex:1;
+
+    padding:7px;
+
+    border:none;
+    border-radius:8px;
+
+    background:#111;
+    color:#baffea;
+
+    font-size:10px;
+    cursor:pointer;
+
+    box-shadow:
+        0 0 8px rgba(159,255,227,.12);
+}
+
+.actionButtons button:hover{
+    background:#151515;
+}
+</style>
+
+<!-- TRACKER -->
+<div id="weeklyTracker">
+
+    <!-- BUTTON -->
+    <button id="weeklyBtn">☰</button>
+
+    <!-- BOX -->
+    <div id="weeklyBox">
+
+        <table class="weekTable">
+
+            <tr>
+                <th>Dag</th>
+                <th>Inzet</th>
+                <th>Winst</th>
+            </tr>
+
+            <tr>
+                <td class="dayLabel">Ma</td>
+                <td><input type="number" class="bet"></td>
+                <td><input type="number" class="win"></td>
+            </tr>
+
+            <tr>
+                <td class="dayLabel">Di</td>
+                <td><input type="number" class="bet"></td>
+                <td><input type="number" class="win"></td>
+            </tr>
+
+            <tr>
+                <td class="dayLabel">Wo</td>
+                <td><input type="number" class="bet"></td>
+                <td><input type="number" class="win"></td>
+            </tr>
+
+            <tr>
+                <td class="dayLabel">Do</td>
+                <td><input type="number" class="bet"></td>
+                <td><input type="number" class="win"></td>
+            </tr>
+
+            <tr>
+                <td class="dayLabel">Vr</td>
+                <td><input type="number" class="bet"></td>
+                <td><input type="number" class="win"></td>
+            </tr>
+
+            <tr>
+                <td class="dayLabel">Za</td>
+                <td><input type="number" class="bet"></td>
+                <td><input type="number" class="win"></td>
+            </tr>
+
+            <tr>
+                <td class="dayLabel">Zo</td>
+                <td><input type="number" class="bet"></td>
+                <td><input type="number" class="win"></td>
+            </tr>
+
+        </table>
+
+        <!-- NETTO -->
+        <div id="nettoBox">
+            Netto: €0
+        </div>
+
+        <!-- BUTTONS -->
+        <div class="actionButtons">
+            <button id="saveBtn">Opslaan</button>
+            <button id="resetBtn">Reset</button>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+const weeklyBtn =
+document.getElementById("weeklyBtn");
+
+const weeklyBox =
+document.getElementById("weeklyBox");
+
+weeklyBtn.onclick = () => {
+
+    weeklyBox.style.display =
+        weeklyBox.style.display === "block"
+        ? "none"
+        : "block";
+
+};
+
+/* CALCULATE NETTO */
+const betInputs = document.querySelectorAll(".bet");
+const winInputs = document.querySelectorAll(".win");
+
+function calculateNetto(){
+
+    let total = 0;
+
+    for(let i = 0; i < betInputs.length; i++){
+
+        const bet =
+        parseFloat(betInputs[i].value) || 0;
+
+        const win =
+        parseFloat(winInputs[i].value) || 0;
+
+        total += (win - bet);
+    }
+
+    document.getElementById("nettoBox")
+    .innerText = "Netto: €" + total;
+}
+
+betInputs.forEach(input => {
+    input.addEventListener("input", calculateNetto);
+});
+
+winInputs.forEach(input => {
+    input.addEventListener("input", calculateNetto);
+});
+
+/* SAVE */
+document.getElementById("saveBtn")
+.onclick = () => {
+
+    const data = [];
+
+    for(let i = 0; i < betInputs.length; i++){
+
+        data.push({
+            bet: betInputs[i].value,
+            win: winInputs[i].value
+        });
+    }
+
+    localStorage.setItem(
+        "weeklyTrackerData",
+        JSON.stringify(data)
+    );
+};
+
+/* LOAD */
+window.onload = () => {
+
+    const saved =
+    JSON.parse(localStorage.getItem(
+        "weeklyTrackerData"
+    ));
+
+    if(saved){
+
+        saved.forEach((item,i) => {
+
+            betInputs[i].value = item.bet;
+            winInputs[i].value = item.win;
+        });
+
+        calculateNetto();
+    }
+};
+
+/* RESET */
+document.getElementById("resetBtn")
+.onclick = () => {
+
+    betInputs.forEach(i => i.value = "");
+    winInputs.forEach(i => i.value = "");
+
+    localStorage.removeItem(
+        "weeklyTrackerData"
+    );
+
+    calculateNetto();
+};
+</script>
+
+<style>
 /* FIXED GUIDE */
 #miniGuideShort{
     position:fixed;
@@ -691,52 +1039,6 @@ body{
 }
 </style>
 </head>
-
-<body>
-
-<!-- GUIDE -->
-<div id="guideUI">
-
-    <button id="guideBtn">☰</button>
-
-    <div id="panel">
-
-        <!-- WEEK -->
-        <div class="week">
-            <div class="day"><span>Ma</span><input type="checkbox"></div>
-            <div class="day"><span>Di</span><input type="checkbox"></div>
-            <div class="day"><span>Wo</span><input type="checkbox"></div>
-            <div class="day"><span>Do</span><input type="checkbox"></div>
-            <div class="day"><span>Vr</span><input type="checkbox"></div>
-            <div class="day"><span>Za</span><input type="checkbox"></div>
-            <div class="day"><span>Zo</span><input type="checkbox"></div>
-        </div>
-
-        <!-- INPUTS -->
-        <div class="row">
-            <div class="box">
-                <div class="label">Inzet</div>
-                <input id="bet" type="number" oninput="calc()">
-            </div>
-
-            <div class="box">
-                <div class="label">Winst</div>
-                <input id="win" type="number" oninput="calc()">
-            </div>
-        </div>
-
-        <!-- NETTO -->
-        <div id="netto">Winst/Verlies: €0</div>
-
-        <!-- BUTTONS -->
-        <div class="buttons">
-            <button class="saveBtn" onclick="save()">Opslaan</button>
-            <button class="resetBtn" onclick="reset()">Opnieuw</button>
-        </div>
-
-    </div>
-
-</div>
 
 <script>
 
