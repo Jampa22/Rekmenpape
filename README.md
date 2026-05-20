@@ -560,10 +560,6 @@ rightMiniGuideBtn.onclick = () => {
 🇮🇩🇺🇸RT🇸🇷🇳🇱
 </span>
 
-<span style="color:Yellow;">
-Jampa App
-</span>
-
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
