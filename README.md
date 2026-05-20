@@ -640,7 +640,7 @@ rightMiniGuideBtn.onclick = () => {
 </script>
 
 <span style="color:yellow;">
-The Most Powerfull Prediction Tool
+The Most Powerfull Tool
 </span>
 
 <html lang="nl">
