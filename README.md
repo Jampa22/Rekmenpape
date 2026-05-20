@@ -560,6 +560,10 @@ rightMiniGuideBtn.onclick = () => {
 🇮🇩🇺🇸RT🇸🇷🇳🇱
 </span>
 
+<span style="color:Mint;">
+Jampa Boy
+</span>
+
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
