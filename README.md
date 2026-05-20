@@ -430,12 +430,6 @@ location.reload();
 
 </script>
 
-</body>
-</html>
-
-</body>
-</html>
-
 <script>
 const weeklyBtn =
 document.getElementById("weeklyBtn");
