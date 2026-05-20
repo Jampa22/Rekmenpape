@@ -1,248 +1,264 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glow Week v35</title>
+
 <style>
-/* TOP CENTER PANEL */
-#weeklyTracker{
+body{
+    margin:0;
+    background:#000;
+    font-family:Arial,sans-serif;
+}
+
+/* FIXED MENU */
+#guideUI{
     position:fixed;
     top:6px;
     left:50%;
     transform:translateX(-50%);
-    z-index:999999999;
-    font-family:Arial,sans-serif;
+    z-index:999999;
 }
 
-/* MINI BUTTON */
-#weeklyBtn{
-    width:24px;
-    height:24px;
-
+#guideBtn{
+    width:22px;
+    height:22px;
     border:none;
-    border-radius:7px;
-
-    background:linear-gradient(145deg,#050505,#111);
-
+    border-radius:6px;
+    background:#050505;
     color:#baffea;
-    font-size:11px;
+    font-size:10px;
     cursor:pointer;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
-    box-shadow:
-        0 0 8px #9fffe3,
-        0 0 18px rgba(159,255,227,.35),
-        inset 0 0 5px rgba(255,255,255,.05);
-
-    transition:.15s ease;
+    box-shadow:0 0 8px #7fffd4;
 }
 
-#weeklyBtn:hover{
-    transform:scale(1.05);
-}
-
-/* POPUP */
-#weeklyBox{
+/* PANEL */
+#panel{
     position:absolute;
-    top:32px;
+    top:28px;
     left:50%;
     transform:translateX(-50%);
-
-    width:345px;
-    padding:10px;
-
-    border-radius:12px;
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(10,10,10,.98),
-            rgba(5,5,5,.99)
-        );
-
-    border:1px solid rgba(186,255,234,.14);
-
+    width:220px;
+    padding:6px;
+    background:#050505;
+    border:1px solid rgba(127,255,212,.25);
+    border-radius:10px;
     display:none;
-
+    box-shadow:0 0 14px rgba(127,255,212,.25);
     color:#fff;
-
-    box-shadow:
-        0 0 20px rgba(159,255,227,.18),
-        inset 0 0 10px rgba(255,255,255,.03);
-}
-
-/* TABLE */
-.weekTable{
-    width:100%;
-    border-collapse:collapse;
 }
 
 /* HEADER */
-.weekTable th{
-    color:#baffea;
-    font-size:10px;
-    padding:6px;
-    text-align:center;
-    border-bottom:1px solid rgba(186,255,234,.12);
+.header{
+    display:grid;
+    grid-template-columns:20px 1fr 1fr 1fr;
+    font-size:7px;
+    color:#7fffd4;
+    margin-bottom:4px;
+    opacity:0.7;
 }
 
-/* CELLS */
-.weekTable td{
-    padding:4px;
-    text-align:center;
-}
-
-/* INPUTS */
-.weekTable input{
-    width:58px;
-    padding:5px;
-
-    border:none;
-    outline:none;
-
-    border-radius:7px;
-
-    background:#101010;
-    color:#fff;
-
-    font-size:10px;
-    text-align:center;
-
-    box-shadow:
-        inset 0 0 6px rgba(255,255,255,.04),
-        0 0 6px rgba(159,255,227,.08);
+/* ROW */
+.row{
+    display:grid;
+    grid-template-columns:20px 1fr 1fr 1fr;
+    gap:3px;
+    align-items:center;
+    margin-bottom:2px;
+    padding:2px;
+    border-radius:5px;
+    background:rgba(255,255,255,0.03);
+    box-shadow:0 0 5px rgba(127,255,212,.10);
 }
 
 /* DAY */
-.dayLabel{
-    color:#d8d8d8;
-    font-size:10px;
+.day{
+    font-size:7px;
+    color:#baffea;
+}
+
+/* INPUT */
+input{
+    width:100%;
+    padding:2px;
+    font-size:7px;
+    border:none;
+    border-radius:4px;
+    text-align:center;
+    background:#0b0b0b;
+    color:#fff;
+}
+
+/* RESULT */
+.res{
+    font-size:7px;
+    color:#7fffd4;
+    text-align:center;
+}
+
+/* TOTAL */
+#total{
+    margin-top:5px;
+    padding:5px;
+    text-align:center;
+    font-size:9px;
+    color:#7fffd4;
+    background:rgba(0,255,200,0.05);
+    border-radius:6px;
 }
 
 /* NETTO */
-#nettoBox{
-    margin-top:10px;
-
-    padding:8px;
-
-    border-radius:8px;
-
-    background:rgba(255,255,255,.03);
-
-    color:#baffea;
-
+#netto{
+    margin-top:4px;
+    padding:6px;
     text-align:center;
-
     font-size:11px;
     font-weight:bold;
-
-    box-shadow:
-        0 0 10px rgba(159,255,227,.12);
+    color:#baffea;
+    background:rgba(0,255,120,0.08);
+    border-radius:7px;
+    box-shadow:0 0 10px rgba(127,255,212,.2);
 }
 
 /* BUTTONS */
-.actionButtons{
+.btns{
     display:flex;
-    gap:8px;
-    margin-top:10px;
+    gap:5px;
+    margin-top:6px;
 }
 
-.actionButtons button{
+.save{
     flex:1;
-
-    padding:7px;
-
+    padding:4px;
+    font-size:8px;
     border:none;
-    border-radius:8px;
+    border-radius:5px;
+    background:#00ff66;
+    color:#fff;
+    box-shadow:0 0 6px rgba(0,255,102,.35);
+}
 
+.reset{
+    flex:1;
+    padding:4px;
+    font-size:8px;
+    border:none;
+    border-radius:5px;
     background:#111;
     color:#baffea;
-
-    font-size:10px;
-    cursor:pointer;
-
-    box-shadow:
-        0 0 8px rgba(159,255,227,.12);
-}
-
-.actionButtons button:hover{
-    background:#151515;
+    box-shadow:0 0 6px rgba(127,255,212,.15);
 }
 </style>
+</head>
 
-<!-- TRACKER -->
-<div id="weeklyTracker">
+<body>
 
-    <!-- BUTTON -->
-    <button id="weeklyBtn">☰</button>
+<div id="guideUI">
+    <button id="guideBtn">☰</button>
 
-    <!-- BOX -->
-    <div id="weeklyBox">
+    <div id="panel">
 
-        <table class="weekTable">
-
-            <tr>
-                <th>Dag</th>
-                <th>Inzet</th>
-                <th>Winst</th>
-            </tr>
-
-            <tr>
-                <td class="dayLabel">Ma</td>
-                <td><input type="number" class="bet"></td>
-                <td><input type="number" class="win"></td>
-            </tr>
-
-            <tr>
-                <td class="dayLabel">Di</td>
-                <td><input type="number" class="bet"></td>
-                <td><input type="number" class="win"></td>
-            </tr>
-
-            <tr>
-                <td class="dayLabel">Wo</td>
-                <td><input type="number" class="bet"></td>
-                <td><input type="number" class="win"></td>
-            </tr>
-
-            <tr>
-                <td class="dayLabel">Do</td>
-                <td><input type="number" class="bet"></td>
-                <td><input type="number" class="win"></td>
-            </tr>
-
-            <tr>
-                <td class="dayLabel">Vr</td>
-                <td><input type="number" class="bet"></td>
-                <td><input type="number" class="win"></td>
-            </tr>
-
-            <tr>
-                <td class="dayLabel">Za</td>
-                <td><input type="number" class="bet"></td>
-                <td><input type="number" class="win"></td>
-            </tr>
-
-            <tr>
-                <td class="dayLabel">Zo</td>
-                <td><input type="number" class="bet"></td>
-                <td><input type="number" class="win"></td>
-            </tr>
-
-        </table>
-
-        <!-- NETTO -->
-        <div id="nettoBox">
-            Netto: €0
+        <div class="header">
+            <div>Dag</div>
+            <div>Inzet</div>
+            <div>Winst</div>
+            <div>Netto</div>
         </div>
 
-        <!-- BUTTONS -->
-        <div class="actionButtons">
-            <button id="saveBtn">Opslaan</button>
-            <button id="resetBtn">Reset</button>
+        <div id="rows"></div>
+
+        <div id="total">Totaal: €0</div>
+        <div id="netto">Netto: €0</div>
+
+        <div class="btns">
+            <button class="save" onclick="save()">Opslaan</button>
+            <button class="reset" onclick="reset()">Opnieuw</button>
         </div>
 
     </div>
-
 </div>
+
+<script>
+
+const days = ["Ma","Di","Wo","Do","Vr","Za","Zo"];
+const rows = document.getElementById("rows");
+
+days.forEach((d,i)=>{
+    rows.innerHTML += `
+    <div class="row">
+        <div class="day">${d}</div>
+        <input id="i${i}" oninput="calc()">
+        <input id="w${i}" oninput="calc()">
+        <div class="res" id="r${i}">€0</div>
+    </div>`;
+});
+
+/* TOGGLE */
+document.getElementById("guideBtn").onclick = ()=>{
+    const p = document.getElementById("panel");
+    p.style.display = p.style.display === "block" ? "none" : "block";
+};
+
+/* CALC */
+function calc(){
+    let total = 0;
+
+    for(let i=0;i<7;i++){
+        let inw = parseFloat(document.getElementById("i"+i).value)||0;
+        let win = parseFloat(document.getElementById("w"+i).value)||0;
+
+        let netto = win - inw;
+
+        document.getElementById("r"+i).innerText = "€"+netto.toFixed(2);
+
+        total += netto;
+    }
+
+    document.getElementById("total").innerText = "Totaal: €"+total.toFixed(2);
+    document.getElementById("netto").innerText = "Netto: €"+total.toFixed(2);
+}
+
+/* SAVE */
+function save(){
+    let data = [];
+
+    for(let i=0;i<7;i++){
+        data.push({
+            i: document.getElementById("i"+i).value,
+            w: document.getElementById("w"+i).value
+        });
+    }
+
+    localStorage.setItem("glow_v35", JSON.stringify(data));
+}
+
+/* LOAD */
+window.onload = ()=>{
+    let d = JSON.parse(localStorage.getItem("glow_v35"));
+    if(!d) return;
+
+    d.forEach((v,i)=>{
+        document.getElementById("i"+i).value = v.i;
+        document.getElementById("w"+i).value = v.w;
+    });
+
+    calc();
+};
+
+/* RESET */
+function reset(){
+    localStorage.removeItem("glow_v35");
+    location.reload();
+}
+
+</script>
+
+</body>
+</html>
 
 <script>
 const weeklyBtn =
