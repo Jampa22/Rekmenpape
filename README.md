@@ -1,17 +1,19 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Glow Week v35</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Mint Glow Compact</title>
 
 <style>
+
 body{
     margin:0;
     background:#000;
     font-family:Arial,sans-serif;
 }
 
-/* FIXED MENU */
+/* MINI GUIDE */
 #guideUI{
     position:fixed;
     top:6px;
@@ -29,10 +31,14 @@ body{
     color:#baffea;
     font-size:10px;
     cursor:pointer;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    box-shadow:0 0 8px #7fffd4;
+
+    box-shadow:
+    0 0 8px #7fffd4,
+    inset 0 0 4px rgba(255,255,255,.05);
 }
 
 /* PANEL */
@@ -41,220 +47,391 @@ body{
     top:28px;
     left:50%;
     transform:translateX(-50%);
+
     width:220px;
     padding:6px;
+
     background:#050505;
-    border:1px solid rgba(127,255,212,.25);
     border-radius:10px;
+
+    border:1px solid rgba(127,255,212,.18);
+
     display:none;
-    box-shadow:0 0 14px rgba(127,255,212,.25);
-    color:#fff;
+
+    box-shadow:
+    0 0 18px rgba(127,255,212,.15);
 }
 
 /* HEADER */
 .header{
     display:grid;
-    grid-template-columns:20px 1fr 1fr 1fr;
+    grid-template-columns:
+    18px 1fr 1fr 1fr;
+
+    gap:3px;
+
+    margin-bottom:4px;
+
     font-size:7px;
     color:#7fffd4;
-    margin-bottom:4px;
-    opacity:0.7;
 }
 
 /* ROW */
 .row{
     display:grid;
-    grid-template-columns:20px 1fr 1fr 1fr;
+    grid-template-columns:
+    18px 1fr 1fr 1fr;
+
     gap:3px;
-    align-items:center;
-    margin-bottom:2px;
+
+    margin-bottom:3px;
     padding:2px;
+
     border-radius:5px;
-    background:rgba(255,255,255,0.03);
-    box-shadow:0 0 5px rgba(127,255,212,.10);
+
+    background:
+    rgba(255,255,255,.03);
+
+    box-shadow:
+    0 0 5px rgba(127,255,212,.08);
 }
 
 /* DAY */
 .day{
     font-size:7px;
     color:#baffea;
+
+    display:flex;
+    align-items:center;
 }
 
 /* INPUT */
 input{
     width:100%;
-    padding:2px;
-    font-size:7px;
+
     border:none;
+    outline:none;
+
+    padding:2px;
+
     border-radius:4px;
+
+    font-size:7px;
     text-align:center;
-    background:#0b0b0b;
+
+    background:#0a0a0a;
     color:#fff;
+
+    box-shadow:
+    0 0 5px rgba(127,255,212,.10);
 }
 
 /* RESULT */
 .res{
     font-size:7px;
     color:#7fffd4;
-    text-align:center;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
 /* TOTAL */
-#total{
+#week{
     margin-top:5px;
-    padding:5px;
-    text-align:center;
-    font-size:9px;
-    color:#7fffd4;
-    background:rgba(0,255,200,0.05);
-    border-radius:6px;
-}
 
-/* NETTO */
-#netto{
-    margin-top:4px;
-    padding:6px;
+    padding:5px;
+
     text-align:center;
-    font-size:11px;
-    font-weight:bold;
-    color:#baffea;
-    background:rgba(0,255,120,0.08);
-    border-radius:7px;
-    box-shadow:0 0 10px rgba(127,255,212,.2);
+
+    font-size:9px;
+
+    border-radius:6px;
+
+    color:#7fffd4;
+
+    background:
+    rgba(0,255,200,.05);
 }
 
 /* BUTTONS */
 .btns{
     display:flex;
     gap:5px;
-    margin-top:6px;
+
+    margin-top:7px;
 }
 
+/* SAVE */
 .save{
+
     flex:1;
-    padding:4px;
-    font-size:8px;
+
     border:none;
+
+    padding:5px;
+
     border-radius:5px;
-    background:#00ff66;
+
+    background:#111;
+
     color:#fff;
-    box-shadow:0 0 6px rgba(0,255,102,.35);
+
+    font-size:8px;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 0 10px rgba(127,255,212,.35);
+
 }
 
+/* RESET */
 .reset{
+
     flex:1;
-    padding:4px;
-    font-size:8px;
+
     border:none;
+
+    padding:5px;
+
     border-radius:5px;
+
     background:#111;
+
     color:#baffea;
-    box-shadow:0 0 6px rgba(127,255,212,.15);
+
+    font-size:8px;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 0 10px rgba(127,255,212,.25);
+
 }
+
 </style>
 </head>
 
 <body>
 
 <div id="guideUI">
-    <button id="guideBtn">☰</button>
 
-    <div id="panel">
+<button id="guideBtn">
+☰
+</button>
 
-        <div class="header">
-            <div>Dag</div>
-            <div>Inzet</div>
-            <div>Winst</div>
-            <div>Netto</div>
-        </div>
+<div id="panel">
 
-        <div id="rows"></div>
+<div class="header">
 
-        <div id="total">Totaal: €0</div>
-        <div id="netto">Netto: €0</div>
+<div>Dag</div>
+<div>Inzet</div>
+<div>Winst</div>
+<div>Netto</div>
 
-        <div class="btns">
-            <button class="save" onclick="save()">Opslaan</button>
-            <button class="reset" onclick="reset()">Opnieuw</button>
-        </div>
+</div>
 
-    </div>
+<div id="rows"></div>
+
+<div id="week">
+Week totaal: €0
+</div>
+
+<div class="btns">
+
+<button
+class="save"
+onclick="saveData()">
+Opslaan
+</button>
+
+<button
+class="reset"
+onclick="resetData()">
+Opnieuw
+</button>
+
+</div>
+
+</div>
 </div>
 
 <script>
 
-const days = ["Ma","Di","Wo","Do","Vr","Za","Zo"];
-const rows = document.getElementById("rows");
+const dagen=[
+"Ma","Di","Wo",
+"Do","Vr","Za","Zo"
+];
 
-days.forEach((d,i)=>{
-    rows.innerHTML += `
-    <div class="row">
-        <div class="day">${d}</div>
-        <input id="i${i}" oninput="calc()">
-        <input id="w${i}" oninput="calc()">
-        <div class="res" id="r${i}">€0</div>
-    </div>`;
+const rows=
+document.getElementById(
+"rows"
+);
+
+/* BUILD */
+dagen.forEach((d,i)=>{
+
+rows.innerHTML+=`
+
+<div class="row">
+
+<div class="day">
+${d}
+</div>
+
+<input
+id="i${i}"
+type="number"
+oninput="calc()">
+
+<input
+id="w${i}"
+type="number"
+oninput="calc()">
+
+<div
+class="res"
+id="r${i}">
+€0
+</div>
+
+</div>
+
+`;
+
 });
 
 /* TOGGLE */
-document.getElementById("guideBtn").onclick = ()=>{
-    const p = document.getElementById("panel");
-    p.style.display = p.style.display === "block" ? "none" : "block";
+document.getElementById(
+"guideBtn"
+).onclick=()=>{
+
+const p=
+document.getElementById(
+"panel"
+);
+
+p.style.display=
+p.style.display==="block"
+?"none"
+:"block";
+
 };
 
 /* CALC */
 function calc(){
-    let total = 0;
 
-    for(let i=0;i<7;i++){
-        let inw = parseFloat(document.getElementById("i"+i).value)||0;
-        let win = parseFloat(document.getElementById("w"+i).value)||0;
+let totaal=0;
 
-        let netto = win - inw;
+for(let i=0;i<7;i++){
 
-        document.getElementById("r"+i).innerText = "€"+netto.toFixed(2);
+let inzet=
+parseFloat(
+document.getElementById(
+"i"+i
+).value
+)||0;
 
-        total += netto;
-    }
+let winst=
+parseFloat(
+document.getElementById(
+"w"+i
+).value
+)||0;
 
-    document.getElementById("total").innerText = "Totaal: €"+total.toFixed(2);
-    document.getElementById("netto").innerText = "Netto: €"+total.toFixed(2);
+let netto=
+winst-inzet;
+
+document.getElementById(
+"r"+i
+).innerText=
+"€"+netto.toFixed(2);
+
+totaal+=netto;
+
+}
+
+document.getElementById(
+"week"
+).innerText=
+"Week totaal: €"+
+totaal.toFixed(2);
+
 }
 
 /* SAVE */
-function save(){
-    let data = [];
+function saveData(){
 
-    for(let i=0;i<7;i++){
-        data.push({
-            i: document.getElementById("i"+i).value,
-            w: document.getElementById("w"+i).value
-        });
-    }
+let data=[];
 
-    localStorage.setItem("glow_v35", JSON.stringify(data));
+for(let i=0;i<7;i++){
+
+data.push({
+
+i:
+document.getElementById(
+"i"+i
+).value,
+
+w:
+document.getElementById(
+"w"+i
+).value
+
+});
+
+}
+
+localStorage.setItem(
+"mintGlowCompact",
+JSON.stringify(data)
+);
+
 }
 
 /* LOAD */
-window.onload = ()=>{
-    let d = JSON.parse(localStorage.getItem("glow_v35"));
-    if(!d) return;
+window.onload=()=>{
 
-    d.forEach((v,i)=>{
-        document.getElementById("i"+i).value = v.i;
-        document.getElementById("w"+i).value = v.w;
-    });
+let d=
+JSON.parse(
+localStorage.getItem(
+"mintGlowCompact"
+));
 
-    calc();
+if(!d) return;
+
+d.forEach((v,i)=>{
+
+document.getElementById(
+"i"+i
+).value=v.i;
+
+document.getElementById(
+"w"+i
+).value=v.w;
+
+});
+
+calc();
+
 };
 
 /* RESET */
-function reset(){
-    localStorage.removeItem("glow_v35");
-    location.reload();
+function resetData(){
+
+localStorage.removeItem(
+"mintGlowCompact"
+);
+
+location.reload();
+
 }
 
 </script>
+
+</body>
+</html>
 
 </body>
 </html>
