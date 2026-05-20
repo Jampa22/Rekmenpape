@@ -639,7 +639,7 @@ rightMiniGuideBtn.onclick = () => {
 };
 </script>
 
-<span style="color: yellow green;">
+<span style="color:yellow;">
 The Most Powerfull Prediction Tool
 </span>
 
