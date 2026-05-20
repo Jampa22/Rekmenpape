@@ -726,7 +726,7 @@ body{
         </div>
 
         <!-- NETTO -->
-        <div id="netto">Netto: €0</div>
+        <div id="netto">Winst/Verlies: €0</div>
 
         <!-- BUTTONS -->
         <div class="buttons">
