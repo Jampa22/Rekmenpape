@@ -555,9 +555,23 @@ rightMiniGuideBtn.onclick = () => {
 
 };
 </script>
+<span style="
+  font-size:22px;
+  font-weight:bold;
 
+  color:#b8ffd0;
+
+  text-shadow:
+    0 0 6px #7fffd4,
+    0 0 12px #98ffcc,
+    0 0 18px #ffe680,
+    0 0 24px #fff176;
+">
+  JAMPA BOY
+</span>
 <span style="color:yellow;">
-🇮🇩🇺🇸RT🇸🇷🇳🇱
+  <br>
+  🇮🇩🇺🇸RT🇸🇷🇳🇱
 </span>
 
 <html lang="nl">
