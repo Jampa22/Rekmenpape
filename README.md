@@ -1,142 +1,189 @@
-<!-- FIXED MINI GUIDE -->
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>Mint Left Pattern UI</title>
+
 <style>
-#miniGuide{
-    position:fixed; /* blijft vast staan */
-    top:6px;
-    left:6px;
-    z-index:999999;
-    font-family:Arial,sans-serif;
+body{
+  margin:0;
+  background:#0f0f12;
+  font-family:Arial, sans-serif;
+  color:#eaeaea;
 }
 
-/* Kleine knop */
-#guideToggle{
-    width:28px;
-    height:28px;
-    border:none;
-    border-radius:8px;
-    background:#050505;
-    color:#baffea;
-    cursor:pointer;
-    font-size:14px;
+/* BUTTON LINKS BOVEN */
+.btn{
+  position:fixed;
+  top:8px;
+  left:8px;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+  width:28px;
+  height:28px;
 
-    box-shadow:
-        0 0 8px #9fffe3,
-        0 0 18px rgba(159,255,227,.35),
-        inset 0 0 5px rgba(255,255,255,.05);
+  border:1px solid #2ef2c2;
+  border-radius:6px;
+  background:transparent;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:2px;
+
+  cursor:pointer;
+
+  box-shadow:0 0 5px #2ef2c2, 0 0 10px rgba(46,242,194,0.5);
+  transition:0.2s ease;
 }
 
-/* Popup */
-#guideContent{
-    position:absolute;
-    top:36px;
-    left:0;
-
-    width:220px;
-    padding:10px;
-
-    border-radius:12px;
-    background:rgba(8,8,8,.97);
-    border:1px solid rgba(186,255,234,.15);
-
-    display:none;
-
-    color:white;
-
-    box-shadow:
-        0 0 20px rgba(159,255,227,.15);
+.btn span{
+  width:14px;
+  height:2px;
+  background:#2ef2c2;
+  border-radius:2px;
+  box-shadow:0 0 4px #2ef2c2;
 }
 
-.guideItem{
-    padding:7px 0;
-    border-bottom:1px solid rgba(255,255,255,.06);
+.btn:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 10px #2ef2c2, 0 0 18px rgba(46,242,194,0.7);
 }
 
-.guideItem:last-child{
-    border-bottom:none;
+/* PANEL */
+.panel{
+  position:fixed;
+  top:40px;
+  left:8px;
+
+  width:310px;
+
+  background:rgba(15,15,18,0.97);
+  border-radius:10px;
+
+  padding:0 10px;
+
+  max-height:0;
+  overflow:hidden;
+
+  transition:0.25s ease;
+  box-shadow:0 0 14px rgba(0,0,0,0.3);
 }
 
-.guideTitle{
-    color:#baffea;
-    font-size:11px;
-    font-weight:bold;
-    margin-bottom:3px;
+.panel.open{
+  max-height:1000px;
+  padding:10px;
 }
 
-.guideText{
-    color:#d8d8d8;
-    font-size:10px;
-    line-height:1.4;
+.title{
+  color:#2ef2c2;
+  font-weight:bold;
+  font-size:13px;
+  margin-bottom:8px;
+}
+
+.text{
+  font-size:12px;
+  line-height:1.4;
+  margin:6px 0;
+}
+
+.pattern-title{
+  font-size:12px;
+  font-weight:bold;
+  margin-top:8px;
+}
+
+/* LEFT ALIGNED ROWS */
+.row{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:6px;
+  margin:5px 0;
+}
+
+/* L box */
+.loss{
+  width:14px;
+  height:14px;
+  background:#ff3b3b;
+  border-radius:3px;
+  box-shadow:0 0 5px rgba(255,59,59,0.5);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:10px;
+  font-weight:bold;
+  color:#111;
+}
+
+/* W box */
+.win{
+  width:14px;
+  height:14px;
+  background:#2ef2c2;
+  border-radius:3px;
+  box-shadow:0 0 5px rgba(46,242,194,0.5);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:10px;
+  font-weight:bold;
+  color:#111;
+}
+
+.note{
+  font-size:12px;
+  margin-top:10px;
+  line-height:1.4;
 }
 </style>
+</head>
 
-<div id="miniGuide">
+<body>
 
-    <!-- BUTTON -->
-    <button id="guideToggle">☰</button>
+<div class="btn" onclick="toggle()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
 
-    <!-- CONTENT -->
-    <div id="guideContent">
+<div id="panel" class="panel">
 
-        <div class="guideItem">
-            <div class="guideTitle">🎯Predictions</div>
-            <div class="guideText">
-                Live trend prediction system.
-            </div>
-        </div>
+  <div class="title">🔁 Patronen herkennen</div>
 
-        <div class="guideItem">
-            <div class="guideTitle">📈Patterns</div>
-            <div class="guideText">
-                Detects repeating streaks and switches.
-            </div>
-        </div>
+  <div class="text">
+    De app houdt eerdere voorspellingen bij om herhaalbare patronen te identificeren. Deze reeksen kunnen vaak aangeven wat er waarschijnlijk gaat gebeuren.
+  </div>
 
-        <div class="guideItem">
-            <div class="guideTitle">📊Data</div>
-            <div class="guideText">
-                Uses live table confirmations and statistics.
-            </div>
-        </div>
+<div class="pattern-title" style="text-align:left;">
+  PATROON A
+</div>
 
-        <div class="guideItem">
-            <div class="guideTitle">📉Exit signals</div>
-            <div class="guideText">
-                Stop when repeated loss behavior returns.
-            </div>
-        </div>
+  <div class="row"><div class="loss">L</div></div>
+  <div class="row"><div class="win">W</div></div>
+  <div class="row"><div class="win">W</div></div>
+  <div class="row"><div class="win">W</div></div>
+  <div class="row"><div class="loss">L</div></div>
+  <div class="row"><div class="win">W</div></div>
+  <div class="row"><div class="win">W</div></div>
+  <div class="row"><div class="win">W</div></div>
+  <div class="row"><div class="loss">L</div></div>
 
-        <div class="guideItem">
-            <div class="guideTitle">⭐️Optimize</div>
-            <div class="guideText">
-                Dynamic optimization for stable calculations.
-            </div>
-        </div>
-
-        <div class="guideItem">
-            <div class="guideTitle">🔥Hot tables</div>
-            <div class="guideText">
-                Highlights strong and stable tables.
-            </div>
-        </div>
-
-    </div>
+  <div class="note">
+    Na elk verlies (L) volgen doorgaans drie opeenvolgende winsten (W). Als dit patroon zich voortzet, kunt u na het volgende verlies een nieuwe reeks winsten verwachten.
+  </div>
 
 </div>
 
 <script>
-const toggleBtn = document.getElementById("guideToggle");
-const guideContent = document.getElementById("guideContent");
-
-toggleBtn.onclick = () => {
-    guideContent.style.display =
-        guideContent.style.display === "block"
-        ? "none"
-        : "block";
-};
+function toggle(){
+  document.getElementById("panel").classList.toggle("open");
+}
 </script>
 
 <p style="color: Yellow;">🇮🇩🇺🇸RT🇸🇷🇳🇱</p>
