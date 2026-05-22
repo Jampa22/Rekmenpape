@@ -240,7 +240,7 @@ Hete Reeks
   </div>
 
 <p style="color: white; text-align: left;">
-Patroon
+Patroon Verzwakt
 </p>
 
 <div class="row"><div class="win">W</div></div>
