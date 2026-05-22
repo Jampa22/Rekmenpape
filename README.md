@@ -203,7 +203,7 @@ Patroon
   <div class="row"><div class="win">W</div></div>
 
   <div class="text">
-  Na elk verlies (L) volgen doorgaans drie opeenvolgende winsten (W). Als dit patroon zich voortzet, kunt u na het volgende verlies een nieuwe reeks winsten verwachten.
+  Na elk verlies (L) volgen doorgaans drie opeenvolgende winsten (W). Als dit patroon zich voortzet, kunt je na het volgende verlies een nieuwe reeks winsten verwachten.
   </div>
 </div>
 
