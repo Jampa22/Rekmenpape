@@ -155,10 +155,10 @@ body{
   <div class="title">🔁 Patronen herkennen</div>
 
   <div class="text">
-    De app volgt voorspellingsreeksen om herhaalbare structuren te detecteren.
+    De app houdt eerdere voorspellingen bij om herhaalbare patronen te identificeren. Deze reeksen kunnen vaak aangeven wat er waarschijnlijk gaat gebeuren.
   </div>
 
-  <div class="section-title">VOORBEELD VAN EEN PATROON</div>
+  <div class="section-title">VOORBEELD PATROON</div>
 
   <div class="row"><div class="loss">L</div></div>
   <div class="row"><div class="win">W</div></div>
@@ -169,7 +169,7 @@ body{
   <div class="row"><div class="win">W</div></div>
 
   <div class="text">
-    Na elk verlies volgen drie opeenvolgende winsten. Instappen na resetmomenten.
+  Na elk verlies (L) volgen doorgaans drie opeenvolgende winsten (W). Als dit patroon zich voortzet, kunt u na het volgende verlies een nieuwe reeks winsten verwachten.
   </div>
 </div>
 
