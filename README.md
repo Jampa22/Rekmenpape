@@ -250,7 +250,7 @@ Patroon Verzwakt
   <div class="row"><div class="loss">L</div></div>
 
   <div class="text">
-    Reeks korter: 3 → 2 → 1. Stop en wacht op reset.
+    Reeks korter, Stop en wacht op reset.
   </div>
 </div>
 
