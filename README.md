@@ -171,7 +171,7 @@ body{
   <div class="btn" onclick="toggle('center')">
     <span></span><span></span><span></span>
   </div>
-  <div class="label">Sterk patroon</div>
+  <div class="label">Sterke patronen</div>
 </div>
 
 <!-- RIGHT -->
@@ -179,7 +179,7 @@ body{
   <div class="btn" onclick="toggle('right')">
     <span></span><span></span><span></span>
   </div>
-  <div class="label">Patroon verzwakt</div>
+  <div class="label">Patronen verzwakt</div>
 </div>
 
 <!-- LEFT PANEL -->
@@ -191,7 +191,7 @@ body{
   </div>
 
 <p style="color: white; text-align: left;">
-Patroon Inzien
+Patronen Inzien
 </p>
 
 <div class="row"><div class="loss">L</div></div>
