@@ -191,7 +191,7 @@ body{
   </div>
 
 <p style="color: white; text-align: left;">
-Patroon
+Patroon Inzien
 </p>
 
 <div class="row"><div class="loss">L</div></div>
