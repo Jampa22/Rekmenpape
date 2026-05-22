@@ -1,7 +1,8 @@
+<!DOCTYPE html>
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<title>Mint Left Pattern UI</title>
+<title>Mint Exclusive Toggle UI</title>
 
 <style>
 body{
@@ -11,14 +12,10 @@ body{
   color:#eaeaea;
 }
 
-/* BUTTON LINKS BOVEN */
+/* BUTTON STYLE */
 .btn{
-  position:fixed;
-  top:8px;
-  left:8px;
-
-  width:28px;
-  height:28px;
+  width:26px;
+  height:26px;
 
   border:1px solid #2ef2c2;
   border-radius:6px;
@@ -32,12 +29,13 @@ body{
 
   cursor:pointer;
 
-  box-shadow:0 0 5px #2ef2c2, 0 0 10px rgba(46,242,194,0.5);
+  box-shadow:0 0 6px #2ef2c2, 0 0 12px rgba(46,242,194,0.5);
   transition:0.2s ease;
+  z-index:1000;
 }
 
 .btn span{
-  width:14px;
+  width:12px;
   height:2px;
   background:#2ef2c2;
   border-radius:2px;
@@ -46,16 +44,19 @@ body{
 
 .btn:hover{
   transform:scale(1.05);
-  box-shadow:0 0 10px #2ef2c2, 0 0 18px rgba(46,242,194,0.7);
 }
+
+/* POSITIONS */
+.left{ position:fixed; top:10px; left:10px; }
+.center{ position:fixed; top:10px; left:50%; transform:translateX(-50%); }
+.right{ position:fixed; top:10px; right:10px; }
 
 /* PANEL */
 .panel{
   position:fixed;
-  top:40px;
-  left:8px;
+  top:45px;
 
-  width:310px;
+  width:320px;
 
   background:rgba(15,15,18,0.97);
   border-radius:10px;
@@ -66,14 +67,21 @@ body{
   overflow:hidden;
 
   transition:0.25s ease;
-  box-shadow:0 0 14px rgba(0,0,0,0.3);
+  box-shadow:0 0 14px rgba(0,0,0,0.4);
+
+  z-index:999;
 }
 
 .panel.open{
-  max-height:1000px;
+  max-height:1200px;
   padding:10px;
 }
 
+.leftP{ left:10px; }
+.centerP{ left:50%; transform:translateX(-50%); }
+.rightP{ right:10px; }
+
+/* TEXT */
 .title{
   color:#2ef2c2;
   font-weight:bold;
@@ -87,28 +95,25 @@ body{
   margin:6px 0;
 }
 
-.pattern-title{
+.section-title{
   font-size:12px;
   font-weight:bold;
-  margin-top:8px;
+  margin-top:10px;
 }
 
-/* LEFT ALIGNED ROWS */
+/* ROW */
 .row{
   display:flex;
   align-items:center;
-  justify-content:flex-start;
   gap:6px;
   margin:5px 0;
 }
 
-/* L box */
-.loss{
+/* BOXES */
+.win, .loss{
   width:14px;
   height:14px;
-  background:#ff3b3b;
   border-radius:3px;
-  box-shadow:0 0 5px rgba(255,59,59,0.5);
 
   display:flex;
   align-items:center;
@@ -119,72 +124,115 @@ body{
   color:#111;
 }
 
-/* W box */
 .win{
-  width:14px;
-  height:14px;
   background:#2ef2c2;
-  border-radius:3px;
   box-shadow:0 0 5px rgba(46,242,194,0.5);
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  font-size:10px;
-  font-weight:bold;
-  color:#111;
 }
 
-.note{
-  font-size:12px;
-  margin-top:10px;
-  line-height:1.4;
+.loss{
+  background:#ff3b3b;
+  box-shadow:0 0 5px rgba(255,59,59,0.5);
 }
 </style>
 </head>
 
 <body>
 
-<div class="btn" onclick="toggle()">
-  <span></span>
-  <span></span>
-  <span></span>
+<!-- BUTTONS -->
+<div class="btn left" onclick="toggle('left')">
+  <span></span><span></span><span></span>
 </div>
 
-<div id="panel" class="panel">
+<div class="btn center" onclick="toggle('center')">
+  <span></span><span></span><span></span>
+</div>
 
+<div class="btn right" onclick="toggle('right')">
+  <span></span><span></span><span></span>
+</div>
+
+<!-- LEFT PANEL -->
+<div id="left" class="panel leftP">
   <div class="title">🔁 Patronen herkennen</div>
 
   <div class="text">
-    De app houdt eerdere voorspellingen bij om herhaalbare patronen te identificeren. Deze reeksen kunnen vaak aangeven wat er waarschijnlijk gaat gebeuren.
+    De app volgt voorspellingsreeksen om herhaalbare structuren te detecteren.
   </div>
 
-<div class="pattern-title" style="text-align:left;">
-  PATROON A
+  <div class="section-title">VOORBEELD VAN EEN PATROON</div>
+
+  <div class="row"><div class="loss">L</div></div>
+  <div class="row"><div class="win">W</div></div>
+  <div class="row"><div class="win">W</div></div>
+  <div class="row"><div class="loss">L</div></div>
+  <div class="row"><div class="win">W</div></div>
+  <div class="row"><div class="win">W</div></div>
+  <div class="row"><div class="win">W</div></div>
+
+  <div class="text">
+    Na elk verlies volgen drie opeenvolgende winsten. Instappen na resetmomenten.
+  </div>
 </div>
 
-  <div class="row"><div class="loss">L</div></div>
-  <div class="row"><div class="win">W</div></div>
-  <div class="row"><div class="win">W</div></div>
-  <div class="row"><div class="win">W</div></div>
-  <div class="row"><div class="loss">L</div></div>
-  <div class="row"><div class="win">W</div></div>
-  <div class="row"><div class="win">W</div></div>
-  <div class="row"><div class="win">W</div></div>
-  <div class="row"><div class="loss">L</div></div>
+<!-- CENTER PANEL -->
+<div id="center" class="panel centerP">
+  <div class="title">🔥 Sterke patroonherkenning</div>
 
-  <div class="note">
-    Na elk verlies (L) volgen doorgaans drie opeenvolgende winsten (W). Als dit patroon zich voortzet, kunt u na het volgende verlies een nieuwe reeks winsten verwachten.
+  <div class="text">
+    Zoek naar reeksen met lage verliesfrequentie tussen winsten.
   </div>
 
+  <div class="section-title">HETE REEKS</div>
+
+  <div class="row"><div class="win">W</div></div>
+  <div class="row"><div class="win">W</div></div>
+  <div class="row"><div class="loss">L</div></div>
+  <div class="row"><div class="win">W</div></div>
+  <div class="row"><div class="win">W</div></div>
+  <div class="row"><div class="win">W</div></div>
+
+  <div class="text">
+    Sterk momentum bij consistente winststructuren.
+  </div>
+</div>
+
+<!-- RIGHT PANEL -->
+<div id="right" class="panel rightP">
+  <div class="title">📉 Patroonverzwakking herkennen</div>
+
+  <div class="text">
+    Wanneer winstreeksen korter worden of verliezen toenemen.
+  </div>
+
+  <div class="section-title">VERZWAKKERING</div>
+
+  <div class="row"><div class="win">W</div></div>
+  <div class="row"><div class="win">W</div></div>
+  <div class="row"><div class="loss">L</div></div>
+  <div class="row"><div class="win">W</div></div>
+  <div class="row"><div class="loss">L</div></div>
+
+  <div class="text">
+    Reeks verliest structuur → wachten op reset.
+  </div>
 </div>
 
 <script>
-function toggle(){
-  document.getElementById("panel").classList.toggle("open");
+function toggle(id){
+  const panels = ["left","center","right"];
+
+  panels.forEach(p=>{
+    if(p !== id){
+      document.getElementById(p).classList.remove("open");
+    }
+  });
+
+  document.getElementById(id).classList.toggle("open");
 }
 </script>
+
+</body>
+</html>
 
 <p style="color: Yellow;">🇮🇩🇺🇸RT🇸🇷🇳🇱</p>
 
