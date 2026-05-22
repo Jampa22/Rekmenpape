@@ -152,7 +152,7 @@ body{
 
 <!-- LEFT PANEL -->
 <div id="left" class="panel leftP">
-  <div class="title">🔁 Patronen herkennen</div>
+  <div class="title">🔁Patronen herkennen</div>
 
   <div class="text">
     De app houdt eerdere voorspellingen bij om herhaalbare patronen te identificeren. Deze reeksen kunnen vaak aangeven wat er waarschijnlijk gaat gebeuren.
@@ -175,10 +175,10 @@ body{
 
 <!-- CENTER PANEL -->
 <div id="center" class="panel centerP">
-  <div class="title">🔥 Sterke patroonherkenning</div>
+  <div class="title">🔥Sterke patroonherkenning</div>
 
   <div class="text">
-    Zoek naar reeksen met lage verliesfrequentie tussen winsten.
+  Zoek naar reeksen waarin er niet meer dan één verlies is tussen meerdere winsten. Dit duidt op een sterk momentum.
   </div>
 
   <div class="section-title">HETE REEKS</div>
@@ -191,16 +191,16 @@ body{
   <div class="row"><div class="win">W</div></div>
 
   <div class="text">
-    Sterk momentum bij consistente winststructuren.
+  Frequente winsten met weinig verliezen wijzen op een opkomende trend. Profiteer van de reeks zolang de structuur standhoudt.
   </div>
 </div>
 
 <!-- RIGHT PANEL -->
 <div id="right" class="panel rightP">
-  <div class="title">📉 Patroonverzwakking herkennen</div>
+  <div class="title">📉Patroonverzwakking herkennen</div>
 
   <div class="text">
-    Wanneer winstreeksen korter worden of verliezen toenemen.
+  Als winstreeksen korter worden of verliezen toenemen, neemt het momentum af.
   </div>
 
   <div class="section-title">VERZWAKKERING</div>
@@ -212,7 +212,7 @@ body{
   <div class="row"><div class="loss">L</div></div>
 
   <div class="text">
-    Reeks verliest structuur → wachten op reset.
+ Reeks verzwakt: 3 → 2 → 1. Stop met inzetten en wacht tot de reeks is gereset.
   </div>
 </div>
 
