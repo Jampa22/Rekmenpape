@@ -163,7 +163,7 @@ body{
   <div class="btn" onclick="toggle('left')">
     <span></span><span></span><span></span>
   </div>
-  <div class="label">Patroon Inzien</div>
+  <div class="label">Patronen Inzien</div>
 </div>
 
 <!-- CENTER -->
@@ -240,7 +240,7 @@ Hete Reeks
   </div>
 
 <p style="color: white; text-align: left;">
-Patroon Verzwakt
+Patronen verzwakt
 </p>
 
 <div class="row"><div class="win">W</div></div>
