@@ -1,7 +1,8 @@
+<!DOCTYPE html>
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<title>Mint Exclusive Toggle UI</title>
+<title>Pattern UI Mint Glow Final</title>
 
 <style>
 body{
@@ -11,7 +12,25 @@ body{
   color:#eaeaea;
 }
 
-/* BUTTON STYLE */
+/* WRAPPER */
+.btn-wrap{
+  position:fixed;
+  top:10px;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:3px;
+
+  z-index:1000;
+}
+
+/* POSITIONS */
+.left{ left:10px; }
+.center{ left:50%; transform:translateX(-50%); }
+.right{ right:10px; }
+
+/* BUTTON */
 .btn{
   width:26px;
   height:26px;
@@ -30,7 +49,6 @@ body{
 
   box-shadow:0 0 6px #2ef2c2, 0 0 12px rgba(46,242,194,0.5);
   transition:0.2s ease;
-  z-index:1000;
 }
 
 .btn span{
@@ -45,17 +63,21 @@ body{
   transform:scale(1.05);
 }
 
-/* POSITIONS */
-.left{ position:fixed; top:10px; left:10px; }
-.center{ position:fixed; top:10px; left:50%; transform:translateX(-50%); }
-.right{ position:fixed; top:10px; right:10px; }
+/* LABEL */
+.label{
+  font-size:10px;
+  color:#2ef2c2;
+  text-align:center;
+  text-shadow:0 0 6px rgba(46,242,194,0.5);
+  max-width:90px;
+}
 
-/* PANEL */
+/* PANELS */
 .panel{
   position:fixed;
-  top:45px;
+  top:65px;
 
-  width:320px;
+  width:340px;
 
   background:rgba(15,15,18,0.97);
   border-radius:10px;
@@ -137,30 +159,39 @@ body{
 
 <body>
 
-<!-- BUTTONS -->
-<div class="btn left" onclick="toggle('left')">
-  <span></span><span></span><span></span>
+<!-- LEFT -->
+<div class="btn-wrap left">
+  <div class="btn" onclick="toggle('left')">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="label">Patroon Inzien</div>
 </div>
 
-<div class="btn center" onclick="toggle('center')">
-  <span></span><span></span><span></span>
+<!-- CENTER -->
+<div class="btn-wrap center">
+  <div class="btn" onclick="toggle('center')">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="label">Sterk patroon</div>
 </div>
 
-<div class="btn right" onclick="toggle('right')">
-  <span></span><span></span><span></span>
+<!-- RIGHT -->
+<div class="btn-wrap right">
+  <div class="btn" onclick="toggle('right')">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="label">Patroon verzwakt</div>
 </div>
 
 <!-- LEFT PANEL -->
 <div id="left" class="panel leftP">
-  <div class="title">🔁Patronen herkennen</div>
+  <div class="title">🔁 Patronen herkennen</div>
 
   <div class="text">
-    De app houdt eerdere voorspellingen bij om herhaalbare patronen te identificeren. Deze reeksen kunnen vaak aangeven wat er waarschijnlijk gaat gebeuren.
+    De app volgt voorspellingsreeksen om herhaalbare structuren te detecteren.
   </div>
 
-<p style="color: white; text-align: left;">
-Patroon
-</p>
+  <div class="section-title">VOORBEELD VAN EEN PATROON</div>
 
   <div class="row"><div class="loss">L</div></div>
   <div class="row"><div class="win">W</div></div>
@@ -171,21 +202,19 @@ Patroon
   <div class="row"><div class="win">W</div></div>
 
   <div class="text">
-  Na elk verlies (L) volgen doorgaans drie opeenvolgende winsten (W). Als dit patroon zich voortzet, kunt u na het volgende verlies een nieuwe reeks winsten verwachten.
+    Na elk verlies volgen drie winsten. Wacht op instapmomenten.
   </div>
 </div>
 
 <!-- CENTER PANEL -->
 <div id="center" class="panel centerP">
-  <div class="title">📈Sterke patroonherkenning</div>
+  <div class="title">🔥 Sterk patroonherkenning</div>
 
   <div class="text">
-  Zoek naar reeksen waarin er niet meer dan één verlies is tussen meerdere winsten. Dit duidt op een sterk momentum.
+    Zoek naar reeksen met sterke winststructuur en weinig verliezen.
   </div>
 
-<p style="color: white; text-align: left;">
-Hete reeks
-</p>
+  <div class="section-title">HETE REEKS</div>
 
   <div class="row"><div class="win">W</div></div>
   <div class="row"><div class="win">W</div></div>
@@ -193,23 +222,17 @@ Hete reeks
   <div class="row"><div class="win">W</div></div>
   <div class="row"><div class="win">W</div></div>
   <div class="row"><div class="win">W</div></div>
-
-  <div class="text">
-  Frequente winsten met weinig verliezen wijzen op een opkomende trend. Profiteer van de reeks zolang de structuur standhoudt.
-  </div>
 </div>
 
 <!-- RIGHT PANEL -->
 <div id="right" class="panel rightP">
-  <div class="title">📉Patroonverzwakking herkennen</div>
+  <div class="title">📉 Patroonverzwakking herkennen</div>
 
   <div class="text">
-  Als winstreeksen korter worden of verliezen toenemen, neemt het momentum af.
+    Wanneer winstreeksen korter worden of verliezen toenemen.
   </div>
 
-<p style="color: white; text-align: left;">
-  Verzwakking
-</p>
+  <div class="section-title">VERZWAKKERING</div>
 
   <div class="row"><div class="win">W</div></div>
   <div class="row"><div class="win">W</div></div>
@@ -218,7 +241,7 @@ Hete reeks
   <div class="row"><div class="loss">L</div></div>
 
   <div class="text">
- Reeks verzwakt: 3 → 2 → 1. Stop met inzetten en wacht tot de reeks is gereset.
+    Reeks verliest kracht → wachten op reset.
   </div>
 </div>
 
