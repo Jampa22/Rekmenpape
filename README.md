@@ -613,7 +613,7 @@ button:hover {
 
 
 
-<div id="output">Choose the following number</div>
+<div id="output">Kies de nummer</div>
 
 <div class="grid" id="grid"></div>
 
