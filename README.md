@@ -1,7 +1,7 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<title>Pattern UI Mint Glow Final</title>
+<title>Mint Pattern UI Final</title>
 
 <style>
 body{
@@ -11,7 +11,7 @@ body{
   color:#eaeaea;
 }
 
-/* WRAPPER */
+/* BUTTON WRAPPER */
 .btn-wrap{
   position:fixed;
   top:10px;
@@ -68,10 +68,10 @@ body{
   color:#2ef2c2;
   text-align:center;
   text-shadow:0 0 6px rgba(46,242,194,0.5);
-  max-width:90px;
+  max-width:100px;
 }
 
-/* PANELS */
+/* PANEL */
 .panel{
   position:fixed;
   top:65px;
@@ -184,10 +184,10 @@ body{
 
 <!-- LEFT PANEL -->
 <div id="left" class="panel leftP">
-  <div class="title">🔁 Patronen herkennen</div>
+  <div class="title">🔁Patronen herkennen</div>
 
   <div class="text">
-    De app volgt voorspellingsreeksen om herhaalbare structuren te detecteren.
+  De app houdt eerdere voorspellingen bij om herhaalbare patronen te identificeren. Deze reeksen kunnen vaak aangeven wat er waarschijnlijk gaat gebeuren.
   </div>
 
   <div class="section-title">VOORBEELD VAN EEN PATROON</div>
@@ -201,16 +201,16 @@ body{
   <div class="row"><div class="win">W</div></div>
 
   <div class="text">
-    Na elk verlies volgen drie winsten. Wacht op instapmomenten.
+  Na elk verlies (L) volgen doorgaans drie opeenvolgende winsten (W). Als dit patroon zich voortzet, kunt u na het volgende verlies een nieuwe reeks winsten verwachten.
   </div>
 </div>
 
 <!-- CENTER PANEL -->
 <div id="center" class="panel centerP">
-  <div class="title">🔥 Sterk patroonherkenning</div>
+  <div class="title">📈Sterke patroonherkenning</div>
 
   <div class="text">
-    Zoek naar reeksen met sterke winststructuur en weinig verliezen.
+  Zoek naar reeksen waarin er niet meer dan één verlies is tussen meerdere winsten. Dit duidt op een sterk momentum.
   </div>
 
   <div class="section-title">HETE REEKS</div>
@@ -221,14 +221,18 @@ body{
   <div class="row"><div class="win">W</div></div>
   <div class="row"><div class="win">W</div></div>
   <div class="row"><div class="win">W</div></div>
+
+  <div class="text">
+  Frequente winsten met weinig verliezen wijzen op een opkomende trend. Profiteer van de reeks zolang de structuur standhoudt.
+  </div>
 </div>
 
 <!-- RIGHT PANEL -->
 <div id="right" class="panel rightP">
-  <div class="title">📉 Patroonverzwakking herkennen</div>
+  <div class="title">📉Patroonverzwakking herkennen</div>
 
   <div class="text">
-    Wanneer winstreeksen korter worden of verliezen toenemen.
+  Als winstreeksen korter worden of verliezen toenemen, neemt het momentum af.
   </div>
 
   <div class="section-title">VERZWAKKERING</div>
@@ -240,7 +244,7 @@ body{
   <div class="row"><div class="loss">L</div></div>
 
   <div class="text">
-    Reeks verliest kracht → wachten op reset.
+    Reeks korter: 3 → 2 → 1. Stop en wacht op reset.
   </div>
 </div>
 
