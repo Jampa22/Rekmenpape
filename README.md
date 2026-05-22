@@ -177,7 +177,7 @@ Patroon
 
 <!-- CENTER PANEL -->
 <div id="center" class="panel centerP">
-  <div class="title">🔥Sterke patroonherkenning</div>
+  <div class="title">📈Sterke patroonherkenning</div>
 
   <div class="text">
   Zoek naar reeksen waarin er niet meer dan één verlies is tussen meerdere winsten. Dit duidt op een sterk momentum.
