@@ -645,7 +645,7 @@ button:hover {
 
 
 
-<div id="output">Kies de nummer</div>
+<div id="output">Kies de winnende nummer</div>
 
 <div class="grid" id="grid"></div>
 
