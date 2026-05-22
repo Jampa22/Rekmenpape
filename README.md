@@ -194,7 +194,7 @@ body{
 Patroon
 </p>
 
-  <div class="row"><div class="loss">L</div></div>
+<div class="row"><div class="loss">L</div></div>
   <div class="row"><div class="win">W</div></div>
   <div class="row"><div class="win">W</div></div>
   <div class="row"><div class="loss">L</div></div>
@@ -219,7 +219,7 @@ Patroon
 Hete Reeks
 </p>
 
-  <div class="row"><div class="win">W</div></div>
+<div class="row"><div class="win">W</div></div>
   <div class="row"><div class="win">W</div></div>
   <div class="row"><div class="loss">L</div></div>
   <div class="row"><div class="win">W</div></div>
@@ -243,7 +243,7 @@ Hete Reeks
 Patroon
 </p>
 
-  <div class="row"><div class="win">W</div></div>
+<div class="row"><div class="win">W</div></div>
   <div class="row"><div class="win">W</div></div>
   <div class="row"><div class="loss">L</div></div>
   <div class="row"><div class="win">W</div></div>
