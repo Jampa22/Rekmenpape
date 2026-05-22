@@ -158,7 +158,9 @@ body{
     De app houdt eerdere voorspellingen bij om herhaalbare patronen te identificeren. Deze reeksen kunnen vaak aangeven wat er waarschijnlijk gaat gebeuren.
   </div>
 
-  <div class="section-title">VOORBEELD PATROON</div>
+<p style="color: white; text-align: left;">
+Patroon
+</p>
 
   <div class="row"><div class="loss">L</div></div>
   <div class="row"><div class="win">W</div></div>
@@ -181,7 +183,9 @@ body{
   Zoek naar reeksen waarin er niet meer dan één verlies is tussen meerdere winsten. Dit duidt op een sterk momentum.
   </div>
 
-  <div class="section-title">HETE REEKS</div>
+<p style="color: white; text-align: left;">
+Hete reeks
+</p>
 
   <div class="row"><div class="win">W</div></div>
   <div class="row"><div class="win">W</div></div>
@@ -203,7 +207,9 @@ body{
   Als winstreeksen korter worden of verliezen toenemen, neemt het momentum af.
   </div>
 
-  <div class="section-title">VERZWAKKERING</div>
+<p style="color: white; text-align: left;">
+  Verzwakking
+</p>
 
   <div class="row"><div class="win">W</div></div>
   <div class="row"><div class="win">W</div></div>
