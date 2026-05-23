@@ -240,7 +240,7 @@ Hete Reeks
   </div>
 
 <p style="color: white; text-align: left;">
-Patronen verzwakt
+Verzwakte Patronen
 </p>
 
 <div class="row"><div class="win">W</div></div>
