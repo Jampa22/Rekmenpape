@@ -191,7 +191,7 @@ body{
   </div>
 
 <p style="color: white; text-align: left;">
-Patronen Inzien
+Partronen Herkennen
 </p>
 
 <div class="row"><div class="loss">L</div></div>
@@ -216,7 +216,7 @@ Patronen Inzien
   </div>
 
 <p style="color: white; text-align: left;">
-Hete Reeks
+Hete Reeks blijven inzetten
 </p>
 
 <div class="row"><div class="win">W</div></div>
@@ -240,7 +240,7 @@ Hete Reeks
   </div>
 
 <p style="color: white; text-align: left;">
-Verzwakte Patronen
+Verzwakte Patronen Herkennen
 </p>
 
 <div class="row"><div class="win">W</div></div>
@@ -250,7 +250,7 @@ Verzwakte Patronen
   <div class="row"><div class="loss">L</div></div>
 
   <div class="text">
-    Reeks korter: Stop en wacht op reset.
+    Reeks korter: Stop en wacht en speel wanneer je de patronen herkennen.
   </div>
 </div>
 
