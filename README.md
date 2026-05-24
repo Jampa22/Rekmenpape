@@ -179,7 +179,7 @@ body{
   <div class="btn" onclick="toggle('right')">
     <span></span><span></span><span></span>
   </div>
-  <div class="label">Verzwakte Patronen</div>
+  <div class="label">Zwake patronen herkennen</div>
 </div>
 
 <!-- LEFT PANEL -->
@@ -191,7 +191,7 @@ body{
   </div>
 
 <p style="color: white; text-align: left;">
-Partronen herkennen
+Partronen herkennen bij verlies de volgende ronde inzetten of stop een ronde de volgende ronde inzetten.
 </p>
 
 <div class="row"><div class="loss">L</div></div>
@@ -216,7 +216,7 @@ Partronen herkennen
   </div>
 
 <p style="color: white; text-align: left;">
-Hete reeks blijven inzetten tot er een verlies draait. Stop en wacht op de juiste patronen weer draaien.
+Hete reeks blijven inzetten totdat er een verlies komt. Stop en wacht op de juiste patronen weer juist draaien.
 </p>
 
 <div class="row"><div class="win">W</div></div>
@@ -250,7 +250,7 @@ Verzwakte patronen herkennen
   <div class="row"><div class="loss">L</div></div>
 
   <div class="text">
-    Reeks korter: Stop en wacht en speel wanneer je de patronen herkennen.
+    Reeks korter: Stop en wacht speel pas wanneer je de patronen herkent.
   </div>
 </div>
 
