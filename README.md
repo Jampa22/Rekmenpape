@@ -179,7 +179,7 @@ body{
   <div class="btn" onclick="toggle('right')">
     <span></span><span></span><span></span>
   </div>
-  <div class="label">Zwake patronen herkennen</div>
+  <div class="label">Zwake patronen</div>
 </div>
 
 <!-- LEFT PANEL -->
@@ -240,7 +240,7 @@ Hete reeks blijven inzetten totdat er een verlies komt. Stop en wacht op de juis
   </div>
 
 <p style="color: white; text-align: left;">
-Zwake patronen
+Zwake patronen zijn als er meerdere nummers achter elkaar niet de juiste patronen draaien. 
 </p>
 
 <div class="row"><div class="win">W</div></div>
