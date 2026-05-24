@@ -163,7 +163,7 @@ body{
   <div class="btn" onclick="toggle('left')">
     <span></span><span></span><span></span>
   </div>
-  <div class="label">Patronen Inzien</div>
+  <div class="label">Patronen inzien</div>
 </div>
 
 <!-- CENTER -->
@@ -179,7 +179,7 @@ body{
   <div class="btn" onclick="toggle('right')">
     <span></span><span></span><span></span>
   </div>
-  <div class="label">Patronen verzwakt</div>
+  <div class="label">Verzwakte Patronen</div>
 </div>
 
 <!-- LEFT PANEL -->
