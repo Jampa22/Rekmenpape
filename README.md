@@ -236,7 +236,7 @@ Hete reeks blijven inzetten totdat er één verlies komt. Stop en wacht op de ju
   <div class="title">📉Patroon verzwakking herkennen</div>
 
   <div class="text">
-Zwake patronen zijn als er meerdere nummers achter elkaar niet de juiste patronen draaien.
+Zwake patronen zijn als er meerdere nummers op een rij niet de juiste patronen draaien.
   </div>
 
 <p style="color: white; text-align: left;">
