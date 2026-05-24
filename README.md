@@ -187,7 +187,7 @@ body{
   <div class="title">🔁Patronen herkennen</div>
 
   <div class="text">
-Partronen herkennen bij één verlies. Een ronde wachten, ronde daarna inzetten. Als de ronde daarna verlies draait zet je weer in.
+Partronen herkennen bij één verlies. Een ronde wachten, ronde daarna inzetten. Als de ronde daarna weer verliest, zet je weer in.
   </div>
 
 <p style="color: white; text-align: left;">
