@@ -250,7 +250,7 @@ Zwake patronen zijn als er meerdere nummers achter elkaar niet de juiste patrone
   <div class="row"><div class="loss">L</div></div>
 
   <div class="text">
-    Reeks korter: Stop en wacht speel pas wanneer je de juist patronen herkent.
+    Reeks korter: Stop en wacht speel pas wanneer je de juiste patronen herkent.
   </div>
 </div>
 
