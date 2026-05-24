@@ -187,11 +187,11 @@ body{
   <div class="title">🔁Patronen herkennen</div>
 
   <div class="text">
-  De app houdt eerdere voorspellingen bij om herhaalbare patronen te identificeren. Deze reeksen kunnen vaak aangeven wat er waarschijnlijk gaat gebeuren.
+Partronen herkennen bij verlies de volgende ronde inzetten of stop een ronde de volgende ronde inzetten.
   </div>
 
 <p style="color: white; text-align: left;">
-Partronen herkennen bij verlies de volgende ronde inzetten of stop een ronde de volgende ronde inzetten.
+
 </p>
 
 <div class="row"><div class="loss">L</div></div>
@@ -212,11 +212,11 @@ Partronen herkennen bij verlies de volgende ronde inzetten of stop een ronde de 
   <div class="title">📈Sterke patroon herkenning</div>
 
   <div class="text">
-  Zoek naar reeksen waarin er niet meer dan één verlies is tussen meerdere winsten. Dit duidt op een sterk momentum.
+Hete reeks blijven inzetten totdat er één verlies komt. Stop en wacht op de juiste patronen weer juist draaien.
   </div>
 
 <p style="color: white; text-align: left;">
-Hete reeks blijven inzetten totdat er een verlies komt. Stop en wacht op de juiste patronen weer juist draaien.
+
 </p>
 
 <div class="row"><div class="win">W</div></div>
@@ -236,11 +236,11 @@ Hete reeks blijven inzetten totdat er een verlies komt. Stop en wacht op de juis
   <div class="title">📉Patroon verzwakking herkennen</div>
 
   <div class="text">
-  Als winstreeksen korter worden of verliezen toenemen, neemt het momentum af.
+Zwake patronen zijn als er meerdere nummers achter elkaar niet de juiste patronen draaien.
   </div>
 
 <p style="color: white; text-align: left;">
-Zwake patronen zijn als er meerdere nummers achter elkaar niet de juiste patronen draaien. 
+
 </p>
 
 <div class="row"><div class="win">W</div></div>
