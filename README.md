@@ -171,7 +171,7 @@ body{
   <div class="btn" onclick="toggle('center')">
     <span></span><span></span><span></span>
   </div>
-  <div class="label">Sterke patronen herkennen</div>
+  <div class="label">Sterke patrone</div>
 </div>
 
 <!-- RIGHT -->
@@ -240,7 +240,7 @@ Hete reeks blijven inzetten totdat er een verlies komt. Stop en wacht op de juis
   </div>
 
 <p style="color: white; text-align: left;">
-Verzwakte patronen herkennen
+Zwake patronen
 </p>
 
 <div class="row"><div class="win">W</div></div>
