@@ -163,7 +163,7 @@ body{
   <div class="btn" onclick="toggle('left')">
     <span></span><span></span><span></span>
   </div>
-  <div class="label">Patronen inzien</div>
+  <div class="label">Patronen herkennen</div>
 </div>
 
 <!-- CENTER -->
@@ -191,7 +191,7 @@ body{
   </div>
 
 <p style="color: white; text-align: left;">
-Partronen Herkennen
+Partronen herkennen
 </p>
 
 <div class="row"><div class="loss">L</div></div>
@@ -209,14 +209,14 @@ Partronen Herkennen
 
 <!-- CENTER PANEL -->
 <div id="center" class="panel centerP">
-  <div class="title">📈Sterke patroonherkenning</div>
+  <div class="title">📈Sterke patroon herkenning</div>
 
   <div class="text">
   Zoek naar reeksen waarin er niet meer dan één verlies is tussen meerdere winsten. Dit duidt op een sterk momentum.
   </div>
 
 <p style="color: white; text-align: left;">
-Hete Reeks blijven inzetten
+Hete reeks blijven inzetten tot er een verlies draait. Stop en wacht op de juiste patronen weer draaien.
 </p>
 
 <div class="row"><div class="win">W</div></div>
@@ -233,14 +233,14 @@ Hete Reeks blijven inzetten
 
 <!-- RIGHT PANEL -->
 <div id="right" class="panel rightP">
-  <div class="title">📉Patroonverzwakking herkennen</div>
+  <div class="title">📉Patroon verzwakking herkennen</div>
 
   <div class="text">
   Als winstreeksen korter worden of verliezen toenemen, neemt het momentum af.
   </div>
 
 <p style="color: white; text-align: left;">
-Verzwakte Patronen Herkennen
+Verzwakte patronen herkennen
 </p>
 
 <div class="row"><div class="win">W</div></div>
