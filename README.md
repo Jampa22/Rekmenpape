@@ -171,7 +171,7 @@ body{
   <div class="btn" onclick="toggle('center')">
     <span></span><span></span><span></span>
   </div>
-  <div class="label">Sterke patronen</div>
+  <div class="label">Sterke patronen herkennen</div>
 </div>
 
 <!-- RIGHT -->
